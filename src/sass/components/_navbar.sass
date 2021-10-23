@@ -1,0 +1,45 @@
+.navbar
+  position: relative
+  display: flex
+  justify-content: space-between
+  align-items: center
+  width: 100%
+  margin-top: 40px
+
+  &__logo
+    width: 48px
+    height: 48px
+    margin: 0 55px
+
+  &__line-decoration
+    position: absolute
+    top: 50%
+    left: 140px
+
+    width: 33%
+    height: 1px
+    background: rgba($colorWhite, 0.25)
+
+  &__routes
+    background: rgba($colorWhite, 0.04)
+    width: 60%
+
+    & > ul
+      display: flex
+      justify-content: center
+      list-style: none
+      margin-right: 40px
+
+  &__item
+    margin: 38px 0
+    margin-right: 50px
+    
+    & a
+      padding: 36px 0
+      @include navText
+
+      &:hover
+        border-bottom: 3px solid $colorWhite
+
+      & > span:first-child
+        font-weight: bold

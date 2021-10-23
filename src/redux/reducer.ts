@@ -1,6 +1,12 @@
 import { ActionName, IStore, IAction } from '../types/redux';
 
 const initState: IStore = {
+  routes: [
+    { index: '00', name: 'home', path: '/' },
+    { index: '01', name: 'destinations', path: '/destinations' },
+    { index: '02', name: 'crew', path: '/crew' },
+    { index: '03', name: 'technology', path: '/technology' },
+  ],
   destinations: [
     {
       name: 'Moon',

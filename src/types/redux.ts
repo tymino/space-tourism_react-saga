@@ -4,6 +4,11 @@ export enum ActionName {
 }
 
 // store
+interface IRoutes {
+  index: string;
+  name: string;
+  path: string;
+}
 interface IDestinations {
   name: string;
   images: { png: string; webp: string };
@@ -24,6 +29,7 @@ interface ITechnology {
 }
 
 export interface IStore {
+  routes: IRoutes[];
   destinations: IDestinations[];
   crew: ICrew[];
   technology: ITechnology[];
