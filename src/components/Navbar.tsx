@@ -5,8 +5,6 @@ import useTypedSelector from '../hooks/useTypedSelector';
 const Navbar = () => {
   const routesData = useTypedSelector((state) => state.routes);
 
-  // Добавить два дива для баланса ссылки по центру и подчеркивание сделать прозрачным
-
   return (
     <div className="navbar">
       <img className="navbar__logo" src="./assets/shared/logo.svg" alt="logo" />

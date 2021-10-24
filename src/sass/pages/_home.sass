@@ -1,0 +1,61 @@
+.home
+  height: 80vh
+  padding: 0 11%
+
+  &__picture--img
+    position: absolute
+    top: 0
+    left: 0
+
+    width: 100vw
+    height: 100vh
+
+    z-index: -10
+
+  &__container
+    transform: translateY(76%)
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+
+    &-describe
+      max-width: 450px
+
+      &-subtitle
+        @include heading5
+        text-transform: uppercase
+        color: $colorLight
+
+      &-header
+        margin: 24px 0
+        @include heading1
+        text-transform: uppercase
+        color: $colorWhite
+
+      &-text
+        @include bodyText
+        color: $colorLight
+
+    &-explore
+      position: relative
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 274px
+      height: 274px
+      border-radius: 50%
+      background: $colorWhite
+
+      &:hover::after
+        content: ''
+        position: absolute
+        width: 450px
+        height: 450px
+        font-size: 40px
+        color: red
+        background: $colorWhite
+        border-radius: 50%
+        opacity: .13
+
+      @include heading4
+      text-transform: uppercase
