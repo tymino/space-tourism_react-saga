@@ -1,10 +1,6 @@
 import React from 'react';
-import useTypedSelector from '../hooks/useTypedSelector';
 
-const Home = () => {
-  const homeData = useTypedSelector((state) => state.routes);
-
-  return (
+const Home = () => (
     <div className="home">
       <picture className="home__picture">
         <source
@@ -41,6 +37,5 @@ const Home = () => {
       </div>
     </div>
   );
-};
 
 export default Home;
