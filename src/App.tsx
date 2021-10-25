@@ -4,7 +4,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
-import { Home, Destinations, Crew, Technology } from './pages/all';
+import { Home, Destination, Crew, Technology } from './pages/all';
 
 const App: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const App: React.FC = () => {
 
       <div className="content">
         <Route exact path="/" component={Home} />
-        <Route path="/destinations" component={Destinations} />
+        <Route path="/destination" component={Destination} />
         <Route path="/crew" component={Crew} />
         <Route path="/technology" component={Technology} />
       </div>
