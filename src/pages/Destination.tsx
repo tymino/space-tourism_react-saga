@@ -3,7 +3,6 @@ import useTypedSelector from '../hooks/useTypedSelector';
 
 const Destination = () => {
   const planetData = useTypedSelector((state) => state.destinations);
-
   const [activeTab, setActiveTab] = React.useState(0);
 
   const handleSwitchTab = (e: any) => setActiveTab(e.target.dataset.value);
@@ -29,15 +28,25 @@ const Destination = () => {
       </picture>
 
       <div className="destination__container container">
-        <div className="container__subtitle">{}</div>
+        <div className="container__subtitle">
+          <span>01</span> Pick your destination
+        </div>
         <div className="container__planet-wrapper">
-          <img className="container__planet-image" src="" alt="" />
+          <img
+            className="container__planet-image"
+            src={planetData[activeTab].images.png}
+            alt={planetData[activeTab].name}
+          />
           <div className="container__planet-info-wrapper">
             <ul className="container__planet-info-tabs">
               {planetData.map((e, i) => (
                 <li
                   key={e.name}
-                  className="container__planet-info-tabs-name"
+                  className={`container__planet-info-tabs-name${
+                    Number(activeTab) === i
+                      ? ' active'
+                      : ''
+                  }`}
                   onClick={handleSwitchTab}
                   data-value={i}>
                   {e.name}

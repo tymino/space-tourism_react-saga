@@ -1,5 +1,4 @@
 .destination
-  height: 80vh
   padding: 0 11%
 
   &__picture--img
@@ -12,6 +11,83 @@
 
     z-index: -10
 
-  &__container
+.container
+  margin-top: 74px
 
-    border: 1px solid white
+  &__subtitle
+    margin-bottom: 60px
+
+    @include heading5
+    text-transform: uppercase
+    color: $colorWhite
+
+    & > span
+      opacity: .25
+
+  &__planet-wrapper
+    display: flex
+    justify-content: space-between
+
+  &__planet-image
+    width: 445px
+    height: 445px
+    margin-left: 50px
+    border-radius: 50%
+    border: 1px solid green
+
+  &__planet-info-wrapper
+    width: 445px
+
+  &__planet-info-tabs
+    display: flex
+    list-style: none
+
+  &__planet-info-tabs-name
+    margin-right: 34px
+    padding-bottom: 12px
+
+    @include navText
+    color: $colorLight
+    cursor: pointer
+
+    &.active
+      border-bottom: 3px solid $colorWhite
+
+  &__planet-info-header
+    margin-top: 35px
+    margin-bottom: 14px
+
+    @include heading2
+    text-transform: uppercase
+    color: $colorWhite
+
+  &__planet-info-text
+    padding-bottom: 50px
+    border-bottom: 1px solid $colorGray
+
+    @include bodyText
+    color: $colorLight
+
+  &__planet-info-footer
+    display: flex
+    margin-top: 28px
+    text-transform: uppercase
+
+  &__planet-info-distance
+    margin-right: 80px
+    &-name
+      margin-bottom: 12px
+      @include subHeading2
+      color: $colorLight
+    &-value
+      @include subHeading1
+      color: $colorWhite
+
+  &__planet-info-travel
+    &-name
+      margin-bottom: 12px
+      @include subHeading2
+      color: $colorLight
+    &-value
+      @include subHeading1
+      color: $colorWhite
