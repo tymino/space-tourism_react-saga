@@ -43,9 +43,7 @@ const Destination = () => {
                 <li
                   key={e.name}
                   className={`container__planet-info-tabs-name${
-                    Number(activeTab) === i
-                      ? ' active'
-                      : ''
+                    Number(activeTab) === i ? ' active' : ''
                   }`}
                   onClick={handleSwitchTab}
                   data-value={i}>
