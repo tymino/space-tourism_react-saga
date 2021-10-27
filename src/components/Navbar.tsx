@@ -13,7 +13,7 @@ const Navbar = () => {
         <ul>
           {routesData.map(({ index, name, path }) => (
             <li className="navbar__item" key={name}>
-              <NavLink to={path}>
+              <NavLink exact to={path} activeClassName="navbar__item--selected">
                 <span>{index}</span> <span>{name}</span>
               </NavLink>
             </li>

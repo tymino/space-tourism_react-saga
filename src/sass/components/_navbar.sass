@@ -39,11 +39,13 @@
       @include navText
 
       &:hover
-        border-bottom: 3px solid $colorWhite
+        border-bottom: 3px solid rgba($colorWhite, .5)
 
       & > span:first-child
         font-weight: bold
 
+    &--selected
+      border-bottom: 3px solid $colorWhite
 
 // @media (max-width: 460px)
 //   .navbar
