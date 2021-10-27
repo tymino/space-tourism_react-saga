@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import useTypedSelector from '../hooks/useTypedSelector';
 
 const Navbar = () => {
@@ -13,9 +13,9 @@ const Navbar = () => {
         <ul>
           {routesData.map(({ index, name, path }) => (
             <li className="navbar__item" key={name}>
-              <Link to={path}>
+              <NavLink to={path}>
                 <span>{index}</span> <span>{name}</span>
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>

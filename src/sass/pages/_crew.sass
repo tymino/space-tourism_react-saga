@@ -1,0 +1,73 @@
+.crew
+  padding: 0 11%
+
+  &__picture--img
+    position: absolute
+    top: 0
+    left: 0
+
+    width: 100vw
+    height: 100vh
+
+    z-index: -10
+
+  &__container
+  margin-top: 74px
+
+  &__subtitle
+    margin-bottom: 60px
+
+    @include heading5
+    text-transform: uppercase
+    color: $colorWhite
+
+    & > span
+      opacity: .25
+
+  // &__pilot-wrapper
+  // &__pilot-info-wrapper
+  &__pilot-info-subheader
+    margin-top: 12%
+    margin-bottom: 15px
+
+    @include heading4
+    color: $colorWhite
+    text-transform: uppercase
+    opacity: .5
+
+  &__pilot-info-header
+    margin-bottom: 26px
+
+    @include heading3
+    color: $colorWhite
+    text-transform: uppercase
+
+  &__pilot-info-bio
+    max-width: 444px
+    margin-bottom: 120px
+
+    @include bodyText
+    color: $colorLight
+
+  &__pilot-info-slider
+    display: flex
+    list-style: none
+
+  &__pilot-info-tabs-button
+    width: 15px
+    height: 15px
+    margin-right: 24px
+
+    border-radius: 50%
+    background: $colorWhite
+    opacity: .15
+
+    cursor: pointer
+
+    &.active
+      opacity: 1
+
+  &__pilot-image
+    position: absolute
+    bottom: 0
+    right: 11%
