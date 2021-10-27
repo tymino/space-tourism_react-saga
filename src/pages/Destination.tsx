@@ -27,22 +27,22 @@ const Destination = () => {
         />
       </picture>
 
-      <div className="destination__container container">
-        <div className="container__subtitle">
+      <div className="destination__container">
+        <div className="destination__subtitle">
           <span>01</span> Pick your destination
         </div>
-        <div className="container__planet-wrapper">
+        <div className="destination__planet-wrapper">
           <img
-            className="container__planet-image"
+            className="destination__planet-image"
             src={planetData[activeTab].images.png}
             alt={planetData[activeTab].name}
           />
-          <div className="container__planet-info-wrapper">
-            <ul className="container__planet-info-tabs">
+          <div className="destination__planet-info-wrapper">
+            <ul className="destination__planet-info-tabs">
               {planetData.map((e, i) => (
                 <li
                   key={e.name}
-                  className={`container__planet-info-tabs-name${
+                  className={`destination__planet-info-tabs-name${
                     Number(activeTab) === i ? ' active' : ''
                   }`}
                   onClick={handleSwitchTab}
@@ -51,26 +51,26 @@ const Destination = () => {
                 </li>
               ))}
             </ul>
-            <div className="container__planet-info-header">
+            <div className="destination__planet-info-header">
               {planetData[activeTab].name}
             </div>
-            <div className="container__planet-info-text">
+            <div className="destination__planet-info-text">
               {planetData[activeTab].description}
             </div>
-            <div className="container__planet-info-footer">
-              <div className="container__planet-info-distance">
-                <div className="container__planet-info-distance-name">
+            <div className="destination__planet-info-footer">
+              <div className="destination__planet-info-distance">
+                <div className="destination__planet-info-distance-name">
                   avg. distance
                 </div>
-                <div className="container__planet-info-distance-value">
+                <div className="destination__planet-info-distance-value">
                   {planetData[activeTab].distance}
                 </div>
               </div>
-              <div className="container__planet-info-travel">
-                <div className="container__planet-info-travel-name">
+              <div className="destination__planet-info-travel">
+                <div className="destination__planet-info-travel-name">
                   est. travel time
                 </div>
-                <div className="container__planet-info-travel-value">
+                <div className="destination__planet-info-travel-value">
                   {planetData[activeTab].travel}
                 </div>
               </div>
