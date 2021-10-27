@@ -43,8 +43,9 @@
     text-transform: uppercase
 
   &__pilot-info-bio
+    height: 180px
     max-width: 444px
-    margin-bottom: 120px
+    margin-bottom: 30px
 
     @include bodyText
     color: $colorLight
@@ -63,6 +64,9 @@
     opacity: .15
 
     cursor: pointer
+
+    &:hover
+      opacity: .5
 
     &.active
       opacity: 1
