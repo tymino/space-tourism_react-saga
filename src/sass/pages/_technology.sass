@@ -1,0 +1,64 @@
+.technology
+  padding: 0 11%
+
+  &__picture--img
+    position: absolute
+    top: 0
+    left: 0
+
+    width: 100vw
+    height: 100vh
+
+    z-index: -10
+
+  &__container
+  margin-top: 74px
+
+  &__subtitle
+    margin-bottom: 60px
+
+    @include heading5
+    text-transform: uppercase
+    color: $colorWhite
+
+    & > span
+      opacity: .25
+
+  &__launch-wrapper
+    display: flex
+
+  &__launch-button-container
+    display: flex
+    flex-direction: column
+
+  &__launch-button
+    width: 80px
+    height: 80px
+    margin-bottom: 32px
+
+    border-radius: 50%
+    border: 1px solid rgba($colorWhite, .25)
+
+    background: none
+
+    @include heading4
+    color: $colorWhite
+
+    cursor: pointer
+
+    &:hover
+      border: 1px solid $colorWhite
+
+    &.active
+      background: $colorWhite
+      color: $colorDark
+
+  &__launch-info-container
+  &__launch-info-subheader
+  &__launch-info-header
+  &__launch-info-text
+  &__launch-picture
+    position: absolute
+    right: 0
+
+  // &__launch-picture--img
