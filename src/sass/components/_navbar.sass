@@ -14,7 +14,7 @@
   &__line-decoration
     position: absolute
     top: 50%
-    left: 140px
+    left: 11%
 
     width: 33%
     height: 1px
@@ -47,6 +47,40 @@
     &--selected
       border-bottom: 3px solid $colorWhite
 
-// @media (max-width: 460px)
-//   .navbar
-//     display: none
+
+@media (max-width: 1024px)
+  .navbar
+    margin-top: 0px
+
+    &__logo
+      margin: 0 40px
+
+    &__line-decoration
+      display: none
+
+    &__routes
+      background: rgba($colorWhite, 0.04)
+      width: 60%
+
+      & > ul
+        display: flex
+        justify-content: center
+        list-style: none
+        margin-right: 0px
+
+    &__item
+      margin: 38px 0
+      margin-right: 50px
+      
+      & a
+        padding: 36px 0
+        @include navText
+
+        &:hover:not(.navbar__item--selected)
+          border-bottom: 3px solid rgba($colorWhite, .5)
+
+        & > span:first-child
+          display: none
+
+      &--selected
+        border-bottom: 3px solid $colorWhite
