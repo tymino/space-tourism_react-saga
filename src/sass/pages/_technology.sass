@@ -12,7 +12,7 @@
     z-index: -10
 
   &__container
-  margin-top: 74px
+    margin-top: 74px
 
   &__subtitle
     margin-bottom: 60px
@@ -81,3 +81,58 @@
     right: 0
 
   // &__launch-picture--img
+
+@media (max-width: 1024px)
+  .technology
+    padding: 0 0px
+
+    &__container
+      margin-top: 40px
+
+    &__subtitle
+      margin-left: 38px
+      margin-bottom: 60px
+
+    &__launch-wrapper
+      display: flex
+      flex-direction: column
+      align-items: center
+      text-align: center
+
+    &__launch-button-container
+      order: 2
+      display: flex
+      flex-direction: row
+
+    &__launch-button
+      width: 60px
+      height: 60px
+      margin: 0 8px
+
+    &__launch-info-container
+      order: 3
+      padding-top: 40px
+      margin-left: 0px
+
+    &__launch-info-subheader
+      font-size: 16px
+
+    &__launch-info-header
+      margin-top: 16px
+      margin-bottom: 16px
+      font-size: 40px
+
+    &__launch-info-text
+      width: 458px
+
+    &__launch-picture
+      position: relative
+      top: 0
+      left: 0
+      width: 100%
+      order: 1
+
+    &__launch-picture--img
+      width: 100%
+      order: 1
+  
