@@ -12,7 +12,7 @@
     z-index: -10
 
   &__container
-  margin-top: 74px
+    margin-top: 74px
 
   &__subtitle
     margin-bottom: 60px
@@ -75,3 +75,51 @@
     position: absolute
     bottom: 0
     right: 11%
+
+
+@media ( max-width: 1024px )
+  .crew
+    padding: 0 38px
+
+    // &__picture--img
+    &__container
+      margin-top: 40px
+
+    &__subtitle
+      font-size: 20px
+
+    // &__pilot-wrapper
+    &__pilot-info-wrapper
+      display: flex
+      flex-direction: column
+      align-items: center
+      text-align: center
+
+      border: 1px solid black
+
+    &__pilot-info-subheader
+      margin-top: 0px
+      margin-bottom: 8px
+      font-size: 24px
+
+    &__pilot-info-header
+      margin-bottom: 16px
+      font-size: 40px
+
+    &__pilot-info-bio
+      height: 130px
+      max-width: 600px
+      margin-bottom: 0px
+
+    // &__pilot-info-slider
+    &__pilot-info-tabs-button
+      width: 10px
+      height: 10px
+      margin: 0 8px
+
+    &__pilot-image
+      width: 50%
+      max-height: auto
+      transform: translateY(40px)
+      bottom: 0
+      right: 20%
