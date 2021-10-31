@@ -1,0 +1,101 @@
+[33mcommit d76bc2dc905ad46bdea6292d0dae1cd7c5160321[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Sat Oct 30 15:12:24 2021 +0300
+
+    fix navmenu
+
+[33mcommit 18828dac4a1af3514e6b7a2edd5a83c62f664c7d[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Sat Oct 30 15:08:59 2021 +0300
+
+    media 1024 home page
+
+[33mcommit 6b320aa83186f1f70ac5ce11dc9df2646dc66ff7[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Sat Oct 30 14:54:32 2021 +0300
+
+    navmenu media 1024
+
+[33mcommit c138c6d19a4f912e3e402ad94fd935dc922d21ef[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Sat Oct 30 12:23:20 2021 +0300
+
+    technology style
+
+[33mcommit 84d31e1ae36ab9c23b37bf8abf0bed1dc9e047aa[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Fri Oct 29 19:22:05 2021 +0300
+
+    technology component
+
+[33mcommit 679df0426572c27fd5338750e6c339b8c995190f[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Wed Oct 27 19:37:17 2021 +0300
+
+    fix style
+
+[33mcommit bb09a6602ea67b66651da0063f351d3bf26eb8d1[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Wed Oct 27 19:30:05 2021 +0300
+
+    fix navbar active
+
+[33mcommit 600ba1c685a286517036b0fc2ed6609151458bf2[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Wed Oct 27 19:24:14 2021 +0300
+
+    component crew
+
+[33mcommit ed9a2cea23e962e4efa67dfddae7970636d96d59[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Wed Oct 27 18:46:03 2021 +0300
+
+    fix style name
+
+[33mcommit 13724194bb3010808861a84a3f7b78cb0671077f[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Tue Oct 26 19:42:43 2021 +0300
+
+    fix style, favicon
+
+[33mcommit 012b296aa8e49635eee855b1859d95fec67a92ce[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Tue Oct 26 18:07:12 2021 +0300
+
+    destination style
+
+[33mcommit aa1daef7368ea1b78a53a692a5f3dd795c4a2308[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Mon Oct 25 18:09:37 2021 +0300
+
+    add component Destination
+
+[33mcommit c7ca50ef5ccd30e432e19a715b552fcffd604ec7[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Sun Oct 24 17:39:23 2021 +0300
+
+    deleted unused code from home page
+
+[33mcommit 1d6f43ad2c753fdffbb98ab0afe748d4d72e9b16[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Sun Oct 24 17:36:34 2021 +0300
+
+    home page style
+
+[33mcommit 843af27e260fbe7584abb6ab55f76f06b7b7fed4[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Sat Oct 23 18:38:30 2021 +0300
+
+    add navmenu
+
+[33mcommit 5cee2815bf25a39550cf56df8ca4dc61e37fcd5f[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Fri Oct 22 17:55:02 2021 +0300
+
+    add redux
+
+[33mcommit fc02db70a272e3205fdc86e4595bfd9793b7d4c5[m
+Author: tymino <d_team-lex@bk.ru>
+Date:   Fri Oct 22 14:41:51 2021 +0300
+
+    init
