@@ -13,7 +13,7 @@ const Crew = () => {
       <picture className="crew__picture">
         <source
           className="crew__picture--img"
-          media="(max-width: 400px)"
+          media="(max-width: 468px)"
           srcSet="./assets/crew/background-crew-mobile.jpg"
         />
         <source

@@ -12,7 +12,7 @@ const Destination = () => {
       <picture className="destination__picture">
         <source
           className="destination__picture--img"
-          media="(max-width: 400px)"
+          media="(max-width: 468px)"
           srcSet="./assets/destination/background-destination-mobile.jpg"
         />
         <source

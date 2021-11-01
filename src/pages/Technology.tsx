@@ -14,7 +14,7 @@ const Technology = () => {
       <picture className="technology__picture">
         <source
           className="technology__picture--img"
-          media="(max-width: 400px)"
+          media="(max-width: 468px)"
           srcSet="./assets/technology/background-technology-mobile.jpg"
         />
         <source

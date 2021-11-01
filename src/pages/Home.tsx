@@ -5,7 +5,7 @@ const Home = () => (
       <picture className="home__picture">
         <source
           className="home__picture--img"
-          media="(max-width: 400px)"
+          media="(max-width: 468px)"
           srcSet="./assets/home/background-home-mobile.jpg"
         />
         <source
