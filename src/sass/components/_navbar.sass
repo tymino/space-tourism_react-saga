@@ -11,6 +11,11 @@
     height: 48px
     margin: 0 55px
 
+  &__hamburger
+    display: none
+  &__close
+    display: none
+
   &__line-decoration
     position: absolute
     top: 50%
@@ -31,8 +36,7 @@
       margin-right: 40px
 
   &__item
-    margin: 38px 0
-    margin-right: 50px
+    margin: 38px 25px
     
     & a
       padding: 36px 0
@@ -51,35 +55,48 @@
 @media (max-width: 1024px)
   .navbar
     margin-top: 0px
-
     &__logo
       margin: 0 40px
-
     &__line-decoration
       display: none
-
-    &__routes
-      background: rgba($colorWhite, 0.04)
-      width: 60%
-
       & > ul
-        display: flex
-        justify-content: center
-        list-style: none
         margin-right: 0px
-
     &__item
       margin: 38px 18px
-      
       & a
-        padding: 36px 0
-        @include navText
-
-        &:hover:not(.navbar__item--selected)
-          border-bottom: 3px solid rgba($colorWhite, .5)
-
+        // &:hover:not(.navbar__item--selected)
         & > span:first-child
           display: none
+      // &--selected
+
+@media (max-width: 468px)
+  .navbar
+    display: none
+    &__logo
+      margin: 24px 0 0 24px
+
+    &__routes
+      & > ul
+        position: absolute
+        top: 0
+        right: 0
+        flex-direction: column
+        justify-content: flex-start
+        height: 100vh
+        width: 60%
+        background: rgba($colorDark, 0.8)
+        z-index: 10
+
+    &__item
+      margin: 0
+      & a
+        padding: 0
+
+        // &:hover:not(.navbar__item--selected)
+
+        & > span:first-child
+          display: inline
 
       &--selected
-        border-bottom: 3px solid $colorWhite
+        border-bottom: none
+        border-right: 3px solid $colorWhite

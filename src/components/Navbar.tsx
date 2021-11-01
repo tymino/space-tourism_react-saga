@@ -10,6 +10,7 @@ const Navbar = () => {
       <img className="navbar__logo" src="./assets/shared/logo.svg" alt="logo" />
       <div className="navbar__line-decoration"></div>
       <nav className="navbar__routes">
+        <img className='navbar__hamburger' src="./assets/shared/icon-hamburger.svg" alt="icon-hamburger" />
         <ul>
           {routesData.map(({ index, name, path }) => (
             <li className="navbar__item" key={name}>
@@ -18,6 +19,7 @@ const Navbar = () => {
               </NavLink>
             </li>
           ))}
+          <img className='navbar__close' src="./assets/shared/icon-close.svg" alt="icon-close" />
         </ul>
       </nav>
     </div>
