@@ -1,8 +1,8 @@
 import React from 'react';
-import useTypedSelector from '../hooks/useTypedSelector';
 
-const Destination = () => {
-  const planetData = useTypedSelector((state) => state.destinations);
+import { IDestinationsProps } from '../types/props';
+
+const Destination: React.FC<IDestinationsProps> = ({ destinationsData }) => {
   const [activeTab, setActiveTab] = React.useState(0);
 
   const handleSwitchTab = (e: React.MouseEvent<HTMLElement>) =>
@@ -35,12 +35,12 @@ const Destination = () => {
         <div className="destination__planet-wrapper">
           <img
             className="destination__planet-image"
-            src={planetData[activeTab].images.png}
-            alt={planetData[activeTab].name}
+            src={destinationsData[activeTab].images.png}
+            alt={destinationsData[activeTab].name}
           />
           <div className="destination__planet-info-wrapper">
             <ul className="destination__planet-info-tabs">
-              {planetData.map((e, i) => (
+              {destinationsData.map((e, i) => (
                 <li
                   key={e.name}
                   className={`destination__planet-info-tabs-name${
@@ -53,10 +53,10 @@ const Destination = () => {
               ))}
             </ul>
             <div className="destination__planet-info-header">
-              {planetData[activeTab].name}
+              {destinationsData[activeTab].name}
             </div>
             <div className="destination__planet-info-text">
-              {planetData[activeTab].description}
+              {destinationsData[activeTab].description}
             </div>
             <div className="destination__planet-info-footer">
               <div className="destination__planet-info-distance">
@@ -64,7 +64,7 @@ const Destination = () => {
                   avg. distance
                 </div>
                 <div className="destination__planet-info-distance-value">
-                  {planetData[activeTab].distance}
+                  {destinationsData[activeTab].distance}
                 </div>
               </div>
               <div className="destination__planet-info-travel">
@@ -72,7 +72,7 @@ const Destination = () => {
                   est. travel time
                 </div>
                 <div className="destination__planet-info-travel-value">
-                  {planetData[activeTab].travel}
+                  {destinationsData[activeTab].travel}
                 </div>
               </div>
             </div>

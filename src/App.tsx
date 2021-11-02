@@ -2,20 +2,33 @@ import './sass/app.sass';
 
 import React from 'react';
 import { Route } from 'react-router-dom';
+import useTypedSelector from './hooks/useTypedSelector';
 
 import Navbar from './components/Navbar';
 import { Home, Destination, Crew, Technology } from './pages/all';
 
 const App: React.FC = () => {
+  const { routes, destinations, crew, technology } = useTypedSelector(
+    (state) => state,
+  );
+
   return (
     <div className="app">
-      <Navbar />
+      <Navbar routes={routes} />
 
       <div className="content">
-        <Route exact path="/" component={Home} />
-        <Route path="/destination" component={Destination} />
-        <Route path="/crew" component={Crew} />
-        <Route path="/technology" component={Technology} />
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/destination">
+          <Destination destinationsData={destinations} />
+        </Route>
+        <Route exact path="/crew">
+          <Crew crewData={crew} />
+        </Route>
+        <Route exact path="/technology">
+          <Technology technologyData={technology} />
+        </Route>
       </div>
     </div>
   );

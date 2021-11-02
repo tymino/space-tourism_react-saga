@@ -1,8 +1,8 @@
 import React from 'react';
-import useTypedSelector from '../hooks/useTypedSelector';
 
-const Technology = () => {
-  const technologyData = useTypedSelector((state) => state.technology);
+import { ITechnologyProps } from '../types/props';
+
+const Technology: React.FC<ITechnologyProps> = ({ technologyData }) => {
   const [activeButtonSlider, setActiveButtonSlider] = React.useState(0);
 
   const handleButtonSlider = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -39,6 +39,7 @@ const Technology = () => {
               const actualName = i + 1;
               return (
                 <button
+                  key={i}
                   className={`technology__launch-button${
                     Number(activeButtonSlider) === i ? ' active' : ''
                   }`}

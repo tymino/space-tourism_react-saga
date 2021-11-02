@@ -1,14 +1,26 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import useTypedSelector from '../hooks/useTypedSelector';
 
-const Navbar: React.FC = () => {
+import { INavbarProps } from '../types/props';
+
+const Navbar: React.FC<INavbarProps> = ({ routes }) => {
   const [isOpenMenu, setIsOpenMenu] = React.useState('');
+  const menuRef = React.useRef<HTMLUListElement>(null);
 
   const handleOpenMenu = () => setIsOpenMenu('active');
   const handleCloseMenu = () => setIsOpenMenu('');
 
-  const routesData = useTypedSelector((state) => state.routes);
+  const handleOutsideClick = (e: any) => {
+    const path = e.path || (e.composedPath && e.composedPath());
+
+    if (path.includes(menuRef.current)) {
+      setIsOpenMenu('');
+    }
+  };
+
+  React.useEffect(() => {
+    document.body.addEventListener('click', handleOutsideClick);
+  }, []);
 
   return (
     <div className="navbar">
@@ -21,14 +33,14 @@ const Navbar: React.FC = () => {
         alt="icon-hamburger"
       />
       <nav className={`navbar__routes ${isOpenMenu}`}>
-        <ul>
+        <ul ref={menuRef}>
           <img
             onClick={handleCloseMenu}
             className={`navbar__close ${isOpenMenu}`}
             src="./assets/shared/icon-close.svg"
             alt="icon-close"
           />
-          {routesData.map(({ index, name, path }) => (
+          {routes.map(({ index, name, path }) => (
             <li className="navbar__item" key={name + index}>
               <NavLink exact to={path} activeClassName="navbar__item--selected">
                 <span>{index}</span> <span>{name}</span>

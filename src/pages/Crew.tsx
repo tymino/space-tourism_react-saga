@@ -1,8 +1,8 @@
 import React from 'react';
-import useTypedSelector from '../hooks/useTypedSelector';
 
-const Crew = () => {
-  const crewData = useTypedSelector((state) => state.crew);
+import { ICrewProps } from '../types/props';
+
+const Crew: React.FC<ICrewProps> = ({ crewData }) => {
   const [activeSlider, setActiveSlider] = React.useState(0);
 
   const handleSwitchSlider = (e: React.MouseEvent<HTMLElement>) =>
@@ -55,7 +55,7 @@ const Crew = () => {
               ))}
             </ul>
           </div>
-          <div className='crew__pilot-image-mobile'>
+          <div className="crew__pilot-image-mobile">
             <img
               className="crew__pilot-image"
               src={crewData[activeSlider].images.png}
