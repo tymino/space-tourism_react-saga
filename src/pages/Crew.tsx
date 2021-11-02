@@ -5,8 +5,8 @@ const Crew = () => {
   const crewData = useTypedSelector((state) => state.crew);
   const [activeSlider, setActiveSlider] = React.useState(0);
 
-  const handleSwitchSlider = (e: any) =>
-    setActiveSlider(e.target.dataset.value);
+  const handleSwitchSlider = (e: React.MouseEvent<HTMLElement>) =>
+    setActiveSlider(Number((e.target as HTMLElement).dataset.value));
 
   return (
     <div className="crew">

@@ -5,7 +5,8 @@ const Destination = () => {
   const planetData = useTypedSelector((state) => state.destinations);
   const [activeTab, setActiveTab] = React.useState(0);
 
-  const handleSwitchTab = (e: any) => setActiveTab(e.target.dataset.value);
+  const handleSwitchTab = (e: React.MouseEvent<HTMLElement>) =>
+    setActiveTab(Number((e.target as HTMLElement).dataset.value));
 
   return (
     <div className="destination">
