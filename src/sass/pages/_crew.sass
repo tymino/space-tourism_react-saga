@@ -121,3 +121,40 @@
       transform: translateY(40px)
       bottom: 0
       right: 20%
+
+@media (max-width: 468px)
+  .crew
+    &__container
+      margin-top: 74px
+
+    &__subtitle
+      margin-bottom: 32px
+      font-size: 16px
+
+    &__pilot-wrapper
+      display: flex
+      flex-direction: column-reverse
+      align-items: center
+
+    // &__pilot-info-wrapper
+    &__pilot-info-subheader
+      font-size: 16px
+      order: 2
+
+    &__pilot-info-header
+      font-size: 24px
+      order: 3
+
+    &__pilot-info-bio
+      font-size: 15px
+      order: 4
+
+    &__pilot-info-slider
+      margin: 32px 0
+      order: 1
+
+    &__pilot-image
+      position: relative
+      transform: translateY(0px)
+      top: 0
+      right: 0%

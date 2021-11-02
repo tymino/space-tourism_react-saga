@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import useTypedSelector from '../hooks/useTypedSelector';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const routesData = useTypedSelector((state) => state.routes);
 
   return (
