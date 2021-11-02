@@ -55,11 +55,13 @@ const Crew = () => {
               ))}
             </ul>
           </div>
-          <img
-            className="crew__pilot-image"
-            src={crewData[activeSlider].images.png}
-            alt={crewData[activeSlider].name}
-          />
+          <div className='crew__pilot-image-mobile'>
+            <img
+              className="crew__pilot-image"
+              src={crewData[activeSlider].images.png}
+              alt={crewData[activeSlider].name}
+            />
+          </div>
         </div>
       </div>
     </div>

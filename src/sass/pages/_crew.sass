@@ -76,7 +76,6 @@
     bottom: 0
     right: 11%
 
-
 @media (max-width: 1024px)
   .crew
     padding: 0 38px
@@ -117,7 +116,9 @@
 
     &__pilot-image
       width: 50%
-      max-height: auto
+      height: auto
+      max-height: 400px
+      max-width: 300px
       transform: translateY(40px)
       bottom: 0
       right: 20%
@@ -128,6 +129,7 @@
       margin-top: 74px
 
     &__subtitle
+      text-align: center
       margin-bottom: 32px
       font-size: 16px
 
@@ -157,4 +159,10 @@
       position: relative
       transform: translateY(0px)
       top: 0
-      right: 0%
+      right: 0
+
+      &-mobile
+        display: flex
+        justify-content: center
+        border-bottom: 2px solid $colorGray
+
