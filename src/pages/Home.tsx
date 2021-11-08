@@ -22,10 +22,10 @@ const Home: React.FC = () => (
 
       <div className="home__container">
         <div className="home__container-describe">
-          <div className="home__container-describe-subtitle">
+          <h2 className="home__container-describe-subtitle">
             So, you want to travel to
-          </div>
-          <div className="home__container-describe-header">Space</div>
+          </h2>
+          <h1 className="home__container-describe-header">Space</h1>
           <div className="home__container-describe-text">
             Let’s face it; if you want to go to space, you might as well
             genuinely go to outer space and not hover kind of on the edge of it.
