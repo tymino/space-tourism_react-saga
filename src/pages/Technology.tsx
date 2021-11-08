@@ -10,7 +10,7 @@ const Technology: React.FC<ITechnologyProps> = ({ technologyData }) => {
   };
 
   return (
-    <div className="technology" role="contentinfo">
+    <div className="technology" role="main">
       <picture className="technology__picture">
         <source
           className="technology__picture--img"

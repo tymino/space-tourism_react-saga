@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Home: React.FC = () => (
-    <div className="home" role="contentinfo">
+    <div className="home" role="main">
       <picture className="home__picture">
         <source
           className="home__picture--img"
