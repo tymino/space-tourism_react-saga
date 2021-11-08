@@ -23,7 +23,7 @@ const Navbar: React.FC<INavbarProps> = ({ routes }) => {
   }, []);
 
   return (
-    <div className="navbar">
+    <nav className="navbar" role="navigation">
       <img className="navbar__logo" src="./assets/shared/logo.svg" alt="logo" />
       <div className="navbar__line-decoration"></div>
       <img
@@ -32,7 +32,7 @@ const Navbar: React.FC<INavbarProps> = ({ routes }) => {
         src="./assets/shared/icon-hamburger.svg"
         alt="icon-hamburger"
       />
-      <nav className={`navbar__routes ${isOpenMenu}`} role="navigation">
+      <div className={`navbar__routes ${isOpenMenu}`}>
         <img
           onClick={handleCloseMenu}
           className={`navbar__close ${isOpenMenu}`}
@@ -48,8 +48,8 @@ const Navbar: React.FC<INavbarProps> = ({ routes }) => {
             </li>
           ))}
         </ul>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 
