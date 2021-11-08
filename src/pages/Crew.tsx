@@ -9,7 +9,7 @@ const Crew: React.FC<ICrewProps> = ({ crewData }) => {
     setActiveSlider(Number((e.target as HTMLElement).dataset.value));
 
   return (
-    <div className="crew">
+    <div className="crew" role="contentinfo">
       <picture className="crew__picture">
         <source
           className="crew__picture--img"

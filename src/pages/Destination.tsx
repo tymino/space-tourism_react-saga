@@ -9,7 +9,7 @@ const Destination: React.FC<IDestinationsProps> = ({ destinationsData }) => {
     setActiveTab(Number((e.target as HTMLElement).dataset.value));
 
   return (
-    <div className="destination">
+    <div className="destination" role="contentinfo">
       <picture className="destination__picture">
         <source
           className="destination__picture--img"

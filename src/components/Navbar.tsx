@@ -23,7 +23,7 @@ const Navbar: React.FC<INavbarProps> = ({ routes }) => {
   }, []);
 
   return (
-    <div className="navbar">
+    <div className="navbar" role="navigation">
       <img className="navbar__logo" src="./assets/shared/logo.svg" alt="logo" />
       <div className="navbar__line-decoration"></div>
       <img
