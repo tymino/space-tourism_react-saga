@@ -33,13 +33,13 @@ const Navbar: React.FC<INavbarProps> = ({ routes }) => {
         alt="icon-hamburger"
       />
       <nav className={`navbar__routes ${isOpenMenu}`}>
+        <img
+          onClick={handleCloseMenu}
+          className={`navbar__close ${isOpenMenu}`}
+          src="./assets/shared/icon-close.svg"
+          alt="icon-close"
+        />
         <ul ref={menuRef}>
-          <img
-            onClick={handleCloseMenu}
-            className={`navbar__close ${isOpenMenu}`}
-            src="./assets/shared/icon-close.svg"
-            alt="icon-close"
-          />
           {routes.map(({ index, name, path }) => (
             <li className="navbar__item" key={name + index}>
               <NavLink exact to={path} activeClassName="navbar__item--selected">

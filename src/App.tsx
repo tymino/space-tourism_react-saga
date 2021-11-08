@@ -16,7 +16,7 @@ const App: React.FC = () => {
     <div className="app">
       <Navbar routes={routes} />
 
-      <div className="content">
+      <div role="contentinfo" className="content">
         <Route exact path="/">
           <Home />
         </Route>
