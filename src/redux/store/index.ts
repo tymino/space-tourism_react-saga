@@ -1,21 +1,25 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
 
-import { routerMiddleware } from 'connected-react-router';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 
-import rootReducer from '../reducers';
+// import rootReducer from '../reducers';
 import rootSaga from '../saga';
+import pages from '../reducers/pages';
 
 export const history = createBrowserHistory();
+
+const rootReducer = combineReducers({
+    router: connectRouter(history),
+    pages,
+  });
 
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware, routerMiddleware(history)];
 
 const store = configureStore({
-  reducer: {
-    reducer: rootReducer(history),
-  },
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,

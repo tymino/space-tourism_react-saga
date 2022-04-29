@@ -4,12 +4,11 @@ import { connectRouter } from 'connected-react-router';
 import pages from './pages';
 import { BrowserHistory } from 'history';
 
-const rootReducer = (history: BrowserHistory) => {
-  return combineReducers({
+const rootReducer = (history: BrowserHistory) =>
+  combineReducers({
     router: connectRouter(history),
     pages,
   });
-};
 
 export type RootState = ReturnType<typeof rootReducer>;
 

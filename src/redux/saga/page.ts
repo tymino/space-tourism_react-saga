@@ -1,5 +1,8 @@
+import { matchPath } from 'react-router';
+import { fork, take, takeEvery, call } from 'redux-saga/effects';
+
 import { IData } from '../../types/redux';
-import { fork, take, takeEvery, delay, takeLeading, call } from 'redux-saga/effects';
+import { LOCATION_CHANGE } from 'connected-react-router';
 
 async function fetchData(pageName: string) {
   const response = await fetch(`https://api-space-tourism-saga.herokuapp.com/api/${pageName}`);
@@ -11,12 +14,20 @@ async function fetchData(pageName: string) {
 function* testSaga() {
   const pageData: IData[] = yield call(fetchData, 'crew');
 
-  console.log(pageData);
+  // console.log(pageData);
 }
 
-export function* routeChangeSaga() {}
+export function* routeChangeSaga() {
+  while (true) {
+    const action: string = yield take(LOCATION_CHANGE);
+
+    console.log(action);
+
+    yield;
+  }
+}
 
 export default function* peopleSaga() {
-  yield fork(routeChangeSaga);
+  // yield fork(routeChangeSaga);
   yield takeEvery('TEST_LOG', testSaga);
 }

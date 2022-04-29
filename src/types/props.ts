@@ -9,7 +9,7 @@ interface IDestinationsProps {
 }
 
 interface ICrewProps {
-  crewData: ICrew[];
+  data: ICrew[];
 }
 
 interface ITechnologyProps {

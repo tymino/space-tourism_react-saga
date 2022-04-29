@@ -2,11 +2,12 @@ import React from 'react';
 
 import { ICrewProps } from '../types/props';
 
-const Crew: React.FC<ICrewProps> = ({ crewData }) => {
+const Crew: React.FC<ICrewProps> = ({ data }) => {
   const [activeSlider, setActiveSlider] = React.useState(0);
 
-  const handleSwitchSlider = (e: React.MouseEvent<HTMLElement>) =>
+  const handleSwitchSlider = (e: React.MouseEvent<HTMLElement>) => {
     setActiveSlider(Number((e.target as HTMLElement).dataset.value));
+  };
 
   return (
     <div className="crew" role="main">
@@ -34,22 +35,14 @@ const Crew: React.FC<ICrewProps> = ({ crewData }) => {
         </div>
         <div className="crew__pilot-wrapper">
           <div className="crew__pilot-info-wrapper">
-            <div className="crew__pilot-info-subheader">
-              {crewData[activeSlider].role}
-            </div>
-            <div className="crew__pilot-info-header">
-              {crewData[activeSlider].name}
-            </div>
-            <div className="crew__pilot-info-bio">
-              {crewData[activeSlider].bio}
-            </div>
+            <div className="crew__pilot-info-subheader">{data[activeSlider].role}</div>
+            <div className="crew__pilot-info-header">{data[activeSlider].name}</div>
+            <div className="crew__pilot-info-bio">{data[activeSlider].bio}</div>
             <ul className="crew__pilot-info-slider">
-              {crewData.map((e, i) => (
+              {data.map((e, i) => (
                 <li
                   key={e.name}
-                  className={`crew__pilot-info-tabs-button${
-                    Number(activeSlider) === i ? ' active' : ''
-                  }`}
+                  className={`crew__pilot-info-tabs-button${Number(activeSlider) === i ? ' active' : ''}`}
                   onClick={handleSwitchSlider}
                   data-value={i}></li>
               ))}
@@ -58,8 +51,8 @@ const Crew: React.FC<ICrewProps> = ({ crewData }) => {
           <div className="crew__pilot-image-mobile">
             <img
               className="crew__pilot-image"
-              src={crewData[activeSlider].images.png}
-              alt={crewData[activeSlider].name}
+              src={data[activeSlider].images.png}
+              alt={data[activeSlider].name}
             />
           </div>
         </div>
