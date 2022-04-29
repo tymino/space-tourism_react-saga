@@ -42,9 +42,9 @@ const Navbar: React.FC<INavbarProps> = ({ routes }) => {
         <ul ref={menuRef}>
           {routes.map(({ index, name, path }) => (
             <li className="navbar__item" key={name + index}>
-              <NavLink exact to={path} activeClassName="navbar__item--selected">
+              {/* <NavLink exact to={path} activeClassName="navbar__item--selected">
                 <span>{index}</span> <span>{name}</span>
-              </NavLink>
+              </NavLink> */}
             </li>
           ))}
         </ul>

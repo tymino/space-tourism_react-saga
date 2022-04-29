@@ -1,5 +1,4 @@
-import { createStore, applyMiddleware } from '@reduxjs/toolkit';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
 
 import { routerMiddleware } from 'connected-react-router';
@@ -10,26 +9,22 @@ import rootSaga from '../saga';
 
 export const history = createBrowserHistory();
 
-const configureStore = () => {
-  const sagaMiddleware = createSagaMiddleware();
-  const middleware = applyMiddleware(sagaMiddleware, routerMiddleware(history));
-  const composeEnhancers = composeWithDevTools(middleware);
+const sagaMiddleware = createSagaMiddleware();
+const middleware = [sagaMiddleware, routerMiddleware(history)];
 
-  const store = createStore(rootReducer(history), {}, composeEnhancers);
+const store = configureStore({
+  reducer: {
+    reducer: rootReducer(history),
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+      thunk: false,
+    }).concat(middleware),
+});
 
-  sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
-  return store;
-};
-
-const store = configureStore();
-
-// const store = configureStore({
-//   reducer: {
-//     one: oneSlice.reducer,
-//     two: twoSlice.reducer,
-//   },
-// })
-// export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
 
 export default store;
