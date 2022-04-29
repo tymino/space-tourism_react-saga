@@ -1,18 +1,22 @@
-import { fork, take, takeEvery } from 'redux-saga/effects';
+import { IData } from '../../types/redux';
+import { fork, take, takeEvery, delay, takeLeading, call } from 'redux-saga/effects';
 
-export function* routeChangeSaga() {
-  yield;
+async function fetchData(pageName: string) {
+  const response = await fetch(`https://api-space-tourism-saga.herokuapp.com/api/${pageName}`);
+  const json = await response.json();
+
+  return json.data;
 }
 
 function* testSaga() {
-  console.log('Saga working!!!');
-  yield;
+  const pageData: IData[] = yield call(fetchData, 'crew');
+
+  console.log(pageData);
 }
+
+export function* routeChangeSaga() {}
 
 export default function* peopleSaga() {
   yield fork(routeChangeSaga);
-  yield fork(testSaga);
-  yield take('TEST_LOG');
-
-  console.log('erawra');
+  yield takeEvery('TEST_LOG', testSaga);
 }
