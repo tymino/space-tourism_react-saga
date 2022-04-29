@@ -28,6 +28,11 @@ import { ConnectedRouter } from 'connected-react-router';
 //   );
 // };
 
+/*
+  - Снизить версию react-router-dom
+  - Доделать сагу
+*/
+
 const Home = () => {
   return <div>Home</div>;
 };
