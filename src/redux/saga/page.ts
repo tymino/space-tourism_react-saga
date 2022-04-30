@@ -14,7 +14,7 @@ async function fetchData(pageName: string) {
 function* testSaga() {
   const pageData: IData[] = yield call(fetchData, 'crew');
 
-  // console.log(pageData);
+  console.log(pageData);
 }
 
 export function* routeChangeSaga() {

@@ -1,3 +1,4 @@
+import './sass/index.sass';
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -11,7 +12,7 @@ const Routes = () => {
         <Navbar />
 
         <Switch>
-          {/* <Route exact path="/">
+          <Route exact path="/">
             <Home />
           </Route>
           <Route exact path="/destination">
@@ -22,7 +23,7 @@ const Routes = () => {
           </Route>
           <Route exact path="/technology">
             <Technology data={[]} />
-          </Route> */}
+          </Route>
         </Switch>
       </BrowserRouter>
     </>
