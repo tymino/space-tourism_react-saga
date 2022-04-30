@@ -33,6 +33,7 @@ export interface ITechnology {
 export type IData = IDestinations | ICrew | ITechnology;
 
 export interface IState {
+  routes: IRoutes[],
   loading: boolean;
   error: null | string;
   data: IData[];

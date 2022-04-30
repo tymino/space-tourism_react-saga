@@ -1,9 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { INavbarProps } from '../types/props';
+import useTypedSelector from '../hooks/useTypedSelector';
 
-const Navbar: React.FC<INavbarProps> = ({ routes }) => {
+const Navbar: React.FC = () => {
+  const routes = useTypedSelector((state) => state.routes);
+
   const [isOpenMenu, setIsOpenMenu] = React.useState('');
   const menuRef = React.useRef<HTMLUListElement>(null);
 
@@ -42,9 +44,9 @@ const Navbar: React.FC<INavbarProps> = ({ routes }) => {
         <ul ref={menuRef}>
           {routes.map(({ index, name, path }) => (
             <li className="navbar__item" key={name + index}>
-              {/* <NavLink exact to={path} activeClassName="navbar__item--selected">
+              <NavLink exact to={path} activeClassName="navbar__item--selected">
                 <span>{index}</span> <span>{name}</span>
-              </NavLink> */}
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -53,4 +55,4 @@ const Navbar: React.FC<INavbarProps> = ({ routes }) => {
   );
 };
 
-// export default Navbar;
+export default Navbar;

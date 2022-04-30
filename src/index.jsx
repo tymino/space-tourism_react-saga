@@ -1,15 +1,15 @@
 import { createRoot } from 'react-dom/client';
 
-import store from './redux/store';
 import { Provider } from 'react-redux';
+import store from './redux/store';
 
-import App from './App';
+import Routes from './Routes';
 
-const container = document.getElementById('root') as HTMLDivElement;
+const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
   <Provider store={store}>
-    <App />
+    <Routes />
   </Provider>,
 );

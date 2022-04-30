@@ -2,7 +2,7 @@ import React from 'react';
 
 import { IDestinationsProps } from '../types/props';
 
-const Destination: React.FC<IDestinationsProps> = ({ destinationsData }) => {
+const Destination: React.FC<IDestinationsProps> = ({ data }) => {
   const [activeTab, setActiveTab] = React.useState(0);
 
   const handleSwitchTab = (e: React.MouseEvent<HTMLElement>) =>
@@ -35,12 +35,12 @@ const Destination: React.FC<IDestinationsProps> = ({ destinationsData }) => {
         <div className="destination__planet-wrapper">
           <img
             className="destination__planet-image"
-            src={destinationsData[activeTab].images.png}
-            alt={destinationsData[activeTab].name}
+            src={data[activeTab].images.png}
+            alt={data[activeTab].name}
           />
           <div className="destination__planet-info-wrapper">
             <ul className="destination__planet-info-tabs">
-              {destinationsData.map((e, i) => (
+              {data.map((e, i) => (
                 <li
                   key={e.name}
                   className={`destination__planet-info-tabs-name${
@@ -53,10 +53,10 @@ const Destination: React.FC<IDestinationsProps> = ({ destinationsData }) => {
               ))}
             </ul>
             <div className="destination__planet-info-header">
-              {destinationsData[activeTab].name}
+              {data[activeTab].name}
             </div>
             <div className="destination__planet-info-text">
-              {destinationsData[activeTab].description}
+              {data[activeTab].description}
             </div>
             <div className="destination__planet-info-footer">
               <div className="destination__planet-info-distance">
@@ -64,7 +64,7 @@ const Destination: React.FC<IDestinationsProps> = ({ destinationsData }) => {
                   avg. distance
                 </div>
                 <div className="destination__planet-info-distance-value">
-                  {destinationsData[activeTab].distance}
+                  {data[activeTab].distance}
                 </div>
               </div>
               <div className="destination__planet-info-travel">
@@ -72,7 +72,7 @@ const Destination: React.FC<IDestinationsProps> = ({ destinationsData }) => {
                   est. travel time
                 </div>
                 <div className="destination__planet-info-travel-value">
-                  {destinationsData[activeTab].travel}
+                  {data[activeTab].travel}
                 </div>
               </div>
             </div>

@@ -5,7 +5,7 @@ interface INavbarProps {
 }
 
 interface IDestinationsProps {
-  destinationsData: IDestinations[];
+  data: IDestinations[];
 }
 
 interface ICrewProps {
@@ -13,7 +13,7 @@ interface ICrewProps {
 }
 
 interface ITechnologyProps {
-  technologyData: ITechnology[];
+  data: ITechnology[];
 }
 
 export type { INavbarProps, IDestinationsProps, ICrewProps, ITechnologyProps };

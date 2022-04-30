@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ITechnologyProps } from '../types/props';
 
-const Technology: React.FC<ITechnologyProps> = ({ technologyData }) => {
+const Technology: React.FC<ITechnologyProps> = ({ data }) => {
   const [activeButtonSlider, setActiveButtonSlider] = React.useState(0);
 
   const handleButtonSlider = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -35,7 +35,7 @@ const Technology: React.FC<ITechnologyProps> = ({ technologyData }) => {
         </div>
         <div className="technology__launch-wrapper">
           <div className="technology__launch-button-container">
-            {technologyData.map((_, i) => {
+            {data.map((_, i) => {
               const actualName = i + 1;
               return (
                 <button
@@ -55,22 +55,22 @@ const Technology: React.FC<ITechnologyProps> = ({ technologyData }) => {
               the terminology...
             </div>
             <div className="technology__launch-info-header">
-              {technologyData[activeButtonSlider].name}
+              {data[activeButtonSlider].name}
             </div>
             <div className="technology__launch-info-text">
-              {technologyData[activeButtonSlider].description}
+              {data[activeButtonSlider].description}
             </div>
           </div>
           <picture className="technology__launch-picture">
             <source
               className="technology__launch-picture--img"
               media="(max-width: 1024px)"
-              srcSet={technologyData[activeButtonSlider].images.landscape}
+              srcSet={data[activeButtonSlider].images.landscape}
             />
             <img
               className="technology__launch-picture--img"
-              src={technologyData[activeButtonSlider].images.portrait}
-              alt={technologyData[activeButtonSlider].name}
+              src={data[activeButtonSlider].images.portrait}
+              alt={data[activeButtonSlider].name}
             />
           </picture>
         </div>
