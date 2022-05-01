@@ -4,53 +4,66 @@ import { NavLink } from 'react-router-dom';
 import useTypedSelector from '../hooks/useTypedSelector';
 
 const Navbar: React.FC = () => {
+  const menuRef = React.useRef<HTMLDivElement>(null);
+  const linkClickRef = React.useRef<HTMLUListElement>(null);
+
+  const [isOpenMenu, setIsOpenMenu] = React.useState<boolean>(false);
   const routes = useTypedSelector((state) => state.routes);
 
-  const [isOpenMenu, setIsOpenMenu] = React.useState('');
-  const menuRef = React.useRef<HTMLUListElement>(null);
+  const toggleStyleMenu = (): string => (isOpenMenu ? 'active' : '');
 
-  const handleOpenMenu = () => setIsOpenMenu('active');
-  const handleCloseMenu = () => setIsOpenMenu('');
+  const handleOpenMenu = () => setIsOpenMenu(true);
+  const handleCloseMenu = () => setIsOpenMenu(false);
 
-  const handleOutsideClick = (e: any) => {
-    const path = e.path || (e.composedPath && e.composedPath());
+  const handleOutsideClick = (event: MouseEvent) => {
+    const path = event.composedPath();
 
-    if (path.includes(menuRef.current)) {
-      setIsOpenMenu('');
+    const clickOutside = !path.includes(menuRef.current as Node);
+    const clickLink = path.includes(linkClickRef.current as Node);
+
+    if (clickOutside || clickLink) {
+      handleCloseMenu();
     }
   };
 
   React.useEffect(() => {
     document.body.addEventListener('click', handleOutsideClick);
+
+    return () => document.body.removeEventListener('click', handleOutsideClick);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="navbar" role="banner">
       <img className="navbar__logo" src="./assets/shared/logo.svg" alt="logo" />
       <div className="navbar__line-decoration"></div>
-      <img
-        onClick={handleOpenMenu}
-        className={`navbar__hamburger ${isOpenMenu}`}
-        src="./assets/shared/icon-hamburger.svg"
-        alt="icon-hamburger"
-      />
-      <nav className={`navbar__routes ${isOpenMenu}`}>
+
+      <div ref={menuRef}>
         <img
-          onClick={handleCloseMenu}
-          className={`navbar__close ${isOpenMenu}`}
-          src="./assets/shared/icon-close.svg"
-          alt="icon-close"
+          className={`navbar__hamburger ${toggleStyleMenu()}`}
+          src="./assets/shared/icon-hamburger.svg"
+          alt="icon-hamburger"
+          onClick={handleOpenMenu}
         />
-        <ul ref={menuRef}>
-          {routes.map(({ index, name, path }) => (
-            <li className="navbar__item" key={name + index}>
-              <NavLink exact to={path} activeClassName="navbar__item--selected">
-                <span>{index}</span> <span>{name}</span>
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
+        <nav className={`navbar__routes ${toggleStyleMenu()}`}>
+          <img
+            className={`navbar__close ${toggleStyleMenu()}`}
+            src="./assets/shared/icon-close.svg"
+            alt="icon-close"
+            onClick={handleCloseMenu}
+          />
+          <ul ref={linkClickRef}>
+            {routes.map(({ index, name, path }) => (
+              <li className="navbar__item" key={name + index}>
+                <NavLink activeClassName="navbar__item--selected" to={path} exact>
+                  <span>{index}</span>
+                  <span>{name}</span>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 };

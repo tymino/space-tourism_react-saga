@@ -1,11 +1,12 @@
 import './sass/index.sass';
+
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import { Home, Destination, Crew, Technology } from './pages';
 
-const Routes = () => {
+const Routes: React.FC = () => {
   return (
     <>
       <BrowserRouter>
