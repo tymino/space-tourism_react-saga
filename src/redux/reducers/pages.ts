@@ -7,9 +7,21 @@ const initState: IState = {
     { index: '02', name: 'crew', path: '/crew' },
     { index: '03', name: 'technology', path: '/technology' },
   ],
-  loading: false,
-  error: null,
-  data: [],
+  destinations: {
+    loading: false,
+    error: null,
+    data: [],
+  },
+  crew: {
+    loading: false,
+    error: null,
+    data: [],
+  },
+  technology: {
+    loading: false,
+    error: null,
+    data: [],
+  },
 };
 
 const pages = (state = initState, action: IAction) => {

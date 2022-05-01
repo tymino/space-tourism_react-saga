@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Loading from '../components/Loading';
 import { IDestinationsProps } from '../types/props';
 
 const Destination: React.FC<IDestinationsProps> = ({ data }) => {
@@ -8,7 +8,9 @@ const Destination: React.FC<IDestinationsProps> = ({ data }) => {
   const handleSwitchTab = (e: React.MouseEvent<HTMLElement>) =>
     setActiveTab(Number((e.target as HTMLElement).dataset.value));
 
-  return (
+  return data.length === 0 ? (
+    <Loading />
+  ) : (
     <div className="destination" role="main">
       <picture className="destination__picture">
         <source
@@ -43,37 +45,23 @@ const Destination: React.FC<IDestinationsProps> = ({ data }) => {
               {data.map((e, i) => (
                 <li
                   key={e.name}
-                  className={`destination__planet-info-tabs-name${
-                    Number(activeTab) === i ? ' active' : ''
-                  }`}
+                  className={`destination__planet-info-tabs-name${Number(activeTab) === i ? ' active' : ''}`}
                   onClick={handleSwitchTab}
                   data-value={i}>
                   {e.name}
                 </li>
               ))}
             </ul>
-            <div className="destination__planet-info-header">
-              {data[activeTab].name}
-            </div>
-            <div className="destination__planet-info-text">
-              {data[activeTab].description}
-            </div>
+            <div className="destination__planet-info-header">{data[activeTab].name}</div>
+            <div className="destination__planet-info-text">{data[activeTab].description}</div>
             <div className="destination__planet-info-footer">
               <div className="destination__planet-info-distance">
-                <div className="destination__planet-info-distance-name">
-                  avg. distance
-                </div>
-                <div className="destination__planet-info-distance-value">
-                  {data[activeTab].distance}
-                </div>
+                <div className="destination__planet-info-distance-name">avg. distance</div>
+                <div className="destination__planet-info-distance-value">{data[activeTab].distance}</div>
               </div>
               <div className="destination__planet-info-travel">
-                <div className="destination__planet-info-travel-name">
-                  est. travel time
-                </div>
-                <div className="destination__planet-info-travel-value">
-                  {data[activeTab].travel}
-                </div>
+                <div className="destination__planet-info-travel-name">est. travel time</div>
+                <div className="destination__planet-info-travel-value">{data[activeTab].travel}</div>
               </div>
             </div>
           </div>

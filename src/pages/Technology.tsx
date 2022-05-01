@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Loading from '../components/Loading';
 import { ITechnologyProps } from '../types/props';
 
 const Technology: React.FC<ITechnologyProps> = ({ data }) => {
@@ -9,7 +9,9 @@ const Technology: React.FC<ITechnologyProps> = ({ data }) => {
     setActiveButtonSlider(Number(e.currentTarget.value));
   };
 
-  return (
+  return data.length === 0 ? (
+    <Loading />
+  ) : (
     <div className="technology" role="main">
       <picture className="technology__picture">
         <source
@@ -40,9 +42,7 @@ const Technology: React.FC<ITechnologyProps> = ({ data }) => {
               return (
                 <button
                   key={i}
-                  className={`technology__launch-button${
-                    Number(activeButtonSlider) === i ? ' active' : ''
-                  }`}
+                  className={`technology__launch-button${Number(activeButtonSlider) === i ? ' active' : ''}`}
                   value={i}
                   onClick={handleButtonSlider}>
                   {actualName}
@@ -51,15 +51,9 @@ const Technology: React.FC<ITechnologyProps> = ({ data }) => {
             })}
           </div>
           <div className="technology__launch-info-container">
-            <div className="technology__launch-info-subheader">
-              the terminology...
-            </div>
-            <div className="technology__launch-info-header">
-              {data[activeButtonSlider].name}
-            </div>
-            <div className="technology__launch-info-text">
-              {data[activeButtonSlider].description}
-            </div>
+            <div className="technology__launch-info-subheader">the terminology...</div>
+            <div className="technology__launch-info-header">{data[activeButtonSlider].name}</div>
+            <div className="technology__launch-info-text">{data[activeButtonSlider].description}</div>
           </div>
           <picture className="technology__launch-picture">
             <source

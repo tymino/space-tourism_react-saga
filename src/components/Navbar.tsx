@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import useTypedSelector from '../hooks/useTypedSelector';
 
@@ -32,6 +32,11 @@ const Navbar: React.FC = () => {
     return () => document.body.removeEventListener('click', handleOutsideClick);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  
+  const location = useLocation();
+
+  console.log(location);
 
   return (
     <div className="navbar" role="banner">

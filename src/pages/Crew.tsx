@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Loading from '../components/Loading';
 import { ICrewProps } from '../types/props';
 
 const Crew: React.FC<ICrewProps> = ({ data }) => {
@@ -9,7 +9,9 @@ const Crew: React.FC<ICrewProps> = ({ data }) => {
     setActiveSlider(Number((e.target as HTMLElement).dataset.value));
   };
 
-  return (
+  return data.length === 0 ? (
+    <Loading />
+  ) : (
     <div className="crew" role="main">
       <picture className="crew__picture">
         <source

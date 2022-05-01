@@ -11,32 +11,54 @@ export interface IRoutes {
   name: string;
   path: string;
 }
+
 export interface IDestinations {
   name: string;
-  images: { png: string; webp: string };
-  description: string;
-  distance: string;
-  travel: string;
+  images: {
+    png: string;
+    webp: string;
+  };
+  description?: string;
+  distance?: string;
+  travel?: string;
 }
+
 export interface ICrew {
   name: string;
-  images: { png: string; webp: string };
-  role: string;
-  bio: string;
+  images: {
+    png: string;
+    webp: string;
+  };
+  role?: string;
+  bio?: string;
 }
+
 export interface ITechnology {
   name: string;
-  images: { portrait: string; landscape: string };
-  description: string;
+  images: {
+    portrait: string;
+    landscape: string;
+  };
+  description?: string;
 }
 
-export type IData = IDestinations | ICrew | ITechnology;
-
 export interface IState {
-  routes: IRoutes[],
-  loading: boolean;
-  error: null | string;
-  data: IData[];
+  routes: IRoutes[];
+  destinations: {
+    loading: boolean,
+    error: null | string,
+    data: IDestinations[],
+  },
+  crew: {
+    loading: boolean,
+    error: null | string,
+    data: ICrew[],
+  },
+  technology: {
+    loading: boolean,
+    error: null | string,
+    data: ITechnology[],
+  },
 }
 
 // actions

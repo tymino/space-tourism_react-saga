@@ -11,7 +11,7 @@ async function fetchData(pageName: string) {
 }
 
 function* testSaga() {
-  const pageData: IData[] = yield call(fetchData, 'crew');
+  const pageData: IData[] = yield call(fetchData, 'technology');
 
   console.log(pageData);
 }
