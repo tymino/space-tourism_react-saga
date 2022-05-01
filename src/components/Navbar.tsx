@@ -38,14 +38,14 @@ const Navbar: React.FC = () => {
       <img className="navbar__logo" src="./assets/shared/logo.svg" alt="logo" />
       <div className="navbar__line-decoration"></div>
 
-      <div ref={menuRef}>
+      <nav ref={menuRef}>
         <img
           className={`navbar__hamburger ${toggleStyleMenu()}`}
           src="./assets/shared/icon-hamburger.svg"
           alt="icon-hamburger"
           onClick={handleOpenMenu}
         />
-        <nav className={`navbar__routes ${toggleStyleMenu()}`}>
+        <div className={`navbar__routes ${toggleStyleMenu()}`}>
           <img
             className={`navbar__close ${toggleStyleMenu()}`}
             src="./assets/shared/icon-close.svg"
@@ -55,15 +55,19 @@ const Navbar: React.FC = () => {
           <ul ref={linkClickRef}>
             {routes.map(({ index, name, path }) => (
               <li className="navbar__item" key={name + index}>
-                <NavLink activeClassName="navbar__item--selected" to={path} exact>
+                <NavLink
+                  to={path}
+                  className={({ isActive }) =>
+                    [isActive ? 'navbar__item--selected' : null].filter(Boolean).join(' ')
+                  }>
                   <span>{index}</span>
                   <span>{name}</span>
                 </NavLink>
               </li>
             ))}
           </ul>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </div>
   );
 };

@@ -2,7 +2,6 @@ import { matchPath } from 'react-router';
 import { fork, take, takeEvery, call } from 'redux-saga/effects';
 
 import { IData } from '../../types/redux';
-import { LOCATION_CHANGE } from 'connected-react-router';
 
 async function fetchData(pageName: string) {
   const response = await fetch(`https://api-space-tourism-saga.herokuapp.com/api/${pageName}`);
@@ -19,9 +18,9 @@ function* testSaga() {
 
 export function* routeChangeSaga() {
   while (true) {
-    const action: string = yield take(LOCATION_CHANGE);
+    // const action: string = yield take(LOCATION_CHANGE);
 
-    console.log(action);
+    // console.log(action);
 
     yield;
   }
