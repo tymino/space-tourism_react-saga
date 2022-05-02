@@ -44,21 +44,22 @@ export interface ITechnology {
 
 export interface IState {
   routes: IRoutes[];
+  currentRoute: string;
   destinations: {
-    loading: boolean,
-    error: null | string,
-    data: IDestinations[],
-  },
+    loading: boolean;
+    error: null | string;
+    data: IDestinations[];
+  };
   crew: {
-    loading: boolean,
-    error: null | string,
-    data: ICrew[],
-  },
+    loading: boolean;
+    error: null | string;
+    data: ICrew[];
+  };
   technology: {
-    loading: boolean,
-    error: null | string,
-    data: ITechnology[],
-  },
+    loading: boolean;
+    error: null | string;
+    data: ITechnology[];
+  };
 }
 
 // actions

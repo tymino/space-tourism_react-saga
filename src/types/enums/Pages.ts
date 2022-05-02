@@ -1,0 +1,7 @@
+export enum ActionPages {
+  LOAD_DATA_PAGE = 'LOAD_DATA_PAGE',
+  LOAD_DATA_PAGE_SUCCESS = 'LOAD_DATA_PAGE_SUCCESS',
+  LOAD_DATA_PAGE_FAILURE = 'LOAD_DATA_PAGE_FAILURE',
+}
+
+export default ActionPages;

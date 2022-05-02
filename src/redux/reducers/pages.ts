@@ -1,12 +1,7 @@
-import { ActionName, IState, IAction } from '../../types/redux';
+import ActionPages from '../../types/enums/Pages';
+import { IActionPage, IStatePages } from '../../types/redux/pages';
 
-const initState: IState = {
-  routes: [
-    { index: '00', name: 'home', path: '/' },
-    { index: '01', name: 'destination', path: '/destination' },
-    { index: '02', name: 'crew', path: '/crew' },
-    { index: '03', name: 'technology', path: '/technology' },
-  ],
+const initState: IStatePages = {
   destinations: {
     loading: false,
     error: null,
@@ -24,16 +19,36 @@ const initState: IState = {
   },
 };
 
-const pages = (state = initState, action: IAction) => {
+const pages = (state = initState, action: IActionPage) => {
+  const currentRoute = 'crew';
+
   switch (action.type) {
-    case ActionName.LOAD_DATA:
-      return { ...state, loading: true };
+    case ActionPages.LOAD_DATA_PAGE:
+      return {
+        ...state,
+        [currentRoute]: {
+          ...state[currentRoute],
+          loading: true,
+        },
+      };
 
-    case ActionName.LOAD_DATA_SUCCESS:
-      return { ...state, loading: false, data: action.payload };
+    case ActionPages.LOAD_DATA_PAGE_SUCCESS:
+      return {
+        ...state,
+        [currentRoute]: {
+          ...state[currentRoute],
+          data: action.payload,
+        },
+      };
 
-    case ActionName.LOAD_DATA_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+    case ActionPages.LOAD_DATA_PAGE_FAILURE:
+      return {
+        ...state,
+        [currentRoute]: {
+          ...state[currentRoute],
+          error: action.payload,
+        },
+      };
 
     default:
       return state;
