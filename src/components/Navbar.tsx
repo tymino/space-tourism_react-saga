@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
   const linkClickRef = React.useRef<HTMLUListElement>(null);
 
   const [isOpenMenu, setIsOpenMenu] = React.useState<boolean>(false);
-  const routes = useTypedSelector((state) => state.routes);
+  const routes = useTypedSelector((state) => state.route.navigation);
 
   const toggleStyleMenu = (): string => (isOpenMenu ? 'active' : '');
 

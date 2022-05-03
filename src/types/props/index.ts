@@ -1,4 +1,5 @@
-import { IRoutes, IDestinations, ICrew, ITechnology } from './redux';
+import { IRoutes } from '../redux/route';
+import { IDestinations, ICrew, ITechnology } from '../redux/pages';
 
 interface INavbarProps {
   routes: IRoutes[];

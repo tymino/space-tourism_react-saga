@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import createSagaMiddleware from '@redux-saga/core';
+import reducer from '../reducers';
 
+import createSagaMiddleware from '@redux-saga/core';
 import rootSaga from '../saga';
-import pages from '../reducers/pages';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
-  reducer: pages,
+  reducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,

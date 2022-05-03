@@ -1,6 +1,6 @@
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
-import pages from '../redux/reducers/pages';
+import reducer from '../redux/reducers';
 
-const useTypedSelector: TypedUseSelectorHook<ReturnType<typeof pages>> = useSelector;
+const useTypedSelector: TypedUseSelectorHook<ReturnType<typeof reducer>> = useSelector;
 
 export default useTypedSelector;
