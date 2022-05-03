@@ -1,8 +1,15 @@
 import React from 'react';
-import Loading from '../components/Loading';
-import { ITechnologyProps } from '../types/props';
 
-const Technology: React.FC<ITechnologyProps> = ({ data }) => {
+import useTypedSelector from '../hooks/useTypedSelector';
+import { selectTechnology } from '../redux/selectors';
+import { IDataTechnology } from '../types/redux/pages';
+
+import Loading from '../components/Loading';
+
+const Technology: React.FC = () => {
+  const destinations = useTypedSelector(selectTechnology);
+  const data = destinations.data as IDataTechnology[];
+
   const [activeButtonSlider, setActiveButtonSlider] = React.useState(0);
 
   const handleButtonSlider = (e: React.MouseEvent<HTMLButtonElement>) => {

@@ -1,6 +1,6 @@
 import ActionPages from '../enums/Pages';
 
-export interface IDestinations {
+export interface IDataDestinations {
   name: string;
   images: {
     png: string;
@@ -11,7 +11,7 @@ export interface IDestinations {
   travel: string;
 }
 
-export interface ICrew {
+export interface IDataCrew {
   name: string;
   images: {
     png: string;
@@ -21,7 +21,7 @@ export interface ICrew {
   bio: string;
 }
 
-export interface ITechnology {
+export interface IDataTechnology {
   name: string;
   images: {
     portrait: string;
@@ -30,25 +30,19 @@ export interface ITechnology {
   description: string;
 }
 
-export interface IStatePages {
-  destinations: {
-    loading: boolean;
-    error: string | null;
-    data: IDestinations[];
-  };
-  crew: {
-    loading: boolean;
-    error: string | null;
-    data: ICrew[];
-  };
-  technology: {
-    loading: boolean;
-    error: string | null;
-    data: ITechnology[];
-  };
+export type IDataPages = IDataDestinations | IDataCrew | IDataTechnology;
+
+export interface IDataPage {
+  loading: boolean;
+  error: string | null;
+  data: IDataPages[];
 }
 
-type IDataPage = ICrew | IDestinations | ITechnology;
+export interface IStatePages {
+  destinations: IDataPage;
+  crew: IDataPage;
+  technology: IDataPage;
+}
 
 interface ILoadDataPage {
   type: ActionPages.LOAD_DATA_PAGE;
@@ -56,7 +50,7 @@ interface ILoadDataPage {
 
 interface ILoadDataPageSuccess {
   type: ActionPages.LOAD_DATA_PAGE_SUCCESS;
-  payload: IDataPage[];
+  payload: IDataPages[];
 }
 
 interface ILoadDataPageFailure {

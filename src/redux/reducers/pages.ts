@@ -20,7 +20,7 @@ const initState: IStatePages = {
 };
 
 const pages = (state = initState, action: IActionPage) => {
-  const currentRoute = 'crew';
+  const currentRoute = 'destinations';
 
   switch (action.type) {
     case ActionPages.LOAD_DATA_PAGE:

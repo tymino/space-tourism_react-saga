@@ -1,3 +1,7 @@
-import { IState } from "../../types/redux";
+import { IRootState } from '../reducers';
 
-export const selectData = (state: IState) => state.data;
+const selectDestinations = (state: IRootState) => state.pages.destinations;
+const selectCrew = (state: IRootState) => state.pages.crew;
+const selectTechnology = (state: IRootState) => state.pages.technology;
+
+export { selectDestinations, selectCrew, selectTechnology };

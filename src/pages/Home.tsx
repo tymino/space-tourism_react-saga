@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch({ type: 'TEST_LOG' });
   }, [dispatch]);
 

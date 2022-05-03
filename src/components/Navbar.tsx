@@ -33,10 +33,9 @@ const Navbar: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
-  const location = useLocation();
+  // const location = useLocation();
 
-  console.log(location);
+  // console.log(location);
 
   return (
     <div className="navbar" role="banner">

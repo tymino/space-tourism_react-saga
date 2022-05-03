@@ -1,12 +1,24 @@
 import React from 'react';
-import Loading from '../components/Loading';
-import { ICrewProps } from '../types/props';
 
-const Crew: React.FC<ICrewProps> = ({ data }) => {
+import useTypedSelector from '../hooks/useTypedSelector';
+import { selectCrew } from '../redux/selectors';
+import { IDataCrew } from '../types/redux/pages';
+
+import Loading from '../components/Loading';
+
+const Crew: React.FC = () => {
+  const destinations = useTypedSelector(selectCrew);
+  const data = destinations.data as IDataCrew[];
+
   const [activeSlider, setActiveSlider] = React.useState(0);
 
+  // const handleSwitchSlider = ({ target }: React.MouseEvent<HTMLElement>) => {
+  //   const value = (target as HTMLElement).dataset.value;
+  //   setActiveSlider(Number(value));
+  // };
   const handleSwitchSlider = (e: React.MouseEvent<HTMLElement>) => {
-    setActiveSlider(Number((e.target as HTMLElement).dataset.value));
+    const value = (e.target as HTMLElement).dataset.value;
+    setActiveSlider(Number(value));
   };
 
   return data.length === 0 ? (

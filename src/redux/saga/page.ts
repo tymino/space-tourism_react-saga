@@ -1,7 +1,7 @@
 import { matchPath } from 'react-router';
 import { fork, take, takeEvery, call } from 'redux-saga/effects';
 
-import { IData } from '../../types/redux';
+import { IDataPages } from '../../types/redux/pages';
 
 async function fetchData(pageName: string) {
   const response = await fetch(`https://api-space-tourism-saga.herokuapp.com/api/${pageName}`);
@@ -11,9 +11,9 @@ async function fetchData(pageName: string) {
 }
 
 function* testSaga() {
-  const pageData: IData[] = yield call(fetchData, 'technology');
+  // const pageData: IDataPage = yield call(fetchData, 'technology');
 
-  console.log(pageData);
+  // console.log('saga', pageData);
 }
 
 export function* routeChangeSaga() {
@@ -28,5 +28,5 @@ export function* routeChangeSaga() {
 
 export default function* peopleSaga() {
   // yield fork(routeChangeSaga);
-  yield takeEvery('TEST_LOG', testSaga);
+  // yield takeEvery('TEST_LOG', testSaga);
 }

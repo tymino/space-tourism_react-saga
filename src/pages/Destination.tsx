@@ -1,8 +1,15 @@
 import React from 'react';
-import Loading from '../components/Loading';
-import { IDestinationsProps } from '../types/props';
 
-const Destination: React.FC<IDestinationsProps> = ({ data }) => {
+import useTypedSelector from '../hooks/useTypedSelector';
+import { selectDestinations } from '../redux/selectors';
+import { IDataDestinations } from '../types/redux/pages';
+
+import Loading from '../components/Loading';
+
+const Destination: React.FC = () => {
+  const destinations = useTypedSelector(selectDestinations);
+  const data = destinations.data as IDataDestinations[];
+
   const [activeTab, setActiveTab] = React.useState(0);
 
   const handleSwitchTab = (e: React.MouseEvent<HTMLElement>) =>
