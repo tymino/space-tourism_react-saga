@@ -1,13 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
 const Home: React.FC = () => {
-  const dispatch = useDispatch();
-
-  React.useEffect(() => {
-    dispatch({ type: 'TEST_LOG' });
-  }, [dispatch]);
-
   return (
     <div className="home" role="main">
       <picture className="home__picture">

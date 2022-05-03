@@ -1,21 +1,26 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import useTypedSelector from '../hooks/useTypedSelector';
+import setRoute from '../redux/actions/route';
 
 const Navbar: React.FC = () => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
   const menuRef = React.useRef<HTMLDivElement>(null);
   const linkClickRef = React.useRef<HTMLUListElement>(null);
 
   const [isOpenMenu, setIsOpenMenu] = React.useState<boolean>(false);
   const routes = useTypedSelector((state) => state.route.navigation);
 
-  const toggleStyleMenu = (): string => (isOpenMenu ? 'active' : '');
+  const toggleStyleMenu = () => (isOpenMenu ? 'active' : '');
 
   const handleOpenMenu = () => setIsOpenMenu(true);
   const handleCloseMenu = () => setIsOpenMenu(false);
 
-  const handleOutsideClick = (event: MouseEvent) => {
+  const handleOutsideClick = React.useCallback((event: MouseEvent) => {
     const path = event.composedPath();
 
     const clickOutside = !path.includes(menuRef.current as Node);
@@ -24,18 +29,18 @@ const Navbar: React.FC = () => {
     if (clickOutside || clickLink) {
       handleCloseMenu();
     }
-  };
+  }, []);
 
   React.useEffect(() => {
     document.body.addEventListener('click', handleOutsideClick);
-
     return () => document.body.removeEventListener('click', handleOutsideClick);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [handleOutsideClick]);
 
-  // const location = useLocation();
+  React.useEffect(() => {
+    const pathname = location.pathname;
 
-  // console.log(location);
+    dispatch(setRoute(pathname));
+  }, [dispatch, location]);
 
   return (
     <div className="navbar" role="banner">
