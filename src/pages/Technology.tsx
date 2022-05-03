@@ -1,17 +1,17 @@
 import React from 'react';
 
 import useTypedSelector from '../hooks/useTypedSelector';
-import { selectTechnology } from '../redux/selectors';
+// import { selectTechnology } from '../redux/selectors';
 import { IDataTechnology } from '../types/redux/pages';
 
 import Loading from '../components/Loading';
 
 const Technology: React.FC = () => {
-  const destinations = useTypedSelector(selectTechnology);
-  const data = destinations.data as IDataTechnology[];
+  // const destinations = useTypedSelector(selectTechnology);
+  // const data = destinations.data as IDataTechnology[];
 
   const [activeButtonSlider, setActiveButtonSlider] = React.useState(0);
-
+  const data = [];
   const handleButtonSlider = (e: React.MouseEvent<HTMLButtonElement>) => {
     setActiveButtonSlider(Number(e.currentTarget.value));
   };
@@ -20,7 +20,7 @@ const Technology: React.FC = () => {
     <Loading />
   ) : (
     <div className="technology" role="main">
-      <picture className="technology__picture">
+      {/* <picture className="technology__picture">
         <source
           className="technology__picture--img"
           media="(max-width: 468px)"
@@ -75,7 +75,7 @@ const Technology: React.FC = () => {
             />
           </picture>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

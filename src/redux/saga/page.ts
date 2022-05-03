@@ -1,7 +1,8 @@
 import { matchPath } from 'react-router';
-import { fork, take, takeEvery, call } from 'redux-saga/effects';
+import { fork, take, call, put } from 'redux-saga/effects';
 
-import { IDataPages } from '../../types/redux/pages';
+import { IActionPage, IDataPages } from '../../types/redux/pages';
+import { IActionRoute } from '../../types/redux/route';
 
 async function fetchData(pageName: string) {
   const response = await fetch(`https://api-space-tourism-saga.herokuapp.com/api/${pageName}`);
@@ -10,23 +11,27 @@ async function fetchData(pageName: string) {
   return json.data;
 }
 
-function* testSaga() {
-  // const pageData: IDataPage = yield call(fetchData, 'technology');
-
-  // console.log('saga', pageData);
-}
-
 export function* routeChangeSaga() {
   while (true) {
-    // const action: string = yield take(LOCATION_CHANGE);
+    const action: IActionRoute = yield take('SET_ROUTE');
+    const path = action.payload;
 
-    // console.log(action);
+    console.log(path);
 
-    yield;
+    if (!matchPath('', path)) {
+      const pageData: IDataPages = yield call(fetchData, path);
+      console.log('saga', pageData);
+
+      const action = {
+        type: 'LOAD_DATA_PAGE_SUCCESS',
+        payload: pageData,
+      };
+
+      yield put(action);
+    }
   }
 }
 
-export default function* peopleSaga() {
-  // yield fork(routeChangeSaga);
-  // yield takeEvery('TEST_LOG', testSaga);
+export default function* pageSaga() {
+  yield fork(routeChangeSaga);
 }

@@ -2,7 +2,7 @@ import ActionPages from '../../types/enums/Pages';
 import { IActionPage, IStatePages } from '../../types/redux/pages';
 
 const initState: IStatePages = {
-  destinations: {
+  destination: {
     loading: false,
     error: null,
     data: [],
@@ -20,33 +20,41 @@ const initState: IStatePages = {
 };
 
 const pages = (state = initState, action: IActionPage) => {
-  const currentRoute = 'destinations';
+  const currentRoute = 'crew';
 
   switch (action.type) {
     case ActionPages.LOAD_DATA_PAGE:
       return {
         ...state,
-        [currentRoute]: {
-          ...state[currentRoute],
-          loading: true,
+        pages: {
+          ...state,
+          [currentRoute]: {
+            ...state[currentRoute],
+            loading: true,
+          },
         },
       };
 
     case ActionPages.LOAD_DATA_PAGE_SUCCESS:
       return {
         ...state,
-        [currentRoute]: {
-          ...state[currentRoute],
-          data: action.payload,
+        pages: {
+          ...state,
+          [currentRoute]: {
+            ...state[currentRoute],
+            data: action.payload,
+          },
         },
       };
 
     case ActionPages.LOAD_DATA_PAGE_FAILURE:
       return {
         ...state,
-        [currentRoute]: {
-          ...state[currentRoute],
-          error: action.payload,
+        pages: {
+          [currentRoute]: {
+            ...state[currentRoute],
+            error: action.payload,
+          },
         },
       };
 

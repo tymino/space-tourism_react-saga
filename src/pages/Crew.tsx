@@ -1,14 +1,14 @@
 import React from 'react';
 
 import useTypedSelector from '../hooks/useTypedSelector';
-import { selectCrew } from '../redux/selectors';
+// import { selectCrew } from '../redux/selectors';
 import { IDataCrew } from '../types/redux/pages';
 
 import Loading from '../components/Loading';
 
 const Crew: React.FC = () => {
-  const destinations = useTypedSelector(selectCrew);
-  const data = destinations.data as IDataCrew[];
+  // const destinations = useTypedSelector(selectCrew);
+  // const data = destinations.data as IDataCrew[];
 
   const [activeSlider, setActiveSlider] = React.useState(0);
 
@@ -21,11 +21,13 @@ const Crew: React.FC = () => {
     setActiveSlider(Number(value));
   };
 
+  const data = []
+
   return data.length === 0 ? (
     <Loading />
   ) : (
     <div className="crew" role="main">
-      <picture className="crew__picture">
+      {/* <picture className="crew__picture">
         <source
           className="crew__picture--img"
           media="(max-width: 468px)"
@@ -70,7 +72,7 @@ const Crew: React.FC = () => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -37,8 +37,7 @@ const Navbar: React.FC = () => {
   }, [handleOutsideClick]);
 
   React.useEffect(() => {
-    const pathname = location.pathname;
-
+    const { pathname } = location;
     dispatch(setRoute(pathname));
   }, [dispatch, location]);
 

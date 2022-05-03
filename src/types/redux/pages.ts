@@ -1,6 +1,6 @@
 import ActionPages from '../enums/Pages';
 
-export interface IDataDestinations {
+export interface IDataDestination {
   name: string;
   images: {
     png: string;
@@ -30,7 +30,7 @@ export interface IDataTechnology {
   description: string;
 }
 
-export type IDataPages = IDataDestinations | IDataCrew | IDataTechnology;
+export type IDataPages = IDataDestination | IDataCrew | IDataTechnology;
 
 export interface IDataPage {
   loading: boolean;
@@ -39,23 +39,38 @@ export interface IDataPage {
 }
 
 export interface IStatePages {
-  destinations: IDataPage;
+  destination: IDataPage;
   crew: IDataPage;
   technology: IDataPage;
 }
 
+interface ISetCurrentPage {
+  type: ActionPages.SET_CURRENT_PAGE;
+  payload: string;
+}
+
 interface ILoadDataPage {
   type: ActionPages.LOAD_DATA_PAGE;
+  payload: {
+    path: string;
+  }
 }
 
 interface ILoadDataPageSuccess {
   type: ActionPages.LOAD_DATA_PAGE_SUCCESS;
-  payload: IDataPages[];
+  payload: {
+    path: string;
+    data: IDataPages[];
+  }
 }
 
 interface ILoadDataPageFailure {
   type: ActionPages.LOAD_DATA_PAGE_FAILURE;
-  payload: string;
+  payload: {
+    path: string;
+    error?: string;
+    
+  }
 }
 
-export type IActionPage = ILoadDataPage | ILoadDataPageSuccess | ILoadDataPageFailure;
+export type IActionPage = ISetCurrentPage | ILoadDataPage | ILoadDataPageSuccess | ILoadDataPageFailure;
