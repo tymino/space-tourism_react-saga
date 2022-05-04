@@ -1,5 +1,5 @@
-export { default as loading } from './loading';
-export { default as error } from './error';
-export { default as destination } from './destination';
-export { default as crew } from './crew';
-export { default as technology } from './technology';
+export { default as setLoading } from './setLoading';
+export { default as setError } from './setError';
+export { default as setDestination } from './setDestination';
+export { default as setCrew } from './setCrew';
+export { default as setTechnology } from './setTechnology';

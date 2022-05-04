@@ -1,58 +1,59 @@
-import { fork, take, call, put, takeEvery } from 'redux-saga/effects';
+import { take, call, put, takeEvery } from 'redux-saga/effects';
+import ActionPages from '../../types/enums/Pages';
 import ActionRoute from '../../types/enums/Route';
 import RouteName from '../../types/enums/RouteName';
 
 import { IActionPage, IDataCrew, IDataDestination, IDataTechnology } from '../../types/redux/pages';
 import { IActionRoute } from '../../types/redux/route';
-import { loading, error, crew, destination, technology } from '../actions/pages';
+import IData from '../../types/saga/fetchData';
+import { setLoading, setError, setDestination, setCrew, setTechnology } from '../actions/pages';
 
 async function fetchData(pageName: string) {
   const response = await fetch(`https://api-space-tourism-saga.herokuapp.com/api/${pageName}`);
-
-  console.log('fetch', response);
   const json = await response.json();
-  
-  return json.data;
+
+  return json;
 }
 
-export function* routeChangeSaga() {
-  while (true) {
-    // yield put(loading(true));
+export function* loadData() {
+  const { payload }: IActionRoute = yield take('SET_ROUTE');
 
-    const { payload }: IActionRoute = yield take('SET_ROUTE');
-    let path = payload;
+  if (payload !== RouteName.home) {
+    const { error, data }: IData = yield call(fetchData, payload);
 
-    if (payload === '/') {
-      path = '/';
-    } else {
-      type IResponse = IDataDestination | IDataCrew | IDataTechnology;
-      const pageData: IResponse[] = yield call(fetchData, '');
+    if (error) {
+      console.log('No data', data);
+      yield put(setError(`No data: ${error}`));
+    }
 
-      switch (path) {
-        case RouteName.destination: {
-          yield put(destination(pageData as IDataDestination[]));
-          break;
-        }
-
-        case RouteName.crew: {
-          yield put(crew(pageData as IDataCrew[]));
-          break;
-        }
-
-        case RouteName.technology: {
-          yield put(technology(pageData as IDataTechnology[]));
-          break;
-        }
-
-        default:
-          console.log('Error loading');
-          yield put(error('Error loading'));
-          break;
+    switch (payload) {
+      case RouteName.destination: {
+        yield put(setDestination(data as IDataDestination[]));
+        break;
       }
+
+      case RouteName.crew: {
+        yield put(setCrew(data as IDataCrew[]));
+        break;
+      }
+
+      case RouteName.technology: {
+        yield put(setTechnology(data as IDataTechnology[]));
+        break;
+      }
+
+      default:
+        console.log('switch home page');
+        break;
     }
   }
 }
 
+export function* routeChangeSaga() {
+  yield put(setLoading(true));
+}
+
 export default function* pageSaga() {
-  yield fork(routeChangeSaga);
+  yield takeEvery(ActionRoute.SET_ROUTE, routeChangeSaga);
+  yield takeEvery(ActionPages.LOADING_DATA_PAGE, loadData);
 }
