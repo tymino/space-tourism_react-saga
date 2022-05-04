@@ -2,11 +2,12 @@ import ActionRoute from '../../types/enums/Route';
 import { IActionRoute } from '../../types/redux/route';
 
 const setRoute = (pathname: string): IActionRoute => {
-  const path = pathname.replace('/', '');
+  console.log('set', );
+  const payload = pathname.replace('/', '');
 
   return {
     type: ActionRoute.SET_ROUTE,
-    payload: path,
+    payload,
   };
 };
 

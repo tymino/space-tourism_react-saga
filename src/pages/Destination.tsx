@@ -2,13 +2,11 @@ import React from 'react';
 
 import useTypedSelector from '../hooks/useTypedSelector';
 import { selectDestination } from '../redux/selectors';
-import { IDataDestination } from '../types/redux/pages';
 
 import Loading from '../components/Loading';
 
 const Destination: React.FC = () => {
-  const destination = useTypedSelector(selectDestination);
-  const data = destination.data as IDataDestination[];
+  const data = useTypedSelector(selectDestination);
 
   const [activeTab, setActiveTab] = React.useState(0);
 

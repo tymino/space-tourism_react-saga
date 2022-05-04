@@ -30,47 +30,41 @@ export interface IDataTechnology {
   description: string;
 }
 
-export type IDataPages = IDataDestination | IDataCrew | IDataTechnology;
-
-export interface IDataPage {
+export interface IStatePages {
   loading: boolean;
   error: string | null;
-  data: IDataPages[];
+  destination: IDataDestination[];
+  crew: IDataCrew[];
+  technology: IDataTechnology[];
 }
 
-export interface IStatePages {
-  destination: IDataPage;
-  crew: IDataPage;
-  technology: IDataPage;
+interface ILoadingDataPage {
+  type: ActionPages.LOADING_DATA_PAGE;
+  payload: boolean;
 }
-
-interface ISetCurrentPage {
-  type: ActionPages.SET_CURRENT_PAGE;
+interface ILoadDataPageFailure {
+  type: ActionPages.FAILURE_LOAD_DATA_PAGE;
   payload: string;
 }
 
-interface ILoadDataPage {
-  type: ActionPages.LOAD_DATA_PAGE;
-  payload: {
-    path: string;
-  }
+interface IDestinationDataPageSuccess {
+  type: ActionPages.SUCCESS_DESTINATION_DATA_PAGE;
+  payload: IDataDestination[];
 }
 
-interface ILoadDataPageSuccess {
-  type: ActionPages.LOAD_DATA_PAGE_SUCCESS;
-  payload: {
-    path: string;
-    data: IDataPages[];
-  }
+interface ICrewDataPageSuccess {
+  type: ActionPages.SUCCESS_CREW_DATA_PAGE;
+  payload: IDataCrew[];
 }
 
-interface ILoadDataPageFailure {
-  type: ActionPages.LOAD_DATA_PAGE_FAILURE;
-  payload: {
-    path: string;
-    error?: string;
-    
-  }
+interface ITechnologyDataPageSuccess {
+  type: ActionPages.SUCCESS_TECHNOLOGY_DATA_PAGE;
+  payload: IDataTechnology[];
 }
 
-export type IActionPage = ISetCurrentPage | ILoadDataPage | ILoadDataPageSuccess | ILoadDataPageFailure;
+export type IActionPage =
+  | ILoadingDataPage
+  | ILoadDataPageFailure
+  | IDestinationDataPageSuccess
+  | ICrewDataPageSuccess
+  | ITechnologyDataPageSuccess;

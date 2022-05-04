@@ -2,61 +2,29 @@ import ActionPages from '../../types/enums/Pages';
 import { IActionPage, IStatePages } from '../../types/redux/pages';
 
 const initState: IStatePages = {
-  destination: {
-    loading: false,
-    error: null,
-    data: [],
-  },
-  crew: {
-    loading: false,
-    error: null,
-    data: [],
-  },
-  technology: {
-    loading: false,
-    error: null,
-    data: [],
-  },
+  loading: false,
+  error: null,
+  destination: [],
+  crew: [],
+  technology: [],
 };
 
-const pages = (state = initState, action: IActionPage) => {
-  const currentRoute = 'crew';
+const pages = (state = initState, { type, payload }: IActionPage) => {
+  switch (type) {
+    case ActionPages.LOADING_DATA_PAGE:
+      return { ...state, loading: true, error: null };
 
-  switch (action.type) {
-    case ActionPages.LOAD_DATA_PAGE:
-      return {
-        ...state,
-        pages: {
-          ...state,
-          [currentRoute]: {
-            ...state[currentRoute],
-            loading: true,
-          },
-        },
-      };
+    case ActionPages.FAILURE_LOAD_DATA_PAGE:
+      return { ...state, loading: false, error: payload };
 
-    case ActionPages.LOAD_DATA_PAGE_SUCCESS:
-      return {
-        ...state,
-        pages: {
-          ...state,
-          [currentRoute]: {
-            ...state[currentRoute],
-            data: action.payload,
-          },
-        },
-      };
+    case ActionPages.SUCCESS_DESTINATION_DATA_PAGE:
+      return { ...state, loading: false, destination: payload };
 
-    case ActionPages.LOAD_DATA_PAGE_FAILURE:
-      return {
-        ...state,
-        pages: {
-          [currentRoute]: {
-            ...state[currentRoute],
-            error: action.payload,
-          },
-        },
-      };
+    case ActionPages.SUCCESS_CREW_DATA_PAGE:
+      return { ...state, loading: false, crew: payload };
+
+    case ActionPages.SUCCESS_TECHNOLOGY_DATA_PAGE:
+      return { ...state, loading: false, technology: payload };
 
     default:
       return state;
