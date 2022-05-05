@@ -1,4 +1,4 @@
-import ActionRoute from '../enums/Route';
+import ActionRoute from '../enums/ActionRoute';
 
 export interface IRoutes {
   index: string;

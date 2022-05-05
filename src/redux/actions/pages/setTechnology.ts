@@ -1,4 +1,4 @@
-import ActionPages from '../../../types/enums/Pages';
+import ActionPages from '../../../types/enums/ActionPages';
 import { IActionPage, IDataTechnology } from '../../../types/redux/pages';
 
 const setTechnology = (payload: IDataTechnology[]): IActionPage => ({

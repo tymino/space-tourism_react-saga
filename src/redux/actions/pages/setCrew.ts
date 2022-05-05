@@ -1,4 +1,4 @@
-import ActionPages from '../../../types/enums/Pages';
+import ActionPages from '../../../types/enums/ActionPages';
 import { IActionPage, IDataCrew } from '../../../types/redux/pages';
 
 const setCrew = (payload: IDataCrew[]): IActionPage => ({

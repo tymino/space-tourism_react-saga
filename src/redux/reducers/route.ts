@@ -1,4 +1,4 @@
-import ActionRoute from '../../types/enums/Route';
+import ActionRoute from '../../types/enums/ActionRoute';
 import { IStateRoute, IActionRoute } from '../../types/redux/route';
 
 const initState: IStateRoute = {

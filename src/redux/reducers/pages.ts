@@ -1,4 +1,4 @@
-import ActionPages from '../../types/enums/Pages';
+import ActionPages from '../../types/enums/ActionPages';
 import { IActionPage, IStatePages } from '../../types/redux/pages';
 
 const initState: IStatePages = {

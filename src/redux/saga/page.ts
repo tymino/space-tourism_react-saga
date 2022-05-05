@@ -1,9 +1,7 @@
 import { take, call, put, takeEvery } from 'redux-saga/effects';
-import ActionPages from '../../types/enums/Pages';
-import ActionRoute from '../../types/enums/Route';
-import RouteName from '../../types/enums/RouteName';
+import { ActionPages, ActionRoute, RouteName } from '../../types/enums';
 
-import { IActionPage, IDataCrew, IDataDestination, IDataTechnology } from '../../types/redux/pages';
+import { IDataCrew, IDataDestination, IDataTechnology } from '../../types/redux/pages';
 import { IActionRoute } from '../../types/redux/route';
 import IData from '../../types/saga/fetchData';
 import { setLoading, setError, setDestination, setCrew, setTechnology } from '../actions/pages';
@@ -22,8 +20,7 @@ export function* loadData() {
     const { error, data }: IData = yield call(fetchData, payload);
 
     if (error) {
-      console.log('No data', data);
-      yield put(setError(`No data: ${error}`));
+      yield put(setError(`No page data`));
     }
 
     switch (payload) {

@@ -1,4 +1,4 @@
-import ActionPages from '../enums/Pages';
+import ActionPages from '../enums/ActionPages';
 
 export interface IDataDestination {
   name: string;
