@@ -1,4 +1,4 @@
-export { default as Home } from './Home';
-export { default as Destination } from './Destination';
-export { default as Crew } from './Crew';
-export { default as Technology } from './Technology';
+export { default as Home } from './Home/Home';
+export { default as Destination } from './Destination/Destination';
+export { default as Crew } from './Crew/Crew';
+export { default as Technology } from './Technology/Technology';

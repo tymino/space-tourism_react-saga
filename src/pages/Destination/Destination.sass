@@ -1,3 +1,5 @@
+@import ../../sass/mixins
+  
 .destination
   padding: 0 11%
 
@@ -19,7 +21,7 @@
 
     @include heading5
     text-transform: uppercase
-    color: $colorWhite
+    color: var(--colorWhite)
 
     & > span
       opacity: .25
@@ -45,14 +47,14 @@
     padding-bottom: 12px
 
     @include navText
-    color: $colorLight
+    color: var(--colorLight)
     cursor: pointer
 
     &:hover
-      border-bottom: 3px solid rgba($colorWhite, .5)
+      border-bottom: 3px solid rgba(var(--colorWhite), .5)
 
     &.active
-      border-bottom: 3px solid $colorWhite
+      border-bottom: 3px solid var(--colorWhite)
 
   &__planet-info-header
     margin-top: 35px
@@ -60,14 +62,14 @@
 
     @include heading2
     text-transform: uppercase
-    color: $colorWhite
+    color: var(--colorWhite)
 
   &__planet-info-text
     padding-bottom: 50px
-    border-bottom: 1px solid $colorGray
+    border-bottom: 1px solid var(--colorGray)
 
     @include bodyText
-    color: $colorLight
+    color: var(--colorLight)
 
   &__planet-info-footer
     display: flex
@@ -79,21 +81,19 @@
     &-name
       margin-bottom: 12px
       @include subHeading2
-      color: $colorLight
+      color: var(--colorLight)
     &-value
       @include subHeading1
-      color: $colorWhite
+      color: var(--colorWhite)
 
   &__planet-info-travel
     &-name
       margin-bottom: 12px
       @include subHeading2
-      color: $colorLight
+      color: var(--colorLight)
     &-value
       @include subHeading1
-      color: $colorWhite
-
-
+      color: var(--colorWhite)
 
 @media (max-width: 1024px)
   .destination

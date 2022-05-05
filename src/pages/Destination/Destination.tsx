@@ -1,19 +1,21 @@
+import './Destination.sass';
+
 import React from 'react';
 
-import useTypedSelector from '../hooks/useTypedSelector';
-import { selectDestination } from '../redux/selectors';
+import useTypedSelector from '../../hooks/useTypedSelector';
+import { selectDestination } from '../../redux/selectors';
 
-import Loading from '../components/Loading/Loading';
+import Loading from '../../components/Loading/Loading';
 
 const Destination: React.FC = () => {
-  const data = useTypedSelector(selectDestination);
+  const { loading, data } = useTypedSelector(selectDestination);
 
   const [activeTab, setActiveTab] = React.useState(0);
 
   const handleSwitchTab = (e: React.MouseEvent<HTMLElement>) =>
     setActiveTab(Number((e.target as HTMLElement).dataset.value));
 
-  return data.length === 0 ? (
+  return loading ? (
     <Loading />
   ) : (
     <div className="destination" role="main">

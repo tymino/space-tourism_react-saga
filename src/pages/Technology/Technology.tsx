@@ -1,10 +1,12 @@
+import './Technology.sass';
+
 import React from 'react';
 
-import useTypedSelector from '../hooks/useTypedSelector';
+import useTypedSelector from '../../hooks/useTypedSelector';
 // import { selectTechnology } from '../redux/selectors';
-import { IDataTechnology } from '../types/redux/pages';
+import { IDataTechnology } from '../../types/redux/pages';
 
-import Loading from '../components/Loading/Loading';
+import Loading from '../../components/Loading/Loading';
 
 const Technology: React.FC = () => {
   // const destinations = useTypedSelector(selectTechnology);

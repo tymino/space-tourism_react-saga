@@ -1,10 +1,12 @@
+import './Crew.sass';
+
 import React from 'react';
 
-import useTypedSelector from '../hooks/useTypedSelector';
+import useTypedSelector from '../../hooks/useTypedSelector';
 // import { selectCrew } from '../redux/selectors';
-import { IDataCrew } from '../types/redux/pages';
+import { IDataCrew } from '../../types/redux/pages';
 
-import Loading from '../components/Loading/Loading';
+import Loading from '../../components/Loading/Loading';
 
 const Crew: React.FC = () => {
   // const destinations = useTypedSelector(selectCrew);
