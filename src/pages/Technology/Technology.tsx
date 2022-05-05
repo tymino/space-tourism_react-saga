@@ -65,7 +65,7 @@ const Technology: React.FC = () => {
           <picture className="technology__launch-picture">
             <source
               className="technology__launch-picture--img"
-              media="(max-width: 1024px)"
+              media="(max-width: 1300px)"
               srcSet={data[activeButtonSlider].images.landscape}
             />
             <img

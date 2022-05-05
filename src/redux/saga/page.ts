@@ -1,4 +1,4 @@
-import { take, call, put, takeEvery, delay, takeLeading } from 'redux-saga/effects';
+import { take, call, put, takeEvery, delay } from 'redux-saga/effects';
 import { ActionPages, ActionRoute, RouteName } from '../../types/enums';
 
 import { IDataCrew, IDataDestination, IDataTechnology } from '../../types/redux/pages';
