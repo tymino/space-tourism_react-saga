@@ -5,17 +5,19 @@ import { useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import useTypedSelector from '../../hooks/useTypedSelector';
+import { selectRoute } from '../../redux/selectors';
 import setRoute from '../../redux/actions/route';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
+  const routes = useTypedSelector(selectRoute);
+
   const menuRef = React.useRef<HTMLDivElement>(null);
   const linkClickRef = React.useRef<HTMLUListElement>(null);
 
   const [isOpenMenu, setIsOpenMenu] = React.useState<boolean>(false);
-  const routes = useTypedSelector((state) => state.route.navigation);
 
   const toggleStyleMenu = () => (isOpenMenu ? 'active' : '');
 

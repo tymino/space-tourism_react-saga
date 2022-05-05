@@ -1,4 +1,4 @@
-import { take, call, put, takeEvery } from 'redux-saga/effects';
+import { take, call, put, takeEvery, delay, takeLeading } from 'redux-saga/effects';
 import { ActionPages, ActionRoute, RouteName } from '../../types/enums';
 
 import { IDataCrew, IDataDestination, IDataTechnology } from '../../types/redux/pages';
@@ -17,6 +17,8 @@ export function* loadData() {
   const { payload }: IActionRoute = yield take('SET_ROUTE');
 
   if (payload !== RouteName.home) {
+    yield delay(600);
+
     const { error, data }: IData = yield call(fetchData, payload);
 
     if (error) {

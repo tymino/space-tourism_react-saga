@@ -8,7 +8,7 @@ import { selectDestination } from '../../redux/selectors';
 import { Loading } from '../../components';
 
 const Destination: React.FC = () => {
-  const { loading, data } = useTypedSelector(selectDestination);
+  const {loading, data} = useTypedSelector(selectDestination);
 
   const [activeTab, setActiveTab] = React.useState(0);
 
@@ -17,7 +17,7 @@ const Destination: React.FC = () => {
     setActiveTab(Number(value));
   };
 
-  return loading ? (
+  return loading || data.length === 0 ? (
     <Loading />
   ) : (
     <div className="destination" role="main">

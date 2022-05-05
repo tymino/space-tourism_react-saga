@@ -8,7 +8,7 @@ import { selectTechnology } from '../../redux/selectors';
 import { Loading } from '../../components';
 
 const Technology: React.FC = () => {
-  const { loading, data } = useTypedSelector(selectTechnology);
+  const {loading, data} = useTypedSelector(selectTechnology);
 
   const [activeButtonSlider, setActiveButtonSlider] = React.useState(0);
 
@@ -16,7 +16,7 @@ const Technology: React.FC = () => {
     setActiveButtonSlider(Number(value));
   };
 
-  return loading ? (
+  return loading || data.length === 0 ? (
     <Loading />
   ) : (
     <div className="technology" role="main">

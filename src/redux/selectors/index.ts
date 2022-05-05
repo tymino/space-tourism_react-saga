@@ -1,27 +1,29 @@
 import { IRootState } from '../reducers';
 
-const selectDestination = (state: IRootState) => {
+const selectRoute = ({ route }: IRootState) => route.navigation;
+
+const selectDestination = ({ pages }: IRootState) => {
   return {
-    loading: state.pages.loading,
-    error: state.pages.error,
-    data: state.pages.destination,
+    loading: pages.loading,
+    error: pages.error,
+    data: pages.destination,
   };
 };
 
-const selectCrew = (state: IRootState) => {
+const selectCrew = ({ pages }: IRootState) => {
   return {
-    loading: state.pages.loading,
-    error: state.pages.error,
-    data: state.pages.crew,
+    loading: pages.loading,
+    error: pages.error,
+    data: pages.crew,
   };
 };
 
-const selectTechnology = (state: IRootState) => {
+const selectTechnology = ({ pages }: IRootState) => {
   return {
-    loading: state.pages.loading,
-    error: state.pages.error,
-    data: state.pages.technology,
+    loading: pages.loading,
+    error: pages.error,
+    data: pages.technology,
   };
 };
 
-export { selectDestination, selectCrew, selectTechnology };
+export { selectRoute, selectDestination, selectCrew, selectTechnology };

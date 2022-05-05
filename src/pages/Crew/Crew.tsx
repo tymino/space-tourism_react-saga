@@ -8,7 +8,7 @@ import { selectCrew } from '../../redux/selectors';
 import { Loading } from '../../components';
 
 const Crew: React.FC = () => {
-  const { loading, data } = useTypedSelector(selectCrew);
+  const {loading, data} = useTypedSelector(selectCrew);
 
   const [activeSlider, setActiveSlider] = React.useState(0);
 
@@ -17,7 +17,7 @@ const Crew: React.FC = () => {
     setActiveSlider(Number(value));
   };
 
-  return loading ? (
+  return loading || data.length === 0 ? (
     <Loading />
   ) : (
     <div className="crew" role="main">
