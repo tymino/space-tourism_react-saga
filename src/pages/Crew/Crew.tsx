@@ -3,33 +3,25 @@ import './Crew.sass';
 import React from 'react';
 
 import useTypedSelector from '../../hooks/useTypedSelector';
-// import { selectCrew } from '../redux/selectors';
-import { IDataCrew } from '../../types/redux/pages';
+import { selectCrew } from '../../redux/selectors';
 
-import Loading from '../../components/Loading/Loading';
+import { Loading } from '../../components';
 
 const Crew: React.FC = () => {
-  // const destinations = useTypedSelector(selectCrew);
-  // const data = destinations.data as IDataCrew[];
+  const { loading, data } = useTypedSelector(selectCrew);
 
   const [activeSlider, setActiveSlider] = React.useState(0);
 
-  // const handleSwitchSlider = ({ target }: React.MouseEvent<HTMLElement>) => {
-  //   const value = (target as HTMLElement).dataset.value;
-  //   setActiveSlider(Number(value));
-  // };
-  const handleSwitchSlider = (e: React.MouseEvent<HTMLElement>) => {
-    const value = (e.target as HTMLElement).dataset.value;
+  const handleSwitchSlider = ({ target }: React.MouseEvent<HTMLElement>) => {
+    const value = (target as HTMLElement).dataset.value;
     setActiveSlider(Number(value));
   };
 
-  const data = []
-
-  return data.length === 0 ? (
+  return loading ? (
     <Loading />
   ) : (
     <div className="crew" role="main">
-      {/* <picture className="crew__picture">
+      <picture className="crew__picture">
         <source
           className="crew__picture--img"
           media="(max-width: 468px)"
@@ -74,7 +66,7 @@ const Crew: React.FC = () => {
             />
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

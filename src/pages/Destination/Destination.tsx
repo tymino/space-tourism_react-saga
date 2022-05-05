@@ -5,15 +5,17 @@ import React from 'react';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import { selectDestination } from '../../redux/selectors';
 
-import Loading from '../../components/Loading/Loading';
+import { Loading } from '../../components';
 
 const Destination: React.FC = () => {
   const { loading, data } = useTypedSelector(selectDestination);
 
   const [activeTab, setActiveTab] = React.useState(0);
 
-  const handleSwitchTab = (e: React.MouseEvent<HTMLElement>) =>
-    setActiveTab(Number((e.target as HTMLElement).dataset.value));
+  const handleSwitchTab = ({ target }: React.MouseEvent<HTMLElement>) => {
+    const value = (target as HTMLElement).dataset.value;
+    setActiveTab(Number(value));
+  };
 
   return loading ? (
     <Loading />
