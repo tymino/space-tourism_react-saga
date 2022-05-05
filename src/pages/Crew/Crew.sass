@@ -21,19 +21,17 @@
 
     @include heading5
     text-transform: uppercase
-    color: var(--colorWhite)
+    color: rgb(var(--colorWhite))
 
     & > span
       opacity: .25
 
-  // &__pilot-wrapper
-  // &__pilot-info-wrapper
   &__pilot-info-subheader
     margin-top: 12%
     margin-bottom: 15px
 
     @include heading4
-    color: var(--colorWhite)
+    color: rgb(var(--colorWhite))
     text-transform: uppercase
     opacity: .5
 
@@ -41,7 +39,7 @@
     margin-bottom: 26px
 
     @include heading3
-    color: var(--colorWhite)
+    color: rgb(var(--colorWhite))
     text-transform: uppercase
 
   &__pilot-info-bio
@@ -50,7 +48,7 @@
     margin-bottom: 30px
 
     @include bodyText
-    color: var(--colorLight)
+    color: rgb(var(--colorLight))
 
   &__pilot-info-slider
     display: flex
@@ -62,7 +60,7 @@
     margin-right: 24px
 
     border-radius: 50%
-    background: var(--colorWhite)
+    background: rgb(var(--colorWhite))
     opacity: .15
 
     cursor: pointer
@@ -82,14 +80,12 @@
   .crew
     padding: 0 38px
 
-    // &__picture--img
     &__container
       margin-top: 40px
 
     &__subtitle
       font-size: 20px
 
-    // &__pilot-wrapper
     &__pilot-info-wrapper
       display: flex
       flex-direction: column
@@ -110,7 +106,6 @@
       max-width: 600px
       margin-bottom: 0px
 
-    // &__pilot-info-slider
     &__pilot-info-tabs-button
       width: 10px
       height: 10px
@@ -140,7 +135,6 @@
       flex-direction: column-reverse
       align-items: center
 
-    // &__pilot-info-wrapper
     &__pilot-info-subheader
       font-size: 16px
       order: 2
@@ -166,5 +160,5 @@
       &-mobile
         display: flex
         justify-content: center
-        border-bottom: 2px solid var(--colorGray)
+        border-bottom: 2px solid rgb(var(--colorGray))
 

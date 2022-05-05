@@ -26,10 +26,10 @@
 
     width: 33%
     height: 1px
-    background: rgba(var(--colorWhite), 0.25)
+    background: rgba(var(--colorWhite), .25)
 
   &__routes
-    background: rgba(var(--colorWhite), 0.04)
+    background: rgba(var(--colorWhite), .04)
     width: 60%
 
     & > ul
@@ -37,6 +37,7 @@
       justify-content: center
       list-style: none
       margin-right: 40px
+      opacity: 1
 
   &__item
     margin: 38px 25px
@@ -52,7 +53,7 @@
         font-weight: bold
 
     &--selected
-      border-bottom: 3px solid var(--colorWhite)
+      border-bottom: 3px solid rgb(var(--colorWhite))
 
 
 @media (max-width: 1024px)
@@ -108,7 +109,7 @@
       height: 100vh
       width: 70%
       margin-right: 0
-      background: rgba(var(--colorDark), 0.93)
+      background: rgb(var(--colorDark))
       z-index: 10
 
       &:not(.active)
@@ -132,4 +133,4 @@
 
       &--selected
         border-bottom: none
-        border-right: 3px solid var(--colorWhite)
+        border-right: 3px solid rgb(var(--colorWhite))

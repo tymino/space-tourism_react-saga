@@ -1,5 +1,5 @@
 @import ../../sass/mixins
-  
+
 .destination
   padding: 0 11%
 
@@ -21,7 +21,7 @@
 
     @include heading5
     text-transform: uppercase
-    color: var(--colorWhite)
+    color: rgb(var(--colorWhite))
 
     & > span
       opacity: .25
@@ -47,14 +47,14 @@
     padding-bottom: 12px
 
     @include navText
-    color: var(--colorLight)
+    color: rgb(var(--colorLight))
     cursor: pointer
 
     &:hover
       border-bottom: 3px solid rgba(var(--colorWhite), .5)
 
     &.active
-      border-bottom: 3px solid var(--colorWhite)
+      border-bottom: 3px solid rgb(var(--colorWhite))
 
   &__planet-info-header
     margin-top: 35px
@@ -62,14 +62,14 @@
 
     @include heading2
     text-transform: uppercase
-    color: var(--colorWhite)
+    color: rgb(var(--colorWhite))
 
   &__planet-info-text
     padding-bottom: 50px
-    border-bottom: 1px solid var(--colorGray)
+    border-bottom: 1px solid rgb(var(--colorGray))
 
     @include bodyText
-    color: var(--colorLight)
+    color: rgb(var(--colorLight))
 
   &__planet-info-footer
     display: flex
@@ -81,19 +81,19 @@
     &-name
       margin-bottom: 12px
       @include subHeading2
-      color: var(--colorLight)
+      color: rgb(var(--colorLight))
     &-value
       @include subHeading1
-      color: var(--colorWhite)
+      color: rgb(var(--colorWhite))
 
   &__planet-info-travel
     &-name
       margin-bottom: 12px
       @include subHeading2
-      color: var(--colorLight)
+      color: rgb(var(--colorLight))
     &-value
       @include subHeading1
-      color: var(--colorWhite)
+      color: rgb(var(--colorWhite))
 
 @media (max-width: 1024px)
   .destination
@@ -136,12 +136,10 @@
 
 @media (max-width: 468px)
   .destination
-    // &__container
     &__subtitle
       text-align: center
       font-size: 16px
 
-    // &__planet-wrapper
     &__planet-image
       width: 170px
       height: 170px
