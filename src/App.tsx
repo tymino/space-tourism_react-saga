@@ -3,7 +3,7 @@ import './sass/index.sass';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import { Home, Destination, Crew, Technology } from './pages';
 
 const App: React.FC = () => {

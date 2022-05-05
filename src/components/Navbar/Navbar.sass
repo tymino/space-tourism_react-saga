@@ -1,3 +1,5 @@
+@import ../../sass/mixins
+  
 .navbar
   position: relative
   display: flex
@@ -24,10 +26,10 @@
 
     width: 33%
     height: 1px
-    background: rgba($colorWhite, 0.25)
+    background: rgba(var(--colorWhite), 0.25)
 
   &__routes
-    background: rgba($colorWhite, 0.04)
+    background: rgba(var(--colorWhite), 0.04)
     width: 60%
 
     & > ul
@@ -44,13 +46,13 @@
       @include navText
 
       &:hover:not(.navbar__item--selected)
-        border-bottom: 3px solid rgba($colorWhite, .5)
+        border-bottom: 3px solid rgba(var(--colorWhite), .5)
 
       & > span:first-child
         font-weight: bold
 
     &--selected
-      border-bottom: 3px solid $colorWhite
+      border-bottom: 3px solid var(--colorWhite)
 
 
 @media (max-width: 1024px)
@@ -65,10 +67,8 @@
     &__item
       margin: 38px 18px
       & a
-        // &:hover:not(.navbar__item--selected)
         & > span:first-child
           display: none
-      // &--selected
 
 @media (max-width: 468px)
   .navbar
@@ -108,7 +108,7 @@
       height: 100vh
       width: 70%
       margin-right: 0
-      background: rgba($colorDark, 0.93)
+      background: rgba(var(--colorDark), 0.93)
       z-index: 10
 
       &:not(.active)
@@ -132,4 +132,4 @@
 
       &--selected
         border-bottom: none
-        border-right: 3px solid $colorWhite
+        border-right: 3px solid var(--colorWhite)

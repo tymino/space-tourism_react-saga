@@ -4,7 +4,7 @@ import useTypedSelector from '../hooks/useTypedSelector';
 // import { selectTechnology } from '../redux/selectors';
 import { IDataTechnology } from '../types/redux/pages';
 
-import Loading from '../components/Loading';
+import Loading from '../components/Loading/Loading';
 
 const Technology: React.FC = () => {
   // const destinations = useTypedSelector(selectTechnology);

@@ -3,7 +3,7 @@ import React from 'react';
 import useTypedSelector from '../hooks/useTypedSelector';
 import { selectDestination } from '../redux/selectors';
 
-import Loading from '../components/Loading';
+import Loading from '../components/Loading/Loading';
 
 const Destination: React.FC = () => {
   const data = useTypedSelector(selectDestination);

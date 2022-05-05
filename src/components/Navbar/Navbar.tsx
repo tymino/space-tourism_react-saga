@@ -1,9 +1,11 @@
+import './Navbar.sass';
+
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import useTypedSelector from '../hooks/useTypedSelector';
-import setRoute from '../redux/actions/route';
+import useTypedSelector from '../../hooks/useTypedSelector';
+import setRoute from '../../redux/actions/route';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
