@@ -1,8 +1,11 @@
+@import ../../sass/mixins
+  
 .loading
   margin-top: 40px
   margin-left: 55px
-  color: red
-  font-size: 1.6rem
+  
+  @include heading4
+  color: rgb(var(--colorLight))
 
 @media (max-width: 1024px)
   .loading
