@@ -37,6 +37,7 @@ Users should be able to:
 - [Sass](https://sass-lang.com/)
 - [React](https://reactjs.org/) - JS library
 - [Redux](https://redux.js.org/)
+- [Redux-Saga](https://redux-saga.js.org/)
 - [Typescript](https://www.typescriptlang.org/)
 
 ## Author
