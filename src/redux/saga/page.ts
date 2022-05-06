@@ -1,4 +1,4 @@
-import { take, call, put, takeEvery, delay } from 'redux-saga/effects';
+import { take, call, put, takeEvery, delay, fork } from 'redux-saga/effects';
 import { ActionPages, ActionRoute, RouteName } from '../../types/enums';
 
 import { IDataCrew, IDataDestination, IDataTechnology } from '../../types/redux/pages';
@@ -14,36 +14,36 @@ async function fetchData(pageName: string) {
 }
 
 export function* loadData() {
-  const { payload }: IActionRoute = yield take('SET_ROUTE');
+  while (true) {
+    const { payload }: IActionRoute = yield take('SET_ROUTE');
 
-  if (payload !== RouteName.home) {
-    yield delay(600);
+    if (payload !== RouteName.home) {
+      const { error, data }: IData = yield call(fetchData, payload);
 
-    const { error, data }: IData = yield call(fetchData, payload);
-
-    if (error) {
-      yield put(setError(`No page data`));
-    }
-
-    switch (payload) {
-      case RouteName.destination: {
-        yield put(setDestination(data as IDataDestination[]));
-        break;
+      if (error) {
+        yield put(setError(`No page data`));
       }
 
-      case RouteName.crew: {
-        yield put(setCrew(data as IDataCrew[]));
-        break;
-      }
+      switch (payload) {
+        case RouteName.destination: {
+          yield put(setDestination(data as IDataDestination[]));
+          break;
+        }
 
-      case RouteName.technology: {
-        yield put(setTechnology(data as IDataTechnology[]));
-        break;
-      }
+        case RouteName.crew: {
+          yield put(setCrew(data as IDataCrew[]));
+          break;
+        }
 
-      default:
-        console.log('switch home page');
-        break;
+        case RouteName.technology: {
+          yield put(setTechnology(data as IDataTechnology[]));
+          break;
+        }
+
+        default:
+          console.log('switch home page');
+          break;
+      }
     }
   }
 }
@@ -53,6 +53,6 @@ export function* routeChangeSaga() {
 }
 
 export default function* pageSaga() {
-  yield takeEvery(ActionRoute.SET_ROUTE, routeChangeSaga);
+  yield fork(routeChangeSaga);
   yield takeEvery(ActionPages.LOADING_DATA_PAGE, loadData);
 }
