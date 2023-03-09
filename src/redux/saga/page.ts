@@ -1,13 +1,25 @@
 import { take, call, put, fork, takeLeading } from 'redux-saga/effects';
 import { ActionPages, RouteName } from '../../types/enums';
 
-import { IDataCrew, IDataDestination, IDataTechnology } from '../../types/redux/pages';
+import {
+  IDataCrew,
+  IDataDestination,
+  IDataTechnology,
+} from '../../types/redux/pages';
 import { IActionRoute } from '../../types/redux/route';
 import IData from '../../types/saga/fetchData';
-import { setLoading, setError, setDestination, setCrew, setTechnology } from '../actions/pages';
+import {
+  setLoading,
+  setError,
+  setDestination,
+  setCrew,
+  setTechnology,
+} from '../actions/pages';
 
 async function fetchData(pageName: string) {
-  const response = await fetch(`https://api-space-tourism-saga.herokuapp.com/api/${pageName}`);
+  const response = await fetch(
+    `https://space-tourism-server-saga.onrender.com/api/${pageName}`
+  );
   const json = await response.json();
 
   return json;
