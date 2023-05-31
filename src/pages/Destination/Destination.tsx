@@ -1,4 +1,4 @@
-import './Destination.sass';
+import './Destination.scss';
 
 import React from 'react';
 
@@ -8,7 +8,7 @@ import { selectDestination } from '../../redux/selectors';
 import { Loading } from '../../components';
 
 const Destination: React.FC = () => {
-  const {loading, data} = useTypedSelector(selectDestination);
+  const { loading, data } = useTypedSelector(selectDestination);
 
   const [activeTab, setActiveTab] = React.useState(0);
 
@@ -54,23 +54,38 @@ const Destination: React.FC = () => {
               {data.map((e, i) => (
                 <li
                   key={e.name}
-                  className={`destination__planet-info-tabs-name${Number(activeTab) === i ? ' active' : ''}`}
+                  className={`destination__planet-info-tabs-name${
+                    Number(activeTab) === i ? ' active' : ''
+                  }`}
                   onClick={handleSwitchTab}
-                  data-value={i}>
+                  data-value={i}
+                >
                   {e.name}
                 </li>
               ))}
             </ul>
-            <div className="destination__planet-info-header">{data[activeTab].name}</div>
-            <div className="destination__planet-info-text">{data[activeTab].description}</div>
+            <div className="destination__planet-info-header">
+              {data[activeTab].name}
+            </div>
+            <div className="destination__planet-info-text">
+              {data[activeTab].description}
+            </div>
             <div className="destination__planet-info-footer">
               <div className="destination__planet-info-distance">
-                <div className="destination__planet-info-distance-name">avg. distance</div>
-                <div className="destination__planet-info-distance-value">{data[activeTab].distance}</div>
+                <div className="destination__planet-info-distance-name">
+                  avg. distance
+                </div>
+                <div className="destination__planet-info-distance-value">
+                  {data[activeTab].distance}
+                </div>
               </div>
               <div className="destination__planet-info-travel">
-                <div className="destination__planet-info-travel-name">est. travel time</div>
-                <div className="destination__planet-info-travel-value">{data[activeTab].travel}</div>
+                <div className="destination__planet-info-travel-name">
+                  est. travel time
+                </div>
+                <div className="destination__planet-info-travel-value">
+                  {data[activeTab].travel}
+                </div>
               </div>
             </div>
           </div>

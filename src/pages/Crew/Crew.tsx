@@ -1,4 +1,4 @@
-import './Crew.sass';
+import './Crew.scss';
 
 import React from 'react';
 

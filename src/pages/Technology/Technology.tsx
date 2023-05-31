@@ -1,4 +1,4 @@
-import './Technology.sass';
+import './Technology.scss';
 
 import React from 'react';
 

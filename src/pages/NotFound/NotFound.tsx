@@ -1,4 +1,4 @@
-import './NotFound.sass';
+import './NotFound.scss';
 
 import React from 'react';
 
