@@ -1,4 +1,4 @@
-import ActionPages from '../enums/ActionPages';
+import { EActionPages } from '../enums';
 
 export interface IDataDestination {
   name: string;
@@ -39,26 +39,26 @@ export interface IStatePages {
 }
 
 interface ILoadingDataPage {
-  type: ActionPages.LOADING_DATA_PAGE;
+  type: EActionPages.LOADING_DATA_PAGE;
   payload: boolean;
 }
 interface ILoadDataPageFailure {
-  type: ActionPages.FAILURE_LOAD_DATA_PAGE;
+  type: EActionPages.FAILURE_LOAD_DATA_PAGE;
   payload: string;
 }
 
 interface IDestinationDataPageSuccess {
-  type: ActionPages.SUCCESS_DESTINATION_DATA_PAGE;
+  type: EActionPages.SUCCESS_DESTINATION_DATA_PAGE;
   payload: IDataDestination[];
 }
 
 interface ICrewDataPageSuccess {
-  type: ActionPages.SUCCESS_CREW_DATA_PAGE;
+  type: EActionPages.SUCCESS_CREW_DATA_PAGE;
   payload: IDataCrew[];
 }
 
 interface ITechnologyDataPageSuccess {
-  type: ActionPages.SUCCESS_TECHNOLOGY_DATA_PAGE;
+  type: EActionPages.SUCCESS_TECHNOLOGY_DATA_PAGE;
   payload: IDataTechnology[];
 }
 

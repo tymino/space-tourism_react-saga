@@ -1,4 +1,4 @@
-import ActionPages from '../../types/enums/ActionPages';
+import { EActionPages } from '../../types/enums';
 import { IActionPage, IStatePages } from '../../types/redux/pages';
 
 const initState: IStatePages = {
@@ -11,19 +11,19 @@ const initState: IStatePages = {
 
 const pages = (state = initState, { type, payload }: IActionPage) => {
   switch (type) {
-    case ActionPages.LOADING_DATA_PAGE:
+    case EActionPages.LOADING_DATA_PAGE:
       return { ...state, loading: true, error: null };
 
-    case ActionPages.FAILURE_LOAD_DATA_PAGE:
+    case EActionPages.FAILURE_LOAD_DATA_PAGE:
       return { ...state, loading: false, error: payload };
 
-    case ActionPages.SUCCESS_DESTINATION_DATA_PAGE:
+    case EActionPages.SUCCESS_DESTINATION_DATA_PAGE:
       return { ...state, loading: false, destination: payload };
 
-    case ActionPages.SUCCESS_CREW_DATA_PAGE:
+    case EActionPages.SUCCESS_CREW_DATA_PAGE:
       return { ...state, loading: false, crew: payload };
 
-    case ActionPages.SUCCESS_TECHNOLOGY_DATA_PAGE:
+    case EActionPages.SUCCESS_TECHNOLOGY_DATA_PAGE:
       return { ...state, loading: false, technology: payload };
 
     default:

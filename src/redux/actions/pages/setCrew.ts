@@ -1,9 +1,7 @@
-import ActionPages from '../../../types/enums/ActionPages';
+import { EActionPages } from '../../../types/enums';
 import { IActionPage, IDataCrew } from '../../../types/redux/pages';
 
-const setCrew = (payload: IDataCrew[]): IActionPage => ({
-  type: ActionPages.SUCCESS_CREW_DATA_PAGE,
+export const setCrew = (payload: IDataCrew[]): IActionPage => ({
+  type: EActionPages.SUCCESS_CREW_DATA_PAGE,
   payload,
 });
-
-export default setCrew;

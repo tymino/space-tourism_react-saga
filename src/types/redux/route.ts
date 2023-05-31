@@ -1,4 +1,4 @@
-import ActionRoute from '../enums/ActionRoute';
+import { EActionRoute } from '../enums';
 
 export interface IRoutes {
   index: string;
@@ -12,7 +12,7 @@ export interface IStateRoute {
 }
 
 interface ISetRoute {
-  type: ActionRoute.SET_ROUTE;
+  type: EActionRoute.SET_ROUTE;
   payload: string;
 }
 

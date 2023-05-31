@@ -8,7 +8,7 @@ import { selectCrew } from '../../redux/selectors';
 import { Loading } from '../../components';
 
 const Crew: React.FC = () => {
-  const {loading, data} = useTypedSelector(selectCrew);
+  const { loading, data } = useTypedSelector(selectCrew);
 
   const [activeSlider, setActiveSlider] = React.useState(0);
 
@@ -45,16 +45,23 @@ const Crew: React.FC = () => {
         </div>
         <div className="crew__pilot-wrapper">
           <div className="crew__pilot-info-wrapper">
-            <div className="crew__pilot-info-subheader">{data[activeSlider].role}</div>
-            <div className="crew__pilot-info-header">{data[activeSlider].name}</div>
+            <div className="crew__pilot-info-subheader">
+              {data[activeSlider].role}
+            </div>
+            <div className="crew__pilot-info-header">
+              {data[activeSlider].name}
+            </div>
             <div className="crew__pilot-info-bio">{data[activeSlider].bio}</div>
             <ul className="crew__pilot-info-slider">
               {data.map((e, i) => (
                 <li
                   key={e.name}
-                  className={`crew__pilot-info-tabs-button${Number(activeSlider) === i ? ' active' : ''}`}
+                  className={`crew__pilot-info-tabs-button${
+                    Number(activeSlider) === i ? ' active' : ''
+                  }`}
                   onClick={handleSwitchSlider}
-                  data-value={i}></li>
+                  data-value={i}
+                ></li>
               ))}
             </ul>
           </div>

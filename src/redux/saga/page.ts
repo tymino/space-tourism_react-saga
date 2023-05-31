@@ -1,13 +1,15 @@
 import { take, call, put, fork, takeLeading } from 'redux-saga/effects';
-import { ActionPages, RouteName } from '../../types/enums';
 
+import { EActionPages, ERouteName } from '../../types/enums';
+
+import { IActionRoute } from '../../types/redux/route';
+import IData from '../../types/saga/fetchData';
 import {
   IDataCrew,
   IDataDestination,
   IDataTechnology,
 } from '../../types/redux/pages';
-import { IActionRoute } from '../../types/redux/route';
-import IData from '../../types/saga/fetchData';
+
 import {
   setLoading,
   setError,
@@ -29,7 +31,7 @@ export function* loadData() {
   while (true) {
     const { payload }: IActionRoute = yield take('SET_ROUTE');
 
-    if (payload !== RouteName.home) {
+    if (payload !== ERouteName.home) {
       const { error, data }: IData = yield call(fetchData, payload);
 
       if (error) {
@@ -37,17 +39,17 @@ export function* loadData() {
       }
 
       switch (payload) {
-        case RouteName.destination: {
+        case ERouteName.destination: {
           yield put(setDestination(data as IDataDestination[]));
           break;
         }
 
-        case RouteName.crew: {
+        case ERouteName.crew: {
           yield put(setCrew(data as IDataCrew[]));
           break;
         }
 
-        case RouteName.technology: {
+        case ERouteName.technology: {
           yield put(setTechnology(data as IDataTechnology[]));
           break;
         }
@@ -66,5 +68,5 @@ export function* routeChangeSaga() {
 
 export default function* pageSaga() {
   yield fork(routeChangeSaga);
-  yield takeLeading(ActionPages.LOADING_DATA_PAGE, loadData);
+  yield takeLeading(EActionPages.LOADING_DATA_PAGE, loadData);
 }

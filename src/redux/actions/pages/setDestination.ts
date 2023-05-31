@@ -1,9 +1,7 @@
-import ActionPages from '../../../types/enums/ActionPages';
+import { EActionPages } from '../../../types/enums';
 import { IActionPage, IDataDestination } from '../../../types/redux/pages';
 
-const setDestination = (payload: IDataDestination[]): IActionPage => ({
-  type: ActionPages.SUCCESS_DESTINATION_DATA_PAGE,
+export const setDestination = (payload: IDataDestination[]): IActionPage => ({
+  type: EActionPages.SUCCESS_DESTINATION_DATA_PAGE,
   payload,
 });
-
-export default setDestination;

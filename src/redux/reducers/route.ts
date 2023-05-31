@@ -1,4 +1,4 @@
-import ActionRoute from '../../types/enums/ActionRoute';
+import { EActionRoute } from '../../types/enums';
 import { IStateRoute, IActionRoute } from '../../types/redux/route';
 
 const initState: IStateRoute = {
@@ -13,7 +13,7 @@ const initState: IStateRoute = {
 
 const route = (state = initState, action: IActionRoute) => {
   switch (action.type) {
-    case ActionRoute.SET_ROUTE:
+    case EActionRoute.SET_ROUTE:
       return {
         ...state,
         actualRoute: action.payload,

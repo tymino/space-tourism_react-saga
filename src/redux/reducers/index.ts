@@ -1,6 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import store from '../store';
-
 import pages from './pages';
 import route from './route';
 
