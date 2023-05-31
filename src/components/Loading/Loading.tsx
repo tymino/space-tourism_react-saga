@@ -1,7 +1,6 @@
 import './Loading.sass';
-import React from 'react';
 
-const Loading: React.FC = () => {
+const Loading = () => {
   return <div className="loading">Loading...</div>;
 };
 

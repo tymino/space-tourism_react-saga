@@ -1,18 +1,18 @@
 import './Crew.scss';
 
-import React from 'react';
+import { useState, MouseEvent } from 'react';
 
 import useTypedSelector from '../../hooks/useTypedSelector';
 import { selectCrew } from '../../redux/selectors';
 
 import { Loading } from '../../components';
 
-const Crew: React.FC = () => {
+const Crew = () => {
   const { loading, data } = useTypedSelector(selectCrew);
 
-  const [activeSlider, setActiveSlider] = React.useState(0);
+  const [activeSlider, setActiveSlider] = useState(0);
 
-  const handleSwitchSlider = ({ target }: React.MouseEvent<HTMLElement>) => {
+  const handleSwitchSlider = ({ target }: MouseEvent<HTMLElement>) => {
     const value = (target as HTMLElement).dataset.value;
     setActiveSlider(Number(value));
   };

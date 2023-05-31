@@ -1,6 +1,6 @@
 import './Navbar.sass';
 
-import React from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
@@ -8,23 +8,23 @@ import useTypedSelector from '../../hooks/useTypedSelector';
 import { selectRoute } from '../../redux/selectors';
 import setRoute from '../../redux/actions/route';
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
   const routes = useTypedSelector(selectRoute);
 
-  const menuRef = React.useRef<HTMLDivElement>(null);
-  const linkClickRef = React.useRef<HTMLUListElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const linkClickRef = useRef<HTMLUListElement>(null);
 
-  const [isOpenMenu, setIsOpenMenu] = React.useState<boolean>(false);
+  const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
 
   const toggleStyleMenu = () => (isOpenMenu ? 'active' : '');
 
   const handleOpenMenu = () => setIsOpenMenu(true);
   const handleCloseMenu = () => setIsOpenMenu(false);
 
-  const handleOutsideClick = React.useCallback((event: MouseEvent) => {
+  const handleOutsideClick = useCallback((event: MouseEvent) => {
     const path = event.composedPath();
 
     const clickOutside = !path.includes(menuRef.current as Node);
@@ -35,12 +35,12 @@ const Navbar: React.FC = () => {
     }
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.body.addEventListener('click', handleOutsideClick);
     return () => document.body.removeEventListener('click', handleOutsideClick);
   }, [handleOutsideClick]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(setRoute(location.pathname));
   }, [dispatch, location]);
 
@@ -69,8 +69,11 @@ const Navbar: React.FC = () => {
                 <NavLink
                   to={path}
                   className={({ isActive }) =>
-                    [isActive ? 'navbar__item--selected' : null].filter(Boolean).join(' ')
-                  }>
+                    [isActive ? 'navbar__item--selected' : null]
+                      .filter(Boolean)
+                      .join(' ')
+                  }
+                >
                   <span>{index}</span>
                   <span>{name}</span>
                 </NavLink>

@@ -1,12 +1,11 @@
 import './sass/index.scss';
 
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar';
 import { Home, Destination, Crew, Technology, NotFound } from './pages';
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <>
       <BrowserRouter>

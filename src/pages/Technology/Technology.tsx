@@ -1,18 +1,19 @@
 import './Technology.scss';
 
-import React from 'react';
-
+import { useState, MouseEvent } from 'react';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import { selectTechnology } from '../../redux/selectors';
 
 import { Loading } from '../../components';
 
-const Technology: React.FC = () => {
-  const {loading, data} = useTypedSelector(selectTechnology);
+const Technology = () => {
+  const { loading, data } = useTypedSelector(selectTechnology);
 
-  const [activeButtonSlider, setActiveButtonSlider] = React.useState(0);
+  const [activeButtonSlider, setActiveButtonSlider] = useState(0);
 
-  const handleButtonSlider = ({ currentTarget: { value } }: React.MouseEvent<HTMLButtonElement>) => {
+  const handleButtonSlider = ({
+    currentTarget: { value },
+  }: MouseEvent<HTMLButtonElement>) => {
     setActiveButtonSlider(Number(value));
   };
 
@@ -49,18 +50,27 @@ const Technology: React.FC = () => {
               return (
                 <button
                   key={i}
-                  className={`technology__launch-button${Number(activeButtonSlider) === i ? ' active' : ''}`}
+                  className={`technology__launch-button${
+                    Number(activeButtonSlider) === i ? ' active' : ''
+                  }`}
                   value={i}
-                  onClick={handleButtonSlider}>
+                  onClick={handleButtonSlider}
+                >
                   {actualName}
                 </button>
               );
             })}
           </div>
           <div className="technology__launch-info-container">
-            <div className="technology__launch-info-subheader">the terminology...</div>
-            <div className="technology__launch-info-header">{data[activeButtonSlider].name}</div>
-            <div className="technology__launch-info-text">{data[activeButtonSlider].description}</div>
+            <div className="technology__launch-info-subheader">
+              the terminology...
+            </div>
+            <div className="technology__launch-info-header">
+              {data[activeButtonSlider].name}
+            </div>
+            <div className="technology__launch-info-text">
+              {data[activeButtonSlider].description}
+            </div>
           </div>
           <picture className="technology__launch-picture">
             <source
