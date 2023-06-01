@@ -4,15 +4,13 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import useTypedSelector from '../../hooks/useTypedSelector';
-import { selectRoute } from '../../redux/selectors';
-import setRoute from '../../redux/actions/route';
+// import { selectRoute } from '../../redux/selectors';
 
 const Navbar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const routes = useTypedSelector(selectRoute);
+  // const routes = useTypedSelector(selectRoute);
 
   const menuRef = useRef<HTMLDivElement>(null);
   const linkClickRef = useRef<HTMLUListElement>(null);
@@ -40,9 +38,9 @@ const Navbar = () => {
     return () => document.body.removeEventListener('click', handleOutsideClick);
   }, [handleOutsideClick]);
 
-  useEffect(() => {
-    dispatch(setRoute(location.pathname));
-  }, [dispatch, location]);
+  // useEffect(() => {
+  //   dispatch(setRoute(location.pathname));
+  // }, [dispatch, location]);
 
   return (
     <div className="navbar" role="banner">
@@ -64,7 +62,7 @@ const Navbar = () => {
             onClick={handleCloseMenu}
           />
           <ul ref={linkClickRef}>
-            {routes.map(({ index, name, path }) => (
+            {routes.map(({ index, name, path }: any) => (
               <li className="navbar__item" key={name + index}>
                 <NavLink
                   to={path}

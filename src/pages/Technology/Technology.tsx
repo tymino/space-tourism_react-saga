@@ -45,7 +45,7 @@ const Technology = () => {
         </div>
         <div className="technology__launch-wrapper">
           <div className="technology__launch-button-container">
-            {data.map((_, i) => {
+            {data.map((_: any, i: any) => {
               const actualName = i + 1;
               return (
                 <button

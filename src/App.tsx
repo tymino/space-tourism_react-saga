@@ -1,6 +1,9 @@
 import './sass/index.scss';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+// import { HistoryRouter as Router } from "redux-first-history/rr6";
+import { Router } from 'react-router-dom';
+import { history } from './redux/store';
 
 import Navbar from './components/Navbar/Navbar';
 import { Home, Destination, Crew, Technology, NotFound } from './pages';
@@ -8,7 +11,7 @@ import { Home, Destination, Crew, Technology, NotFound } from './pages';
 const App = () => {
   return (
     <>
-      <BrowserRouter>
+      <Router history={history}>
         <Navbar />
 
         <Routes>
@@ -18,7 +21,7 @@ const App = () => {
           <Route path="technology" element={<Technology />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </>
   );
 };

@@ -53,7 +53,7 @@ const Crew = () => {
             </div>
             <div className="crew__pilot-info-bio">{data[activeSlider].bio}</div>
             <ul className="crew__pilot-info-slider">
-              {data.map((e, i) => (
+              {data.map((e: any, i: any) => (
                 <li
                   key={e.name}
                   className={`crew__pilot-info-tabs-button${

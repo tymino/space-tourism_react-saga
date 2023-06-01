@@ -1,4 +1,4 @@
-import { IRootState } from '../reducers';
+import { IRootState } from '../store';
 
 const selectRoute = ({ route }: IRootState) => route.navigation;
 

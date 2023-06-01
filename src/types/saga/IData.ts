@@ -1,4 +1,4 @@
-import { IDataCrew, IDataDestination, IDataTechnology } from "../redux/pages";
+import { IDataCrew, IDataDestination, IDataTechnology } from '../redux/pages';
 
 interface IData {
   error: boolean;

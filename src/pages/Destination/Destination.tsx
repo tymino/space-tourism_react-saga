@@ -51,7 +51,7 @@ const Destination = () => {
           />
           <div className="destination__planet-info-wrapper">
             <ul className="destination__planet-info-tabs">
-              {data.map((e, i) => (
+              {data.map((e: any, i: any) => (
                 <li
                   key={e.name}
                   className={`destination__planet-info-tabs-name${

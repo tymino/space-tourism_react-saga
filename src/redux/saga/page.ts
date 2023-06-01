@@ -3,7 +3,7 @@ import { take, call, put, fork, takeLeading } from 'redux-saga/effects';
 import { EActionPages, ERouteName } from '../../types/enums';
 
 import { IActionRoute } from '../../types/redux/route';
-import IData from '../../types/saga/fetchData';
+import IData from '../../types/saga/IData';
 import {
   IDataCrew,
   IDataDestination,
@@ -18,14 +18,7 @@ import {
   setTechnology,
 } from '../actions/pages';
 
-async function fetchData(pageName: string) {
-  const response = await fetch(
-    `https://space-tourism-server-saga.onrender.com/api/${pageName}`
-  );
-  const json = await response.json();
-
-  return json;
-}
+import { fetchData } from '../../api/fetchData';
 
 export function* loadData() {
   while (true) {
