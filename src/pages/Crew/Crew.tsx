@@ -2,14 +2,11 @@ import './Crew.scss';
 
 import { useState, MouseEvent } from 'react';
 
-import useTypedSelector from '../../hooks/useTypedSelector';
 import { selectCrew } from '../../redux/selectors';
 
 import { Loading } from '../../components';
 
 const Crew = () => {
-  const { loading, data } = useTypedSelector(selectCrew);
-
   const [activeSlider, setActiveSlider] = useState(0);
 
   const handleSwitchSlider = ({ target }: MouseEvent<HTMLElement>) => {
@@ -17,65 +14,65 @@ const Crew = () => {
     setActiveSlider(Number(value));
   };
 
-  return loading || data.length === 0 ? (
-    <Loading />
-  ) : (
-    <div className="crew" role="main">
-      <picture className="crew__picture">
-        <source
-          className="crew__picture--img"
-          media="(max-width: 468px)"
-          srcSet="./assets/crew/background-crew-mobile.jpg"
-        />
-        <source
-          className="crew__picture--img"
-          media="(max-width: 1024px)"
-          srcSet="./assets/crew/background-crew-tablet.jpg"
-        />
-        <img
-          className="crew__picture--img"
-          src="./assets/crew/background-crew-desktop.jpg"
-          alt="background-home-desktop"
-        />
-      </picture>
+  // return loading || data.length === 0 ? (
+  return <Loading />;
+  // ) : (
+  //   <div className="crew" role="main">
+  //     <picture className="crew__picture">
+  //       <source
+  //         className="crew__picture--img"
+  //         media="(max-width: 468px)"
+  //         srcSet="./assets/crew/background-crew-mobile.jpg"
+  //       />
+  //       <source
+  //         className="crew__picture--img"
+  //         media="(max-width: 1024px)"
+  //         srcSet="./assets/crew/background-crew-tablet.jpg"
+  //       />
+  //       <img
+  //         className="crew__picture--img"
+  //         src="./assets/crew/background-crew-desktop.jpg"
+  //         alt="background-home-desktop"
+  //       />
+  //     </picture>
 
-      <div className="crew__container">
-        <div className="crew__subtitle">
-          <span>02</span> Meet your crew
-        </div>
-        <div className="crew__pilot-wrapper">
-          <div className="crew__pilot-info-wrapper">
-            <div className="crew__pilot-info-subheader">
-              {data[activeSlider].role}
-            </div>
-            <div className="crew__pilot-info-header">
-              {data[activeSlider].name}
-            </div>
-            <div className="crew__pilot-info-bio">{data[activeSlider].bio}</div>
-            <ul className="crew__pilot-info-slider">
-              {data.map((e: any, i: any) => (
-                <li
-                  key={e.name}
-                  className={`crew__pilot-info-tabs-button${
-                    Number(activeSlider) === i ? ' active' : ''
-                  }`}
-                  onClick={handleSwitchSlider}
-                  data-value={i}
-                ></li>
-              ))}
-            </ul>
-          </div>
-          <div className="crew__pilot-image-mobile">
-            <img
-              className="crew__pilot-image"
-              src={data[activeSlider].images.png}
-              alt={data[activeSlider].name}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  //     <div className="crew__container">
+  //       <div className="crew__subtitle">
+  //         <span>02</span> Meet your crew
+  //       </div>
+  //       <div className="crew__pilot-wrapper">
+  //         <div className="crew__pilot-info-wrapper">
+  //           <div className="crew__pilot-info-subheader">
+  //             {data[activeSlider].role}
+  //           </div>
+  //           <div className="crew__pilot-info-header">
+  //             {data[activeSlider].name}
+  //           </div>
+  //           <div className="crew__pilot-info-bio">{data[activeSlider].bio}</div>
+  //           <ul className="crew__pilot-info-slider">
+  //             {data.map((e: any, i: any) => (
+  //               <li
+  //                 key={e.name}
+  //                 className={`crew__pilot-info-tabs-button${
+  //                   Number(activeSlider) === i ? ' active' : ''
+  //                 }`}
+  //                 onClick={handleSwitchSlider}
+  //                 data-value={i}
+  //               ></li>
+  //             ))}
+  //           </ul>
+  //         </div>
+  //         <div className="crew__pilot-image-mobile">
+  //           <img
+  //             className="crew__pilot-image"
+  //             src={data[activeSlider].images.png}
+  //             alt={data[activeSlider].name}
+  //           />
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default Crew;

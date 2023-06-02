@@ -1,23 +1,14 @@
-import './Navbar.sass';
+import './Navbar.scss';
 
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { NavLink, useLocation } from 'react-router-dom';
-
-// import { selectRoute } from '../../redux/selectors';
+import { NavLink } from 'react-router-dom';
+import { routes } from '../../routes';
 
 const Navbar = () => {
-  const location = useLocation();
-  const dispatch = useDispatch();
-
-  // const routes = useTypedSelector(selectRoute);
-
   const menuRef = useRef<HTMLDivElement>(null);
   const linkClickRef = useRef<HTMLUListElement>(null);
 
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
-
-  const toggleStyleMenu = () => (isOpenMenu ? 'active' : '');
 
   const handleOpenMenu = () => setIsOpenMenu(true);
   const handleCloseMenu = () => setIsOpenMenu(false);
@@ -38,9 +29,13 @@ const Navbar = () => {
     return () => document.body.removeEventListener('click', handleOutsideClick);
   }, [handleOutsideClick]);
 
-  // useEffect(() => {
-  //   dispatch(setRoute(location.pathname));
-  // }, [dispatch, location]);
+  const styleBurgerMenu = (className: string) => {
+    return `${className} ${isOpenMenu ? 'active' : ''}`;
+  };
+
+  const styleActiveLink = ({ isActive }: { isActive: boolean }): string => {
+    return isActive ? 'navbar__item--selected' : '';
+  };
 
   return (
     <div className="navbar" role="banner">
@@ -49,34 +44,31 @@ const Navbar = () => {
 
       <nav ref={menuRef}>
         <img
-          className={`navbar__hamburger ${toggleStyleMenu()}`}
+          className={styleBurgerMenu('navbar__hamburger')}
           src="./assets/shared/icon-hamburger.svg"
           alt="icon-hamburger"
           onClick={handleOpenMenu}
         />
-        <div className={`navbar__routes ${toggleStyleMenu()}`}>
+        <div className={styleBurgerMenu('navbar__routes')}>
           <img
-            className={`navbar__close ${toggleStyleMenu()}`}
+            className={styleBurgerMenu('navbar__close')}
             src="./assets/shared/icon-close.svg"
             alt="icon-close"
             onClick={handleCloseMenu}
           />
           <ul ref={linkClickRef}>
-            {routes.map(({ index, name, path }: any) => (
-              <li className="navbar__item" key={name + index}>
-                <NavLink
-                  to={path}
-                  className={({ isActive }) =>
-                    [isActive ? 'navbar__item--selected' : null]
-                      .filter(Boolean)
-                      .join(' ')
-                  }
-                >
-                  <span>{index}</span>
-                  <span>{name}</span>
-                </NavLink>
-              </li>
-            ))}
+            {routes.map(({ id, path, name, indexName, isNavigate }) => {
+              return (
+                isNavigate && (
+                  <li className="navbar__item" key={id}>
+                    <NavLink to={path} className={styleActiveLink}>
+                      <span>{indexName}</span>
+                      <span>{name}</span>
+                    </NavLink>
+                  </li>
+                )
+              );
+            })}
           </ul>
         </div>
       </nav>
