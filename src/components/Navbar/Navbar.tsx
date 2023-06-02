@@ -34,7 +34,7 @@ const Navbar = () => {
   };
 
   const styleActiveLink = ({ isActive }: { isActive: boolean }): string => {
-    return isActive ? 'navbar__item--selected' : '';
+    return isActive ? 'navbar__item-selected' : '';
   };
 
   return (
