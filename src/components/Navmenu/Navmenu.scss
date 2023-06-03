@@ -1,6 +1,6 @@
 @import '../../sass/mixins';
 
-.navbar {
+.navmenu {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -66,7 +66,7 @@
 }
 
 @media (max-width: 1080px) {
-  .navbar {
+  .navmenu {
     margin-top: 0px;
 
     &__logo {
@@ -92,7 +92,7 @@
 }
 
 @media (max-width: 740px) {
-  .navbar {
+  .navmenu {
     &__logo {
       margin: 24px 0 0 24px;
     }
@@ -118,14 +118,10 @@
 
       cursor: pointer;
       z-index: 12;
-
-      &:not(.active) {
-        display: none;
-      }
     }
 
     &__routes {
-      position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
       display: flex;
@@ -133,13 +129,13 @@
       justify-content: flex-start;
       height: 100vh;
       margin-right: 0;
-      padding-left: 30px;
-      padding-right: 24px;
+      padding: 0px 24px;
       background: rgb(var(--colorDark));
+      transition: right ease-in var(--transition-time);
       z-index: 10;
 
       &:not(.active) {
-        display: none;
+        right: -50%;
       }
 
       & > ul {
@@ -193,7 +189,7 @@
 }
 
 @media (max-width: 340px) {
-  .navbar {
+  .navmenu {
     &__close {
       margin-right: 0;
     }
