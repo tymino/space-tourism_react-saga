@@ -1,8 +1,9 @@
 import './Navmenu.scss';
 
 import { NavLink } from 'react-router-dom';
-import { useNavmenu } from './useNavmenu';
 import { routes } from '../../routes';
+import { useNavmenu } from './useNavmenu';
+
 import { Logo } from '../';
 
 interface IMyLinkProps {
