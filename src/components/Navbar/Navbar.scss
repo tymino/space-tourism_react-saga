@@ -31,7 +31,7 @@
   &__routes {
     background: rgba(var(--colorWhite), 0.04);
     padding-left: 80px;
-    padding-right: 80px;
+    padding-right: 60px;
 
     & > ul {
       display: flex;
@@ -48,8 +48,6 @@
     & a {
       padding: 36px 0;
       @include navText;
-
-      transition: border-color ease var(--transition-time);
 
       &:hover:not(.navbar__item-selected) {
         border-bottom: 3px solid rgba(var(--colorWhite), 0.5);
@@ -83,10 +81,6 @@
       }
     }
 
-    &__routes {
-      padding: 0 40px;
-    }
-
     &__item {
       margin: 38px 18px;
 
@@ -97,7 +91,7 @@
   }
 }
 
-@media (max-width: 676px) {
+@media (max-width: 740px) {
   .navbar {
     &__logo {
       margin: 24px 0 0 24px;
@@ -117,8 +111,8 @@
     &__close {
       display: block;
       align-self: flex-end;
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       margin-top: 34px;
       margin-bottom: 50px;
 
@@ -139,7 +133,8 @@
       justify-content: flex-start;
       height: 100vh;
       margin-right: 0;
-      padding-left: 20px;
+      padding-left: 30px;
+      padding-right: 24px;
       background: rgb(var(--colorDark));
       z-index: 10;
 
@@ -153,6 +148,17 @@
         margin: 0;
         width: 160px;
       }
+    }
+
+    &__overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      opacity: 0.6;
+      z-index: 2;
     }
 
     &__item {
@@ -170,8 +176,17 @@
       }
 
       &-selected {
-        border-bottom: none;
-        border-right: 2px solid rgb(var(--colorWhite));
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          width: 4px;
+          height: 100%;
+          background: rgb(var(--colorWhite));
+        }
       }
     }
   }

@@ -1,33 +1,14 @@
 import './Navbar.scss';
 
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { routes } from '../../routes';
 
 const Navbar = () => {
-  const menuRef = useRef<HTMLDivElement>(null);
-  const linkClickRef = useRef<HTMLUListElement>(null);
-
-  const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
+  const [isOpenMenu, setIsOpenMenu] = useState(true);
 
   const handleOpenMenu = () => setIsOpenMenu(true);
   const handleCloseMenu = () => setIsOpenMenu(false);
-
-  const handleOutsideClick = useCallback((event: MouseEvent) => {
-    const path = event.composedPath();
-
-    const clickOutside = !path.includes(menuRef.current as Node);
-    const clickLink = path.includes(linkClickRef.current as Node);
-
-    if (clickOutside || clickLink) {
-      handleCloseMenu();
-    }
-  }, []);
-
-  useEffect(() => {
-    document.body.addEventListener('click', handleOutsideClick);
-    return () => document.body.removeEventListener('click', handleOutsideClick);
-  }, [handleOutsideClick]);
 
   const styleBurgerMenu = (className: string) => {
     return `${className} ${isOpenMenu ? 'active' : ''}`;
@@ -42,7 +23,10 @@ const Navbar = () => {
       <img className="navbar__logo" src="./assets/shared/logo.svg" alt="logo" />
       <div className="navbar__line-decoration"></div>
 
-      <nav ref={menuRef}>
+      <nav>
+        {isOpenMenu && (
+          <div className="navbar__overlay" onClick={handleCloseMenu} />
+        )}
         <img
           className={styleBurgerMenu('navbar__hamburger')}
           src="./assets/shared/icon-hamburger.svg"
@@ -56,7 +40,7 @@ const Navbar = () => {
             alt="icon-close"
             onClick={handleCloseMenu}
           />
-          <ul ref={linkClickRef}>
+          <ul>
             {routes.map(({ id, path, name, indexName, isNavigate }) => {
               return (
                 isNavigate && (
