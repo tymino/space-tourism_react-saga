@@ -92,7 +92,20 @@
 }
 
 @media (max-width: 740px) {
+  @keyframes fadeInOut {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: var(--animation-overlay-opacity);
+    }
+  }
+
   .navmenu {
+    --animation-overlay-duration: 1s;
+    --animation-overlay-opacity: 0.6;
+
     &__logo {
       margin: 24px 0 0 24px;
     }
@@ -153,7 +166,10 @@
       width: 100%;
       height: 100%;
       background: black;
-      opacity: 0.6;
+      
+      opacity: var(--animation-overlay-opacity);
+      animation: fadeInOut var(--animation-overlay-duration);
+
       z-index: 2;
     }
 

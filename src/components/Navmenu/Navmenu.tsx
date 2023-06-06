@@ -27,17 +27,6 @@ const MyLink = ({ path, indexName, name }: IMyLinkProps) => {
   );
 };
 
-const MyLinkList = () => {
-  return (
-    <ul>
-      {routes.map(({ id, path, name, indexName, isNavigate }) => {
-        const linkProps = { path, name, indexName };
-        return isNavigate && <MyLink key={id} {...linkProps} />;
-      })}
-    </ul>
-  );
-};
-
 const MyNav = ({ children }: { children: JSX.Element }) => {
   const { isOpenMenu, openMenu, closeMenu } = useNavmenu();
 
@@ -67,7 +56,16 @@ const MyNav = ({ children }: { children: JSX.Element }) => {
   );
 };
 
-MyNav.MyLinkList = MyLinkList;
+MyNav.MyLinkList = () => {
+  return (
+    <ul>
+      {routes.map(({ id, path, name, indexName, isNavigate }) => {
+        const linkProps = { path, name, indexName };
+        return isNavigate && <MyLink key={id} {...linkProps} />;
+      })}
+    </ul>
+  );
+};
 
 const Navmenu = () => {
   return (
