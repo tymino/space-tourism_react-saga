@@ -92,19 +92,10 @@
 }
 
 @media (max-width: 740px) {
-  @keyframes fadeInOut {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: var(--animation-overlay-opacity);
-    }
-  }
-
   .navmenu {
-    --animation-overlay-duration: var(--transition-time);
+    --animation-duration: var(--transition-time);
     --animation-overlay-opacity: 0.6;
+    --animation-menu-pos-right: -50%;
 
     &__logo {
       margin: 24px 0 0 24px;
@@ -130,6 +121,8 @@
       margin-top: 34px;
       margin-bottom: 50px;
 
+      animation: slideMenuOut 0.3s;
+
       cursor: pointer;
     }
 
@@ -145,10 +138,15 @@
       margin-right: 0;
       padding: 0px 24px;
       background: rgb(var(--colorDark));
-      transition: right ease-in var(--transition-time);
 
-      &:not(.active) {
-        right: -50%;
+      &.open {
+        right: 0;
+        animation: fadeInMenu var(--animation-duration);
+      }
+
+      &.close {
+        right: var(--animation-menu-pos-right);
+        animation: fadeOutMenu var(--animation-duration);
       }
 
       & > ul {
@@ -168,8 +166,15 @@
       height: 100%;
       background: black;
 
-      opacity: var(--animation-overlay-opacity);
-      animation: fadeInOut var(--animation-overlay-duration);
+      &.open {
+        opacity: var(--animation-overlay-opacity);
+        animation: fadeInOverlay var(--animation-duration);
+      }
+
+      &.close {
+        opacity: 0;
+        animation: fadeOutOverlay var(--animation-duration);
+      }
     }
 
     &__item {
@@ -213,5 +218,45 @@
       padding-left: 20px;
       padding-right: 10px;
     }
+  }
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: var(--animation-overlay-opacity);
+  }
+}
+
+@keyframes fadeOutOverlay {
+  from {
+    opacity: var(--animation-overlay-opacity);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInMenu {
+  from {
+    right: var(--animation-menu-pos-right);
+  }
+
+  to {
+    right: 0;
+  }
+}
+
+@keyframes fadeOutMenu {
+  from {
+    right: 0;
+  }
+
+  to {
+    right: var(--animation-menu-pos-right);
   }
 }

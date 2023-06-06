@@ -7,15 +7,12 @@ import { Navmenu, MyRoutes } from './components';
 
 // will need to change the var css colors
 
-import { fetchData } from './api/fetchData';
-
 const App = () => {
   return (
     <>
       <Router history={history}>
         <Navmenu />
         <MyRoutes />
-        <button onClick={() => fetchData('crew')}>test</button>
       </Router>
     </>
   );

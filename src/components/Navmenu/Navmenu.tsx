@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { routes } from '../../routes';
 import { useNavmenu } from './useNavmenu';
 
-import { Logo } from '../';
+import { Logo, MyImage } from '../';
 
 interface IMyLinkProps {
   path: string;
@@ -28,30 +28,32 @@ const MyLink = ({ path, indexName, name }: IMyLinkProps) => {
 };
 
 const MyNav = ({ children }: { children: JSX.Element }) => {
-  const { isOpenMenu, openMenu, closeMenu } = useNavmenu();
-
-  const styleBurgerMenu = (className: string) => {
-    return `${className} ${isOpenMenu ? 'active' : ''}`;
-  };
+  const { isOpenMenu, animation, openMenu, closeMenu } = useNavmenu();
 
   return (
     <nav>
-      {isOpenMenu && <div className="navmenu__overlay" onClick={closeMenu} />}
-      <img
-        className={styleBurgerMenu('navmenu__hamburger')}
-        src="./assets/shared/icon-hamburger.svg"
-        alt="icon-hamburger"
-        onClick={openMenu}
+      {isOpenMenu && (
+        <>
+          <div
+            className={`navmenu__overlay ${animation}`}
+            onClick={closeMenu}
+          />
+          <div className={`navmenu__routes ${animation}`}>
+            <MyImage
+              className="navmenu__close"
+              name="icon-close"
+              handleClick={closeMenu}
+            />
+            {children}
+          </div>
+        </>
+      )}
+
+      <MyImage
+        className="navmenu__hamburger"
+        name="icon-hamburger"
+        handleClick={openMenu}
       />
-      <div className={styleBurgerMenu('navmenu__routes')}>
-        <img
-          className={styleBurgerMenu('navmenu__close')}
-          src="./assets/shared/icon-close.svg"
-          alt="icon-close"
-          onClick={closeMenu}
-        />
-        {children}
-      </div>
     </nav>
   );
 };
