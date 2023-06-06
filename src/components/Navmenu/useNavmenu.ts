@@ -9,7 +9,7 @@ export const useNavmenu = (isOpen = false) => {
   const delayAnim = async (ms: number, isOpen = false, animName = 'close') => {
     setAnimation(animName);
 
-    await new Promise((resolve) => setInterval(resolve, ms));
+    await new Promise((resolve) => setTimeout(resolve, ms));
 
     setIsOpenMenu(isOpen);
   };
