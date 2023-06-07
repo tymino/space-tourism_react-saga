@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export const useNavmenu = (isOpen = false) => {
-  const [animation, setAnimation] = useState('open');
+  const [animation, setAnimation] = useState('');
   const [isOpenMenu, setIsOpenMenu] = useState(isOpen);
 
   console.log('useNavmenu');

@@ -38,16 +38,17 @@ const MyNav = ({ children }: { children: JSX.Element }) => {
             className={`navmenu__overlay ${animation}`}
             onClick={closeMenu}
           />
-          <div className={`navmenu__routes ${animation}`}>
-            <MyImage
-              className="navmenu__close"
-              name="icon-close"
-              handleClick={closeMenu}
-            />
-            {children}
-          </div>
         </>
       )}
+
+      <div className={`navmenu__routes ${animation}`}>
+        <MyImage
+          className="navmenu__close"
+          name="icon-close"
+          handleClick={closeMenu}
+        />
+        {children}
+      </div>
 
       <MyImage
         className="navmenu__hamburger"
