@@ -4,8 +4,6 @@ export const useNavmenu = (isOpen = false) => {
   const [animation, setAnimation] = useState('');
   const [isOpenMenu, setIsOpenMenu] = useState(isOpen);
 
-  console.log('useNavmenu');
-
   const delayAnim = async (ms: number, isOpen = false, animName = 'close') => {
     setAnimation(animName);
 

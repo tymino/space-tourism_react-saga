@@ -9,8 +9,6 @@ interface IMyImage {
 const MyImage: FC<IMyImage> = ({ className, name, handleClick }) => {
   const setSrc = () => `./assets/shared/${name}.svg`;
 
-  console.log('render', name);
-
   return (
     <img
       className={className}

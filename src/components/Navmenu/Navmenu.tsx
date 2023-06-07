@@ -33,12 +33,7 @@ const MyNav = ({ children }: { children: JSX.Element }) => {
   return (
     <nav>
       {isOpenMenu && (
-        <>
-          <div
-            className={`navmenu__overlay ${animation}`}
-            onClick={closeMenu}
-          />
-        </>
+        <div className={`navmenu__overlay ${animation}`} onClick={closeMenu} />
       )}
 
       <div className={`navmenu__routes ${animation}`}>
