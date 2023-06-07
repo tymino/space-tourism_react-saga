@@ -67,12 +67,12 @@ export const routes: IRoutes[] = [
   },
 ];
 
-export const getRoutePath = (id: string) => {
-  const route = routes.find((route) => route.id === id);
+// export const getRoutePath = (id: string) => {
+//   const route = routes.find((route) => route.id === id);
 
-  if (route) {
-    const { path } = route;
+//   if (route) {
+//     const { path } = route;
 
-    return path;
-  }
-};
+//     return path;
+//   }
+// };

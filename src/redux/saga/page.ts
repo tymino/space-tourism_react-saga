@@ -1,65 +1,21 @@
-import { take, call, put, fork, takeLeading } from 'redux-saga/effects';
-
-import { EActionPages, ERouteName } from '../../types/enums';
-
-import { IActionRoute } from '../../types/redux/route';
-import IData from '../../types/saga/IData';
-import {
-  IDataCrew,
-  IDataDestination,
-  IDataTechnology,
-} from '../../types/redux/pages';
-
-import {
-  setLoading,
-  setError,
-  setDestination,
-  setCrew,
-  setTechnology,
-} from '../actions/pages';
-
+import { put } from 'redux-saga/effects';
 import { fetchData } from '../../api/fetchData';
+import {
+  loadingPage,
+  loadingPageSuccess,
+  loadingPageFailure,
+} from '../reducers/pagesSlice';
 
-export function* loadData() {
-  while (true) {
-    const { payload }: IActionRoute = yield take('SET_ROUTE');
+export function* workerPageSaga(pathname: string): any {
+  yield console.log('workerPageSaga', pathname);
 
-    if (payload !== ERouteName.home) {
-      const { error, data }: IData = yield call(fetchData, payload);
+  yield put(loadingPage(true));
 
-      if (error) {
-        yield put(setError(`No page data`));
-      }
+  try {
+    const posts = yield fetchData(pathname);
 
-      switch (payload) {
-        case ERouteName.destination: {
-          yield put(setDestination(data as IDataDestination[]));
-          break;
-        }
-
-        case ERouteName.crew: {
-          yield put(setCrew(data as IDataCrew[]));
-          break;
-        }
-
-        case ERouteName.technology: {
-          yield put(setTechnology(data as IDataTechnology[]));
-          break;
-        }
-
-        default:
-          console.log('switch home page');
-          break;
-      }
-    }
+    yield put(loadingPageSuccess(posts));
+  } catch (error: any) {
+    yield put(loadingPageFailure(error.message));
   }
-}
-
-export function* routeChangeSaga() {
-  yield put(setLoading(true));
-}
-
-export default function* pageSaga() {
-  yield fork(routeChangeSaga);
-  yield takeLeading(EActionPages.LOADING_DATA_PAGE, loadData);
 }

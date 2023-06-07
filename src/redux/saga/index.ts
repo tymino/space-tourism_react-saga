@@ -1,8 +1,7 @@
-import { all, spawn } from 'redux-saga/effects';
-import page from './page';
+import { takeLatest } from 'redux-saga/effects';
+import { LOCATION_CHANGE } from 'redux-first-history';
+import { watcherRoute } from './route';
 
 export default function* rootSaga() {
-  const sagas = [page];
-
-  yield all(sagas.map((s) => spawn(s)));
+  yield takeLatest(LOCATION_CHANGE, watcherRoute);
 }
