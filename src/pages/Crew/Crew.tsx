@@ -2,8 +2,6 @@ import './Crew.scss';
 
 import { useState, MouseEvent } from 'react';
 
-import { selectCrew } from '../../redux/selectors';
-
 import { Loading } from '../../components';
 
 const Crew = () => {
@@ -15,7 +13,7 @@ const Crew = () => {
   };
 
   // return loading || data.length === 0 ? (
-  return <Loading />;
+  return <div>Crew</div>;
   // ) : (
   //   <div className="crew" role="main">
   //     <picture className="crew__picture">

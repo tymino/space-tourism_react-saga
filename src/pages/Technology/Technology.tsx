@@ -1,7 +1,6 @@
 import './Technology.scss';
 
 import { useState, MouseEvent } from 'react';
-import { selectTechnology } from '../../redux/selectors';
 
 import { Loading } from '../../components';
 
@@ -14,7 +13,7 @@ const Technology = () => {
     setActiveButtonSlider(Number(value));
   };
 
-  return <Loading />;
+  return <div>Tech</div>;
   // ) : (
   //   <div className="technology" role="main">
   //     <picture className="technology__picture">

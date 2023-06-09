@@ -5,8 +5,8 @@ import { routes } from '../../routes';
 const MyRoutes = () => {
   return (
     <Routes>
-      {routes.map(({ id, component: Component, ...props }) => {
-        return <Route key={id} element={<Component />} {...props} />;
+      {routes.map(({ id, component: Component, path }) => {
+        return <Route key={id} element={<Component />} path={path} />;
       })}
     </Routes>
   );

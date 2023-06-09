@@ -29,8 +29,20 @@ const pagesSlice = createSlice({
     loadingPage(state, action: PayloadAction<boolean>) {
       Object.assign(state, { loading: action.payload, error: null });
     },
-    loadingPageSuccess(state) {
+    loadingPageFromCache(state, action: PayloadAction<string>) {
       state.loading = false;
+      state.activePage = state.cache[action.payload];
+    },
+    loadingPageSuccess(
+      state,
+      action: PayloadAction<{ name: string; data: TActivePage }>
+    ) {
+      state.loading = false;
+      state.activePage = action.payload.data;
+      state.cache = {
+        ...state.cache,
+        [action.payload.name]: action.payload.data,
+      };
     },
     loadingPageFailure(state, action: PayloadAction<any>) {
       state.loading = false;
@@ -39,7 +51,11 @@ const pagesSlice = createSlice({
   },
 });
 
-export const { loadingPage, loadingPageSuccess, loadingPageFailure } =
-  pagesSlice.actions;
+export const {
+  loadingPage,
+  loadingPageFromCache,
+  loadingPageSuccess,
+  loadingPageFailure,
+} = pagesSlice.actions;
 
 export default pagesSlice.reducer;

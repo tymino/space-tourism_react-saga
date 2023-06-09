@@ -14,7 +14,6 @@ interface IRoutes {
   indexName: string;
   isNavigate: boolean;
   path: string;
-  exact: boolean;
   component: () => JSX.Element;
 }
 
@@ -25,7 +24,6 @@ export const routes: IRoutes[] = [
     indexName: '01',
     isNavigate: true,
     path: '/',
-    exact: true,
     component: Home,
   },
 
@@ -35,7 +33,6 @@ export const routes: IRoutes[] = [
     indexName: '02',
     isNavigate: true,
     path: 'destination',
-    exact: true,
     component: Destination,
   },
   {
@@ -44,7 +41,6 @@ export const routes: IRoutes[] = [
     indexName: '03',
     isNavigate: true,
     path: 'crew',
-    exact: true,
     component: Crew,
   },
   {
@@ -53,7 +49,6 @@ export const routes: IRoutes[] = [
     indexName: '04',
     isNavigate: true,
     path: 'technology',
-    exact: true,
     component: Technology,
   },
   {
@@ -62,7 +57,6 @@ export const routes: IRoutes[] = [
     indexName: '00',
     isNavigate: false,
     path: '*',
-    exact: false,
     component: NotFound,
   },
 ];

@@ -1,21 +1,29 @@
-import { put } from 'redux-saga/effects';
+import { put, delay, select } from 'redux-saga/effects';
 import { fetchData } from '../../api/fetchData';
 import {
   loadingPage,
+  loadingPageFromCache,
   loadingPageSuccess,
   loadingPageFailure,
 } from '../reducers/pagesSlice';
 
 export function* workerPageSaga(pathname: string): any {
-  yield console.log('workerPageSaga', pathname);
-
   yield put(loadingPage(true));
 
-  try {
-    const posts = yield fetchData(pathname);
+  const isDataInCache = yield select((state) => !!state.pages.cache[pathname]);
 
-    yield put(loadingPageSuccess(posts));
-  } catch (error: any) {
-    yield put(loadingPageFailure(error.message));
+  if (isDataInCache) {
+    yield put(loadingPageFromCache(pathname));
+  } else {
+    yield delay(500);
+
+    try {
+      const { data } = yield fetchData(pathname);
+      const response = { name: pathname, data };
+
+      yield put(loadingPageSuccess(response));
+    } catch (error: any) {
+      yield put(loadingPageFailure(error.message));
+    }
   }
 }

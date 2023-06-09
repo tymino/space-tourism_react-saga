@@ -5,7 +5,7 @@ import rootSaga from '../saga';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
 
-import pages from '../reducers/pages';
+import pagesSlice from '../reducers/pagesSlice';
 
 const { createReduxHistory, routerMiddleware, routerReducer } =
   createReduxHistoryContext({ history: createBrowserHistory() });
@@ -13,10 +13,10 @@ const { createReduxHistory, routerMiddleware, routerReducer } =
 const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
-  reducer: combineReducers({
+  reducer: {
     router: routerReducer,
-    pages,
-  }),
+    pages: pagesSlice,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: false,
@@ -27,6 +27,8 @@ sagaMiddleware.run(rootSaga);
 
 export const history = createReduxHistory(store);
 
-export type IRootState = ReturnType<typeof store.getState>;
+export type TRootState = ReturnType<typeof store.getState>;
+
+export const selectLoading = (state: TRootState) => state.pages.loading;
 
 export default store;
