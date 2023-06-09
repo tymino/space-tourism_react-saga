@@ -10,12 +10,12 @@ import { Loading, Navmenu, MyRoutes } from './components';
 const App = () => {
   return (
     <>
-      <Loading>
-        <Router history={history}>
-          <Navmenu />
+      <Router history={history}>
+        <Navmenu />
+        <Loading>
           <MyRoutes />
-        </Router>
-      </Loading>
+        </Loading>
+      </Router>
     </>
   );
 };

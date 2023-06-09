@@ -12,8 +12,11 @@ const Loading: FC<ILoadingProps> = ({ children }) => {
 
   return (
     <div>
-      <div>{children}</div>
-      {isLoading && <div className="loading">Loading...</div>}
+      {isLoading ? (
+        <div className="loading">Loading...</div>
+      ) : (
+        <div>{children}</div>
+      )}
     </div>
   );
 };

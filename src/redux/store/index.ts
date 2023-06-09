@@ -1,4 +1,4 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
 import rootSaga from '../saga';
 
@@ -30,5 +30,6 @@ export const history = createReduxHistory(store);
 export type TRootState = ReturnType<typeof store.getState>;
 
 export const selectLoading = (state: TRootState) => state.pages.loading;
+export const selectActivePage = (state: TRootState) => state.pages.activePage;
 
 export default store;

@@ -1,25 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import {
-  IDataCrew,
-  IDataDestination,
-  IDataTechnology,
-} from '../../types/redux/pages';
-
-type TActivePage = IDataDestination[] | IDataCrew[] | IDataTechnology[];
+import { TActivePage } from '../../types/redux/pages';
 
 interface IInitialStatePages<T> {
   loading: boolean;
   error: string | null;
-  cache: { [key: string]: T };
-  activePage: TActivePage | null;
+  cache: { [key: string]: TActivePage };
+  activePage: T;
 }
 
 const initialState: IInitialStatePages<TActivePage> = {
   loading: false,
   error: null,
   cache: {},
-  activePage: null,
+  activePage: [],
 };
 
 const pagesSlice = createSlice({

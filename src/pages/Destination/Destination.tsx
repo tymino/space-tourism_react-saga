@@ -1,9 +1,13 @@
 import './Destination.scss';
-
 import { useState, MouseEvent } from 'react';
+import { useSelector } from 'react-redux';
+
+import { selectActivePage } from '../../redux/store';
+import { IDataDestination } from '../../types/redux/pages';
 
 const Destination = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const data = useSelector(selectActivePage) as IDataDestination[];
 
   const handleSwitchTab = ({ target }: MouseEvent<HTMLElement>) => {
     const value = (target as HTMLElement).dataset.value;
@@ -46,7 +50,7 @@ const Destination = () => {
                 <li
                   key={e.name}
                   className={`destination__planet-info-tabs-name${
-                    Number(activeTab) === i ? ' active' : ''
+                    activeTab === i ? ' active' : ''
                   }`}
                   onClick={handleSwitchTab}
                   data-value={i}
