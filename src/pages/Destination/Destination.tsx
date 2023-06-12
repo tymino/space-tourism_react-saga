@@ -6,16 +6,91 @@ import { selectActivePage } from '../../redux/store';
 import { IDataDestination } from '../../types/redux/pages';
 import { MyImage } from '../../components';
 
+const PlanetInfo = ({ children }: { children: JSX.Element[] }) => {
+  return <div className="destination__planet-info-wrapper">{children}</div>;
+};
+
+interface ITabListProps {
+  data: IDataDestination[];
+  activeTab: number;
+  handleSwitchTab: (tabIndex: number) => void;
+}
+
+PlanetInfo.TabList = ({ data, activeTab, handleSwitchTab }: ITabListProps) => {
+  const handleClickTab = ({ target }: MouseEvent<HTMLElement>) => {
+    const tabIndex = Number((target as HTMLElement).dataset.index);
+    handleSwitchTab(tabIndex);
+  };
+
+  const setClassNameActiveTab = (index: number) => {
+    const activeClass = activeTab === index ? 'active' : '';
+
+    return `destination__planet-info-tabs-name ${activeClass}`;
+  };
+
+  return (
+    <ul className="destination__planet-info-tabs">
+      {data.map(({ name }, index) => {
+        return (
+          <li
+            key={name}
+            className={setClassNameActiveTab(index)}
+            onClick={handleClickTab}
+            data-index={index}
+          >
+            {name}
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
+interface IDescribeProps {
+  data: IDataDestination[];
+  activeTab: number;
+}
+
+PlanetInfo.Describe = ({ data, activeTab }: IDescribeProps) => {
+  return (
+    <>
+      <div className="destination__planet-info-header">
+        {data[activeTab].name}
+      </div>
+      <div className="destination__planet-info-text">
+        {data[activeTab].description}
+      </div>
+      <div className="destination__planet-info-footer">
+        <div className="destination__planet-info-distance">
+          <div className="destination__planet-info-distance-name">
+            avg. distance
+          </div>
+          <div className="destination__planet-info-distance-value">
+            {data[activeTab].distance}
+          </div>
+        </div>
+        <div className="destination__planet-info-travel">
+          <div className="destination__planet-info-travel-name">
+            est. travel time
+          </div>
+          <div className="destination__planet-info-travel-value">
+            {data[activeTab].travel}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
 const Destination = () => {
   const [activeTab, setActiveTab] = useState(0);
   const data = useSelector(selectActivePage) as IDataDestination[];
 
-  // console.log(data[activeTab].images.png);
-
-  const handleSwitchTab = ({ target }: MouseEvent<HTMLElement>) => {
-    const value = (target as HTMLElement).dataset.value;
-    setActiveTab(Number(value));
+  const handleSwitchTab = (tabIndex: number) => {
+    setActiveTab(tabIndex);
   };
+
+  console.log('Destination', data);
 
   return (
     <div className="destination" role="main">
@@ -48,46 +123,14 @@ const Destination = () => {
             name={data[activeTab].images.png}
             nameAlt={data[activeTab].name}
           />
-          <div className="destination__planet-info-wrapper">
-            <ul className="destination__planet-info-tabs">
-              {data.map((e, i) => (
-                <li
-                  key={e.name}
-                  className={`destination__planet-info-tabs-name${
-                    activeTab === i ? ' active' : ''
-                  }`}
-                  onClick={handleSwitchTab}
-                  data-value={i}
-                >
-                  {e.name}
-                </li>
-              ))}
-            </ul>
-            <div className="destination__planet-info-header">
-              {data[activeTab].name}
-            </div>
-            <div className="destination__planet-info-text">
-              {data[activeTab].description}
-            </div>
-            <div className="destination__planet-info-footer">
-              <div className="destination__planet-info-distance">
-                <div className="destination__planet-info-distance-name">
-                  avg. distance
-                </div>
-                <div className="destination__planet-info-distance-value">
-                  {data[activeTab].distance}
-                </div>
-              </div>
-              <div className="destination__planet-info-travel">
-                <div className="destination__planet-info-travel-name">
-                  est. travel time
-                </div>
-                <div className="destination__planet-info-travel-value">
-                  {data[activeTab].travel}
-                </div>
-              </div>
-            </div>
-          </div>
+          <PlanetInfo>
+            <PlanetInfo.TabList
+              data={data}
+              activeTab={activeTab}
+              handleSwitchTab={handleSwitchTab}
+            />
+            <PlanetInfo.Describe data={data} activeTab={activeTab} />
+          </PlanetInfo>
         </div>
       </div>
     </div>
