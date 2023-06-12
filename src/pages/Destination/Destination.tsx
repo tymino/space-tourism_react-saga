@@ -4,10 +4,13 @@ import { useSelector } from 'react-redux';
 
 import { selectActivePage } from '../../redux/store';
 import { IDataDestination } from '../../types/redux/pages';
+import { MyImage } from '../../components';
 
 const Destination = () => {
   const [activeTab, setActiveTab] = useState(0);
   const data = useSelector(selectActivePage) as IDataDestination[];
+
+  // console.log(data[activeTab].images.png);
 
   const handleSwitchTab = ({ target }: MouseEvent<HTMLElement>) => {
     const value = (target as HTMLElement).dataset.value;
@@ -39,14 +42,15 @@ const Destination = () => {
           <span>01</span> Pick your destination
         </div>
         <div className="destination__planet-wrapper">
-          <img
-            className="destination__planet-image"
-            src={data[activeTab].images.png}
-            alt={data[activeTab].name}
+          <MyImage
+            className={'destination__planet-image'}
+            hasSrc={true}
+            name={data[activeTab].images.png}
+            nameAlt={data[activeTab].name}
           />
           <div className="destination__planet-info-wrapper">
             <ul className="destination__planet-info-tabs">
-              {data.map((e: any, i: any) => (
+              {data.map((e, i) => (
                 <li
                   key={e.name}
                   className={`destination__planet-info-tabs-name${

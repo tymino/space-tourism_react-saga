@@ -40,6 +40,7 @@ const MyNav = ({ children }: { children: JSX.Element }) => {
         <MyImage
           className="navmenu__close"
           name="icon-close"
+          nameAlt="icon-close"
           handleClick={closeMenu}
         />
         {children}
@@ -48,6 +49,7 @@ const MyNav = ({ children }: { children: JSX.Element }) => {
       <MyImage
         className="navmenu__hamburger"
         name="icon-hamburger"
+        nameAlt="icon-hamburger"
         handleClick={openMenu}
       />
     </nav>
