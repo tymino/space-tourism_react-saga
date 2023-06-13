@@ -107,7 +107,7 @@ const Destination = () => {
 
   const image = {
     src: './assets/destination/background-destination-desktop.jpg',
-    alt: 'background-home-desktop',
+    alt: 'background-destination-desktop',
   };
 
   // console.log('Destination', data);

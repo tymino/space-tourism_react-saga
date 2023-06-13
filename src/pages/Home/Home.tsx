@@ -1,25 +1,34 @@
 import './Home.scss';
+import { MyPicture } from '../../components/UI';
+
+// Вынести фоновое изображение в отдельный компонент
 
 const Home = () => {
+  const sourceImage = [
+    {
+      id: 0,
+      maxWidth: 468,
+      srcSet: './assets/home/background-home-mobile.jpg',
+    },
+    {
+      id: 1,
+      maxWidth: 1024,
+      srcSet: './assets/home/background-home-tablet.jpg',
+    },
+  ];
+
+  const image = {
+    src: './assets/home/background-home-desktop.jpg',
+    alt: 'background-home-desktop',
+  };
+
   return (
     <div className="home" role="main">
-      <picture className="home__picture">
-        <source
-          className="home__picture--img"
-          media="(max-width: 468px)"
-          srcSet="./assets/home/background-home-mobile.jpg"
-        />
-        <source
-          className="home__picture--img"
-          media="(max-width: 1024px)"
-          srcSet="./assets/home/background-home-tablet.jpg"
-        />
-        <img
-          className="home__picture--img"
-          src="./assets/home/background-home-desktop.jpg"
-          alt="background-home-desktop"
-        />
-      </picture>
+      <MyPicture
+        className="home__picture"
+        sourceImages={sourceImage}
+        image={image}
+      />
 
       <div className="home__container">
         <div className="home__container-describe">
