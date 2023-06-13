@@ -5,7 +5,7 @@ import { TActivePage } from '../../types/redux/pages';
 interface IInitialStatePages<T> {
   loading: boolean;
   error: string | null;
-  cache: { [key: string]: TActivePage };
+  cache: { [key: string]: T };
   activePage: T;
 }
 

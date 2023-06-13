@@ -82,8 +82,6 @@ PlanetInfo.Describe = ({ data, activeTab }: IDescribeProps) => {
   );
 };
 
-// active tabs send to redux?
-
 const Destination = () => {
   const [activeTab, setActiveTab] = useState(0);
   const data = useSelector(selectActivePage) as IDataDestination[];
