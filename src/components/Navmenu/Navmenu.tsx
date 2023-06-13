@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { routes } from '../../routes';
 import { useNavmenu } from './useNavmenu';
 
-import { Logo, MyImage } from '../';
+import { Logo } from '../';
+import { MyImage } from '../UI';
 
 interface IMyLinkProps {
   path: string;

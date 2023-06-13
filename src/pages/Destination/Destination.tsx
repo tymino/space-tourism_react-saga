@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { selectActivePage } from '../../redux/store';
 import { IDataDestination } from '../../types/redux/pages';
-import { MyImage } from '../../components';
+import { MyImage, MyPicture } from '../../components/UI';
 
 const PlanetInfo = ({ children }: { children: JSX.Element[] }) => {
   return <div className="destination__planet-info-wrapper">{children}</div>;
@@ -82,6 +82,8 @@ PlanetInfo.Describe = ({ data, activeTab }: IDescribeProps) => {
   );
 };
 
+// active tabs send to redux?
+
 const Destination = () => {
   const [activeTab, setActiveTab] = useState(0);
   const data = useSelector(selectActivePage) as IDataDestination[];
@@ -90,27 +92,33 @@ const Destination = () => {
     setActiveTab(tabIndex);
   };
 
-  console.log('Destination', data);
+  const sourceImage = [
+    {
+      id: 0,
+      maxWidth: 468,
+      srcSet: './assets/destination/background-destination-mobile.jpg',
+    },
+    {
+      id: 1,
+      maxWidth: 1024,
+      srcSet: './assets/destination/background-destination-tablet.jpg',
+    },
+  ];
+
+  const image = {
+    src: './assets/destination/background-destination-desktop.jpg',
+    alt: 'background-home-desktop',
+  };
+
+  // console.log('Destination', data);
 
   return (
     <div className="destination" role="main">
-      <picture className="destination__picture">
-        <source
-          className="destination__picture--img"
-          media="(max-width: 468px)"
-          srcSet="./assets/destination/background-destination-mobile.jpg"
-        />
-        <source
-          className="destination__picture--img"
-          media="(max-width: 1024px)"
-          srcSet="./assets/destination/background-destination-tablet.jpg"
-        />
-        <img
-          className="destination__picture--img"
-          src="./assets/destination/background-destination-desktop.jpg"
-          alt="background-home-desktop"
-        />
-      </picture>
+      <MyPicture
+        className="destination__picture"
+        image={image}
+        sourceImages={sourceImage}
+      />
 
       <div className="destination__container">
         <div className="destination__subtitle">
