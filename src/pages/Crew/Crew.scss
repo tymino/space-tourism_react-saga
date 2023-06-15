@@ -3,7 +3,7 @@
 .crew {
   padding: 0 11%;
 
-  &__picture--img {
+  &__picture-img {
     position: absolute;
     top: 0;
     left: 0;
@@ -155,7 +155,7 @@
       font-size: 16px;
     }
 
-    &__pilot-wrapper {
+    &__pilot {
       display: flex;
       flex-direction: column-reverse;
       align-items: center;

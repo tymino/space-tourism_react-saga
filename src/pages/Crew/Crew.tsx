@@ -1,76 +1,144 @@
 import './Crew.scss';
 
-import { useState, MouseEvent } from 'react';
+import { FC, useState, MouseEvent } from 'react';
+import { useSelector } from 'react-redux';
 
-import { Loading } from '../../components';
+import { selectActivePage } from '../../redux/store';
+import { IDataCrew } from '../../types/redux/pages';
+import { MyPicture } from '../../components/UI';
+
+const CrewInfo = ({ children }: { children: JSX.Element[] }) => {
+  return <div className="crew__container">{children}</div>;
+};
+
+CrewInfo.Subtitle = () => {
+  return (
+    <div className="crew__subtitle">
+      <span>02</span> Meet your crew
+    </div>
+  );
+};
+
+const Pilot = ({ children }: { children: JSX.Element[] }) => {
+  return <div className="crew__pilot">{children}</div>;
+};
+
+CrewInfo.Pilot = Pilot;
+
+interface IDescribeProps {
+  children: JSX.Element;
+  data: IDataCrew[];
+  activeSlider: number;
+}
+
+const Describe = ({ children, data, activeSlider }: IDescribeProps) => {
+  return (
+    <div className="crew__pilot-info-wrapper">
+      <div className="crew__pilot-info-subheader">
+        {data[activeSlider].role}
+      </div>
+      <div className="crew__pilot-info-header">{data[activeSlider].name}</div>
+      <div className="crew__pilot-info-bio">{data[activeSlider].bio}</div>
+      <ul className="crew__pilot-info-slider">{children}</ul>
+    </div>
+  );
+};
+
+Pilot.Describe = Describe;
+
+interface ITabListProps {
+  data: IDataCrew[];
+  activeSlider: number;
+  handleSwitchSlider: (sliderIndex: number) => void;
+}
+
+Describe.TabList = ({
+  data,
+  activeSlider,
+  handleSwitchSlider,
+}: ITabListProps) => {
+  const handleClickSlider = ({ target }: MouseEvent<HTMLElement>) => {
+    const index = (target as HTMLElement).dataset.index;
+    handleSwitchSlider(Number(index));
+  };
+
+  return (
+    <>
+      {data.map(({ name }, index) => (
+        <li
+          key={name}
+          className={`crew__pilot-info-tabs-button ${
+            activeSlider === index ? 'active' : ''
+          }`}
+          onClick={handleClickSlider}
+          data-index={index}
+        ></li>
+      ))}
+    </>
+  );
+};
+
+Pilot.Image = ({ data, activeSlider }: any) => {
+  return (
+    <div className="crew__pilot-image-mobile">
+      <img
+        className="crew__pilot-image"
+        src={data[activeSlider].images.png}
+        alt={data[activeSlider].name}
+      />
+    </div>
+  );
+};
 
 const Crew = () => {
   const [activeSlider, setActiveSlider] = useState(0);
+  const data = useSelector(selectActivePage) as IDataCrew[];
 
-  const handleSwitchSlider = ({ target }: MouseEvent<HTMLElement>) => {
-    const value = (target as HTMLElement).dataset.value;
-    setActiveSlider(Number(value));
+  const handleSwitchSlider = (sliderIndex: number) => {
+    setActiveSlider(sliderIndex);
   };
 
-  // return loading || data.length === 0 ? (
-  return <div>Crew</div>;
-  // ) : (
-  //   <div className="crew" role="main">
-  //     <picture className="crew__picture">
-  //       <source
-  //         className="crew__picture--img"
-  //         media="(max-width: 468px)"
-  //         srcSet="./assets/crew/background-crew-mobile.jpg"
-  //       />
-  //       <source
-  //         className="crew__picture--img"
-  //         media="(max-width: 1024px)"
-  //         srcSet="./assets/crew/background-crew-tablet.jpg"
-  //       />
-  //       <img
-  //         className="crew__picture--img"
-  //         src="./assets/crew/background-crew-desktop.jpg"
-  //         alt="background-home-desktop"
-  //       />
-  //     </picture>
+  const sourceImage = [
+    {
+      id: 0,
+      maxWidth: 468,
+      srcSet: './assets/crew/background-crew-mobile.jpg',
+    },
+    {
+      id: 1,
+      maxWidth: 1024,
+      srcSet: './assets/crew/background-crew-tablet.jpg',
+    },
+  ];
 
-  //     <div className="crew__container">
-  //       <div className="crew__subtitle">
-  //         <span>02</span> Meet your crew
-  //       </div>
-  //       <div className="crew__pilot-wrapper">
-  //         <div className="crew__pilot-info-wrapper">
-  //           <div className="crew__pilot-info-subheader">
-  //             {data[activeSlider].role}
-  //           </div>
-  //           <div className="crew__pilot-info-header">
-  //             {data[activeSlider].name}
-  //           </div>
-  //           <div className="crew__pilot-info-bio">{data[activeSlider].bio}</div>
-  //           <ul className="crew__pilot-info-slider">
-  //             {data.map((e: any, i: any) => (
-  //               <li
-  //                 key={e.name}
-  //                 className={`crew__pilot-info-tabs-button${
-  //                   Number(activeSlider) === i ? ' active' : ''
-  //                 }`}
-  //                 onClick={handleSwitchSlider}
-  //                 data-value={i}
-  //               ></li>
-  //             ))}
-  //           </ul>
-  //         </div>
-  //         <div className="crew__pilot-image-mobile">
-  //           <img
-  //             className="crew__pilot-image"
-  //             src={data[activeSlider].images.png}
-  //             alt={data[activeSlider].name}
-  //           />
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
+  const image = {
+    src: './assets/crew/background-crew-desktop.jpg',
+    alt: 'background-destination-desktop',
+  };
+
+  return (
+    <div className="crew" role="main">
+      <MyPicture
+        className={'crew__picture'}
+        sourceImages={sourceImage}
+        image={image}
+      />
+
+      <CrewInfo>
+        <CrewInfo.Subtitle />
+        <CrewInfo.Pilot>
+          <Pilot.Describe data={data} activeSlider={activeSlider}>
+            <Describe.TabList
+              data={data}
+              activeSlider={activeSlider}
+              handleSwitchSlider={handleSwitchSlider}
+            />
+          </Pilot.Describe>
+          <Pilot.Image data={data} activeSlider={activeSlider} />
+        </CrewInfo.Pilot>
+      </CrewInfo>
+    </div>
+  );
 };
 
 export default Crew;

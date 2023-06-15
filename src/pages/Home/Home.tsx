@@ -19,7 +19,7 @@ const Home = () => {
 
   const image = {
     src: './assets/home/background-home-desktop.jpg',
-    alt: 'background-home-desktop',
+    alt: 'background-home',
   };
 
   return (
