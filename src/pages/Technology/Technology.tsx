@@ -8,7 +8,11 @@ import { IDataTechnology } from '../../types/redux/pages';
 import { MyPicture } from '../../components/UI';
 import useSwitcher from '../../hooks/useSwitcher';
 
-const TechnologyInfo = ({ children }: { children: JSX.Element[] }) => {
+interface IChildrenProps {
+  children: JSX.Element[] | JSX.Element;
+}
+
+const TechnologyInfo = ({ children }: IChildrenProps) => {
   return <div className="technology__container">{children}</div>;
 };
 
@@ -20,7 +24,7 @@ TechnologyInfo.Subtitle = () => {
   );
 };
 
-const Launch = ({ children }: { children: JSX.Element[] }) => {
+const Launch = ({ children }: IChildrenProps) => {
   return <div className="technology__launch">{children}</div>;
 };
 
@@ -113,14 +117,9 @@ Launch.Picture = ({ data, activeButton }: IPictureProps) => {
 };
 
 const Technology = () => {
-  // const [activeButton, setActiveButton] = useState(0);
+  const { activeIndex, updateActiveIndex } = useSwitcher();
 
   const data = useSelector(selectActivePage) as IDataTechnology[];
-
-  // const handleSwitchActiveButton = (buttonIndex: number) => {
-  //   setActiveButton(buttonIndex);
-  // };
-  const { activeIndex, updateActiveIndex } = useSwitcher();
 
   const sourceImage = [
     {

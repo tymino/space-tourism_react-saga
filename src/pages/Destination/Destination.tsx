@@ -1,10 +1,11 @@
 import './Destination.scss';
-import { useState, MouseEvent } from 'react';
+import { MouseEvent } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectActivePage } from '../../redux/store';
 import { IDataDestination } from '../../types/redux/pages';
 import { MyImage, MyPicture } from '../../components/UI';
+import useSwitcher from '../../hooks/useSwitcher';
 
 const PlanetInfo = ({ children }: { children: JSX.Element[] }) => {
   return <div className="destination__planet-info-wrapper">{children}</div>;
@@ -83,12 +84,9 @@ PlanetInfo.Describe = ({ data, activeTab }: IDescribeProps) => {
 };
 
 const Destination = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  const data = useSelector(selectActivePage) as IDataDestination[];
+  const { activeIndex, updateActiveIndex } = useSwitcher();
 
-  const handleSwitchTab = (tabIndex: number) => {
-    setActiveTab(tabIndex);
-  };
+  const data = useSelector(selectActivePage) as IDataDestination[];
 
   const sourceImage = [
     {
@@ -124,16 +122,16 @@ const Destination = () => {
           <MyImage
             className={'destination__planet-image'}
             hasSrc={true}
-            name={data[activeTab].images.png}
-            nameAlt={data[activeTab].name}
+            name={data[activeIndex].images.png}
+            nameAlt={data[activeIndex].name}
           />
           <PlanetInfo>
             <PlanetInfo.TabList
               data={data}
-              activeTab={activeTab}
-              handleSwitchTab={handleSwitchTab}
+              activeTab={activeIndex}
+              handleSwitchTab={updateActiveIndex}
             />
-            <PlanetInfo.Describe data={data} activeTab={activeTab} />
+            <PlanetInfo.Describe data={data} activeTab={activeIndex} />
           </PlanetInfo>
         </div>
       </div>

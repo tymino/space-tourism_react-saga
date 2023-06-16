@@ -1,11 +1,12 @@
 import './Crew.scss';
 
-import { useState, MouseEvent } from 'react';
+import { MouseEvent } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectActivePage } from '../../redux/store';
 import { IDataCrew } from '../../types/redux/pages';
 import { MyPicture } from '../../components/UI';
+import useSwitcher from '../../hooks/useSwitcher';
 
 const CrewInfo = ({ children }: { children: JSX.Element[] }) => {
   return <div className="crew__container">{children}</div>;
@@ -91,12 +92,8 @@ Pilot.Image = ({ data, activeSlider }: any) => {
 };
 
 const Crew = () => {
-  const [activeSlider, setActiveSlider] = useState(0);
+  const { activeIndex, updateActiveIndex } = useSwitcher();
   const data = useSelector(selectActivePage) as IDataCrew[];
-
-  const handleSwitchSlider = (sliderIndex: number) => {
-    setActiveSlider(sliderIndex);
-  };
 
   const sourceImage = [
     {
@@ -127,14 +124,14 @@ const Crew = () => {
       <CrewInfo>
         <CrewInfo.Subtitle />
         <CrewInfo.Pilot>
-          <Pilot.Describe data={data} activeSlider={activeSlider}>
+          <Pilot.Describe data={data} activeSlider={activeIndex}>
             <Describe.TabList
               data={data}
-              activeSlider={activeSlider}
-              handleSwitchSlider={handleSwitchSlider}
+              activeSlider={activeIndex}
+              handleSwitchSlider={updateActiveIndex}
             />
           </Pilot.Describe>
-          <Pilot.Image data={data} activeSlider={activeSlider} />
+          <Pilot.Image data={data} activeSlider={activeIndex} />
         </CrewInfo.Pilot>
       </CrewInfo>
     </div>
