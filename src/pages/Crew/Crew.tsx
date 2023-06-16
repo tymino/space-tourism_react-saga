@@ -1,6 +1,6 @@
 import './Crew.scss';
 
-import { FC, useState, MouseEvent } from 'react';
+import { useState, MouseEvent } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectActivePage } from '../../redux/store';
