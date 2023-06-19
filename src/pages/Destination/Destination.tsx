@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 
 import { selectActivePage } from '../../redux/store';
 import { IDataDestination } from '../../types/redux/pages';
-import { MyImage, MyPicture } from '../../components/UI';
+import { Background } from '../../components';
+import { MyImage } from '../../components/UI';
 import { useSwitcher } from '../../hooks/useSwitcher';
 
 const PlanetInfo = ({ children }: { children: JSX.Element[] }) => {
@@ -88,31 +89,28 @@ export const Destination = () => {
 
   const data = useSelector(selectActivePage) as IDataDestination[];
 
-  const sourceImage = [
-    {
-      id: 0,
-      maxWidth: 468,
-      srcSet: './assets/destination/background-destination-mobile.jpg',
+  const imageData = {
+    sourceImages: [
+      {
+        id: 0,
+        maxWidth: 468,
+        srcSet: './assets/destination/background-destination-mobile.jpg',
+      },
+      {
+        id: 1,
+        maxWidth: 1024,
+        srcSet: './assets/destination/background-destination-tablet.jpg',
+      },
+    ],
+    image: {
+      src: './assets/destination/background-destination-desktop.jpg',
+      alt: 'background-destination',
     },
-    {
-      id: 1,
-      maxWidth: 1024,
-      srcSet: './assets/destination/background-destination-tablet.jpg',
-    },
-  ];
-
-  const image = {
-    src: './assets/destination/background-destination-desktop.jpg',
-    alt: 'background-destination',
   };
 
   return (
     <div className="destination" role="main">
-      <MyPicture
-        className="destination__picture"
-        image={image}
-        sourceImages={sourceImage}
-      />
+      <Background data={imageData} />
 
       <div className="destination__container">
         <div className="destination__subtitle">

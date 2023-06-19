@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { selectActivePage } from '../../redux/store';
 import { IDataCrew } from '../../types/redux/pages';
-import { MyPicture } from '../../components/UI';
+import { Background } from '../../components';
 import { useSwitcher } from '../../hooks/useSwitcher';
 
 const CrewInfo = ({ children }: { children: JSX.Element[] }) => {
@@ -95,31 +95,28 @@ export const Crew = () => {
   const { activeIndex, updateActiveIndex } = useSwitcher();
   const data = useSelector(selectActivePage) as IDataCrew[];
 
-  const sourceImage = [
-    {
-      id: 0,
-      maxWidth: 468,
-      srcSet: './assets/crew/background-crew-mobile.jpg',
+  const imageData = {
+    sourceImages: [
+      {
+        id: 0,
+        maxWidth: 468,
+        srcSet: './assets/crew/background-crew-mobile.jpg',
+      },
+      {
+        id: 1,
+        maxWidth: 1024,
+        srcSet: './assets/crew/background-crew-tablet.jpg',
+      },
+    ],
+    image: {
+      src: './assets/crew/background-crew-desktop.jpg',
+      alt: 'background-destination-desktop',
     },
-    {
-      id: 1,
-      maxWidth: 1024,
-      srcSet: './assets/crew/background-crew-tablet.jpg',
-    },
-  ];
-
-  const image = {
-    src: './assets/crew/background-crew-desktop.jpg',
-    alt: 'background-destination-desktop',
   };
 
   return (
     <div className="crew" role="main">
-      <MyPicture
-        className={'crew__picture'}
-        sourceImages={sourceImage}
-        image={image}
-      />
+      <Background data={imageData} />
 
       <CrewInfo>
         <CrewInfo.Subtitle />

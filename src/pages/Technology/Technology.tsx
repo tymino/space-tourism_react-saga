@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { selectActivePage } from '../../redux/store';
 import { IDataTechnology } from '../../types/redux/pages';
+import { Background } from '../../components';
 import { MyPicture } from '../../components/UI';
 import { useSwitcher } from '../../hooks/useSwitcher';
 
@@ -121,31 +122,28 @@ export const Technology = () => {
 
   const data = useSelector(selectActivePage) as IDataTechnology[];
 
-  const sourceImage = [
-    {
-      id: 0,
-      maxWidth: 468,
-      srcSet: './assets/technology/background-technology-mobile.jpg',
+  const imageData = {
+    sourceImages: [
+      {
+        id: 0,
+        maxWidth: 468,
+        srcSet: './assets/technology/background-technology-mobile.jpg',
+      },
+      {
+        id: 1,
+        maxWidth: 1024,
+        srcSet: './assets/technology/background-technology-tablet.jpg',
+      },
+    ],
+    image: {
+      src: './assets/technology/background-technology-desktop.jpg',
+      alt: 'background-technology',
     },
-    {
-      id: 1,
-      maxWidth: 1024,
-      srcSet: './assets/technology/background-technology-tablet.jpg',
-    },
-  ];
-
-  const image = {
-    src: './assets/technology/background-technology-desktop.jpg',
-    alt: 'background-technology',
   };
 
   return (
     <div className="technology" role="main">
-      <MyPicture
-        className={'technology__picture'}
-        sourceImages={sourceImage}
-        image={image}
-      />
+      <Background data={imageData} />
 
       <TechnologyInfo>
         <TechnologyInfo.Subtitle />
