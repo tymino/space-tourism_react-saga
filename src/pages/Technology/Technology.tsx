@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectActivePage } from '../../redux/store';
 import { IDataTechnology } from '../../types/redux/pages';
 import { MyPicture } from '../../components/UI';
-import useSwitcher from '../../hooks/useSwitcher';
+import { useSwitcher } from '../../hooks/useSwitcher';
 
 interface IChildrenProps {
   children: JSX.Element[] | JSX.Element;
@@ -116,7 +116,7 @@ Launch.Picture = ({ data, activeButton }: IPictureProps) => {
   );
 };
 
-const Technology = () => {
+export const Technology = () => {
   const { activeIndex, updateActiveIndex } = useSwitcher();
 
   const data = useSelector(selectActivePage) as IDataTechnology[];
@@ -162,5 +162,3 @@ const Technology = () => {
     </div>
   );
 };
-
-export default Technology;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useSwitcher = (defaultIndex = 0) => {
+export const useSwitcher = (defaultIndex = 0) => {
   const [activeIndex, setActiveIndex] = useState(defaultIndex);
 
   const updateActiveIndex = (index: number) => {
@@ -12,5 +12,3 @@ const useSwitcher = (defaultIndex = 0) => {
     updateActiveIndex,
   };
 };
-
-export default useSwitcher;

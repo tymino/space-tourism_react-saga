@@ -3,7 +3,7 @@ import { MyPicture } from '../../components/UI';
 
 // Вынести фоновое изображение в отдельный компонент
 
-const Home = () => {
+export const Home = () => {
   const sourceImage = [
     {
       id: 0,
@@ -46,5 +46,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;

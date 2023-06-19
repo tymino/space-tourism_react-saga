@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectActivePage } from '../../redux/store';
 import { IDataCrew } from '../../types/redux/pages';
 import { MyPicture } from '../../components/UI';
-import useSwitcher from '../../hooks/useSwitcher';
+import { useSwitcher } from '../../hooks/useSwitcher';
 
 const CrewInfo = ({ children }: { children: JSX.Element[] }) => {
   return <div className="crew__container">{children}</div>;
@@ -91,7 +91,7 @@ Pilot.Image = ({ data, activeSlider }: any) => {
   );
 };
 
-const Crew = () => {
+export const Crew = () => {
   const { activeIndex, updateActiveIndex } = useSwitcher();
   const data = useSelector(selectActivePage) as IDataCrew[];
 
@@ -137,5 +137,3 @@ const Crew = () => {
     </div>
   );
 };
-
-export default Crew;

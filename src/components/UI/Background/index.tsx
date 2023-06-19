@@ -1,4 +1,4 @@
-interface IMyPictureProps {
+interface IBackgroundProps {
   className: string;
   sourceImages: {
     id: number;
@@ -11,11 +11,11 @@ interface IMyPictureProps {
   };
 }
 
-export const MyPicture = ({
+export const Background = ({
   className,
   sourceImages,
   image,
-}: IMyPictureProps) => {
+}: IBackgroundProps) => {
   return (
     <picture className={className}>
       {sourceImages.map(({ id, maxWidth, srcSet }) => (

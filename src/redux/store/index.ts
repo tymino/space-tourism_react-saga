@@ -1,21 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
-import rootSaga from '../saga';
+import { rootSaga } from '../saga';
 
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
 
-import pagesSlice from '../reducers/pagesSlice';
+import { pagesSliceReducer } from '../reducers/pagesSlice';
 
 const { createReduxHistory, routerMiddleware, routerReducer } =
   createReduxHistoryContext({ history: createBrowserHistory() });
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     router: routerReducer,
-    pages: pagesSlice,
+    pages: pagesSliceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -31,5 +31,3 @@ export type TRootState = ReturnType<typeof store.getState>;
 
 export const selectLoading = (state: TRootState) => state.pages.loading;
 export const selectActivePage = (state: TRootState) => state.pages.activePage;
-
-export default store;

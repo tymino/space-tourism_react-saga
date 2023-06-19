@@ -1,5 +1,3 @@
-import { FC, memo } from 'react';
-
 interface IMyImage {
   className: string;
   hasSrc?: boolean;
@@ -8,13 +6,13 @@ interface IMyImage {
   handleClick?: () => void;
 }
 
-const MyImage: FC<IMyImage> = ({
+export const MyImage = ({
   className,
   name,
   hasSrc = false,
   nameAlt,
   handleClick,
-}) => {
+}: IMyImage) => {
   const setSrc = () => {
     return hasSrc ? name : `./assets/shared/${name}.svg`;
   };
@@ -28,5 +26,3 @@ const MyImage: FC<IMyImage> = ({
     />
   );
 };
-
-export default memo(MyImage);

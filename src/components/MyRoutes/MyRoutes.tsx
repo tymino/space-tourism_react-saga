@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import { routes } from '../../routes';
 
-const MyRoutes = () => {
+export const MyRoutes = () => {
   return (
     <Routes>
       {routes.map(({ id, component: Component, path }) => {
@@ -11,5 +11,3 @@ const MyRoutes = () => {
     </Routes>
   );
 };
-
-export default MyRoutes;

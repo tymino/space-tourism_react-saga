@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { selectActivePage } from '../../redux/store';
 import { IDataDestination } from '../../types/redux/pages';
 import { MyImage, MyPicture } from '../../components/UI';
-import useSwitcher from '../../hooks/useSwitcher';
+import { useSwitcher } from '../../hooks/useSwitcher';
 
 const PlanetInfo = ({ children }: { children: JSX.Element[] }) => {
   return <div className="destination__planet-info-wrapper">{children}</div>;
@@ -83,7 +83,7 @@ PlanetInfo.Describe = ({ data, activeTab }: IDescribeProps) => {
   );
 };
 
-const Destination = () => {
+export const Destination = () => {
   const { activeIndex, updateActiveIndex } = useSwitcher();
 
   const data = useSelector(selectActivePage) as IDataDestination[];
@@ -138,5 +138,3 @@ const Destination = () => {
     </div>
   );
 };
-
-export default Destination;

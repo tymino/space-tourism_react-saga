@@ -1,6 +1,6 @@
 import './NotFound.scss';
 
-const NotFound = () => {
+export const NotFound = () => {
   return (
     <div className="notfound">
       <h2 className="notfound__header">404</h2>
@@ -8,5 +8,3 @@ const NotFound = () => {
     </div>
   );
 };
-
-export default NotFound;

@@ -45,11 +45,11 @@ const pagesSlice = createSlice({
   },
 });
 
+export const pagesSliceReducer = pagesSlice.reducer;
+
 export const {
   loadingPage,
   loadingPageFromCache,
   loadingPageSuccess,
   loadingPageFailure,
 } = pagesSlice.actions;
-
-export default pagesSlice.reducer;

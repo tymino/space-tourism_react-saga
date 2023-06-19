@@ -7,7 +7,7 @@ interface ILoadingProps {
   children: JSX.Element;
 }
 
-const Loading: FC<ILoadingProps> = ({ children }) => {
+export const Loading: FC<ILoadingProps> = ({ children }) => {
   const isLoading = useSelector(selectLoading);
 
   return (
@@ -20,5 +20,3 @@ const Loading: FC<ILoadingProps> = ({ children }) => {
     </div>
   );
 };
-
-export default Loading;

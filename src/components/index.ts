@@ -1,4 +1,4 @@
-export { default as Loading } from './Loading/Loading';
-export { default as Logo } from './Logo/Logo';
-export { default as Navmenu } from './Navmenu/Navmenu';
-export { default as MyRoutes } from './MyRoutes/MyRoutes';
+export { Loading } from './Loading/Loading';
+export { Logo } from './Logo/Logo';
+export { Navmenu } from './Navmenu/Navmenu';
+export { MyRoutes } from './MyRoutes/MyRoutes';

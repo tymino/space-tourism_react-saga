@@ -1,13 +1,9 @@
-import { FC } from 'react';
-
 interface ILogoProps {
   className: string;
 }
 
-const Logo: FC<ILogoProps> = ({ className }) => {
+export const Logo = ({ className }: ILogoProps) => {
   return (
     <img className={className} src="./assets/shared/logo.svg" alt="logo" />
   );
 };
-
-export default Logo;

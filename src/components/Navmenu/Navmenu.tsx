@@ -68,7 +68,7 @@ MyNav.MyLinkList = () => {
   );
 };
 
-const Navmenu = () => {
+export const Navmenu = () => {
   return (
     <div className="navmenu " role="banner">
       <Logo className="navmenu__logo" />
@@ -80,5 +80,3 @@ const Navmenu = () => {
     </div>
   );
 };
-
-export default Navmenu;

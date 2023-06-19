@@ -7,7 +7,7 @@ import { Loading, Navmenu, MyRoutes } from './components';
 
 // will need to change the var css colors
 
-const App = () => {
+export const App = () => {
   return (
     <>
       <Router history={history}>
@@ -19,5 +19,3 @@ const App = () => {
     </>
   );
 };
-
-export default App;
