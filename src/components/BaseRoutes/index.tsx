@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import { routes } from '../../routes';
 
-export const MyRoutes = () => {
+export const BaseRoutes = () => {
   return (
     <Routes>
       {routes.map(({ id, component: Component, path }) => {

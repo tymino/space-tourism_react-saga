@@ -5,7 +5,7 @@ import { routes } from '../../routes';
 import { useNavmenu } from './useNavmenu';
 
 import { Logo } from '../';
-import { MyImage } from '../UI';
+import { BaseImage } from '../UI';
 
 interface IMyLinkProps {
   path: string;
@@ -38,7 +38,7 @@ const MyNav = ({ children }: { children: JSX.Element }) => {
       )}
 
       <div className={`navmenu__routes ${animation}`}>
-        <MyImage
+        <BaseImage
           className="navmenu__close"
           name="icon-close"
           nameAlt="icon-close"
@@ -47,7 +47,7 @@ const MyNav = ({ children }: { children: JSX.Element }) => {
         {children}
       </div>
 
-      <MyImage
+      <BaseImage
         className="navmenu__hamburger"
         name="icon-hamburger"
         nameAlt="icon-hamburger"

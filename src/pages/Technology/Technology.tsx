@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectActivePage } from '../../redux/store';
 import { IDataTechnology } from '../../types/redux/pages';
 import { Background } from '../../components';
-import { MyPicture } from '../../components/UI';
+import { BasePicture } from '../../components/UI/BasePicture';
 import { useSwitcher } from '../../hooks/useSwitcher';
 
 interface IChildrenProps {
@@ -100,7 +100,7 @@ interface IPictureProps {
 
 Launch.Picture = ({ data, activeButton }: IPictureProps) => {
   return (
-    <MyPicture
+    <BasePicture
       className={'technology__launch-picture'}
       sourceImages={[
         {

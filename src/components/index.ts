@@ -1,5 +1,5 @@
 export { Background } from './Background';
-export { Loading } from './Loading/Loading';
-export { Logo } from './Logo/Logo';
-export { MyRoutes } from './MyRoutes/MyRoutes';
+export { BaseRoutes } from './BaseRoutes';
+export { Loading } from './Loading';
+export { Logo } from './Logo';
 export { Navmenu } from './Navmenu/Navmenu';

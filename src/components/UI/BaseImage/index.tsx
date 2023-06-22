@@ -1,4 +1,4 @@
-interface IMyImage {
+interface IBaseImage {
   className: string;
   hasSrc?: boolean;
   name: string;
@@ -6,13 +6,13 @@ interface IMyImage {
   handleClick?: () => void;
 }
 
-export const MyImage = ({
+export const BaseImage = ({
   className,
   name,
   hasSrc = false,
   nameAlt,
   handleClick,
-}: IMyImage) => {
+}: IBaseImage) => {
   const setSrc = () => {
     return hasSrc ? name : `./assets/shared/${name}.svg`;
   };

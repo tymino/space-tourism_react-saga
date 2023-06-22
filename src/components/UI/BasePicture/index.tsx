@@ -1,21 +1,25 @@
-interface IMyPictureProps {
-  className: string;
-  sourceImages: {
-    id: number;
-    maxWidth: number;
-    srcSet: string;
-  }[];
-  image: {
-    src: string;
-    alt: string;
-  };
+interface ISourceImage {
+  id: number;
+  maxWidth: number;
+  srcSet: string;
 }
 
-export const MyPicture = ({
+interface IImage {
+  src: string;
+  alt: string;
+}
+
+interface IBasePictureProps {
+  className: string;
+  sourceImages: ISourceImage[];
+  image: IImage;
+}
+
+export const BasePicture = ({
   className,
   sourceImages,
   image,
-}: IMyPictureProps) => {
+}: IBasePictureProps) => {
   return (
     <picture className={className}>
       {sourceImages.map(({ id, maxWidth, srcSet }) => (

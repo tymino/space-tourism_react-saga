@@ -1,5 +1,5 @@
 import './Home.scss';
-import { MyPicture } from '../../components/UI';
+import { BasePicture } from '../../components/UI';
 
 // Вынести фоновое изображение в отдельный компонент
 
@@ -24,7 +24,7 @@ export const Home = () => {
 
   return (
     <div className="home" role="main">
-      <MyPicture
+      <BasePicture
         className="home__picture"
         sourceImages={sourceImage}
         image={image}

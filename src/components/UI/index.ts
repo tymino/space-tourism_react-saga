@@ -1,2 +1,2 @@
-export { MyImage } from './MyImage/MyImage';
-export { MyPicture } from './MyPicture/MyPicture';
+export { BaseImage } from './BaseImage';
+export { BasePicture } from './BasePicture';

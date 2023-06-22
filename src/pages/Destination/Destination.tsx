@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { selectActivePage } from '../../redux/store';
 import { IDataDestination } from '../../types/redux/pages';
 import { Background } from '../../components';
-import { MyImage } from '../../components/UI';
+import { BaseImage } from '../../components/UI';
 import { useSwitcher } from '../../hooks/useSwitcher';
 
 const PlanetInfo = ({ children }: { children: JSX.Element[] }) => {
@@ -117,7 +117,7 @@ export const Destination = () => {
           <span>01</span> Pick your destination
         </div>
         <div className="destination__planet-wrapper">
-          <MyImage
+          <BaseImage
             className={'destination__planet-image'}
             hasSrc={true}
             name={data[activeIndex].images.png}
