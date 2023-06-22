@@ -71,7 +71,7 @@ MyNav.MyLinkList = () => {
 export const Navmenu = () => {
   return (
     <div className="navmenu " role="banner">
-      <Logo className="navmenu__logo" />
+      <Logo />
       <div className="navmenu__line-decoration" />
 
       <MyNav>

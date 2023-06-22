@@ -1,19 +1,26 @@
 import { useState } from 'react';
 
+enum EAnimation {
+  open = 'open',
+  close = 'close',
+}
+
 export const useNavmenu = (isOpen = false) => {
-  const [animation, setAnimation] = useState('');
+  const [animation, setAnimation] = useState(
+    isOpen ? EAnimation.open : EAnimation.close
+  );
   const [isOpenMenu, setIsOpenMenu] = useState(isOpen);
 
-  const delayAnim = async (ms: number, isOpen = false, animName = 'close') => {
+  const delayAnim = async (ms: number, animName: EAnimation) => {
     setAnimation(animName);
 
     await new Promise((resolve) => setTimeout(resolve, ms));
 
-    setIsOpenMenu(isOpen);
+    setIsOpenMenu(animName === EAnimation.open);
   };
 
-  const openMenu = () => delayAnim(300, true, 'open');
-  const closeMenu = () => delayAnim(300);
+  const openMenu = () => delayAnim(300, EAnimation.open);
+  const closeMenu = () => delayAnim(300, EAnimation.close);
 
   return {
     isOpenMenu,
