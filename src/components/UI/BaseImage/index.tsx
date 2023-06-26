@@ -1,5 +1,5 @@
 interface IBaseImage {
-  className: string;
+  className?: string;
   hasSrc?: boolean;
   name: string;
   nameAlt: string;

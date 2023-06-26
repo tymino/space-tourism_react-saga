@@ -8,6 +8,10 @@ export const theme = {
   colorDescribeText: '#d0d6f9',
   colorInvisible: '#00000000',
   transitionTime: '0.3s',
+
+  animationDuration: '0.3s',
+  animationOverlayOpacity: '0.6',
+  animationMenuPosRight: '-100%',
 };
 
 /*
@@ -16,4 +20,3 @@ export const theme = {
   colorWhite -> colorText
   colorLight -> colorDescribeText,
 */
-
