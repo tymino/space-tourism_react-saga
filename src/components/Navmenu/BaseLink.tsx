@@ -34,6 +34,12 @@ const NavLinkStyled = styled(NavLink)`
     border-bottom: 3px solid rgb(var(--colorWhite));
     cursor: default;
   }
+
+  @media ${device.tablet} {
+    display: flex;
+    padding: 0;
+    border-bottom: 3px solid var(--color-invisible);
+  }
 `;
 
 const SpanBold = styled.span`

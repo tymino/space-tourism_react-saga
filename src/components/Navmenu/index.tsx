@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 import { device } from '../../styles/mediaSize';
 
 import { Logo } from '../';
-import { BaseNavigate } from './BaseNavigate';
+import { BaseNavigation } from './BaseNavigation';
 
 const NavmenuContainer = styled.div`
   position: relative;
@@ -24,6 +24,11 @@ const NavmenuLineDecor = styled.div`
 
   @media ${device.laptop} {
     display: none;
+
+    // ??
+    /* & > ul { 
+      margin-right: 0px;
+    } */
   }
 `;
 
@@ -33,9 +38,9 @@ export const Navmenu = () => {
       <Logo />
       <NavmenuLineDecor />
 
-      <BaseNavigate>
-        <BaseNavigate.MyLinkList />
-      </BaseNavigate>
+      <BaseNavigation>
+        <BaseNavigation.MyLinkList />
+      </BaseNavigation>
     </NavmenuContainer>
   );
 };

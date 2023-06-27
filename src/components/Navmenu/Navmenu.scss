@@ -1,95 +1,95 @@
 @import '../../sass/mixins';
 
-.navmenu {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 40px;
+// .navmenu {
+//   // position: relative;
+//   // display: flex;
+//   // justify-content: space-between;
+//   // align-items: center;
+//   // margin-top: 40px;
 
-  &__logo {
-    width: 48px;
-    height: 48px;
-    margin: 0 55px;
-  }
+//   // &__logo {
+//   //   width: 48px;
+//   //   height: 48px;
+//   //   margin: 0 55px;
+//   // }
 
-  &__hamburger {
-    display: none;
-  }
+//   // &__hamburger {
+//   //   display: none;
+//   // }
 
-  &__close {
-    display: none;
-  }
+//   // &__close {
+//   //   display: none;
+//   // }
 
-  &__line-decoration {
-    width: 100%;
-    margin-right: -20px;
-    height: 1px;
-    background: rgba(var(--colorWhite), 0.25);
-  }
+//   // &__line-decoration {
+//   //   width: 100%;
+//   //   margin-right: -20px;
+//   //   height: 1px;
+//   //   background: rgba(var(--colorWhite), 0.25);
+//   // }
 
-  &__routes {
-    background: rgba(var(--colorWhite), 0.04);
-    padding-left: 80px;
-    padding-right: 60px;
+//   // &__routes {
+//   //   background: rgba(var(--colorWhite), 0.04);
+//   //   padding-left: 80px;
+//   //   padding-right: 60px;
 
-    & > ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      margin-right: 40px;
-      opacity: 1;
-    }
-  }
+//   //   // & > ul {
+//   //   //   display: flex;
+//   //   //   justify-content: center;
+//   //   //   list-style: none;
+//   //   //   margin-right: 40px;
+//   //   //   opacity: 1;
+//   //   // }
+//   // }
 
-  &__item {
-    margin: 38px 25px;
+//   // &__item {
+//   //   // margin: 38px 25px;
 
-    & a {
-      padding: 36px 0;
-      @include navText;
+//   //   & a {
+//   //     padding: 36px 0;
+//   //     @include navText;
 
-      &:hover:not(.navbar__item-selected) {
-        border-bottom: 3px solid rgba(var(--colorWhite), 0.5);
-      }
+//   //     &:hover:not(.navbar__item-selected) {
+//   //       border-bottom: 3px solid rgba(var(--colorWhite), 0.5);
+//   //     }
 
-      & > span:first-child {
-        font-weight: bold;
-      }
-    }
+//   //     & > span:first-child {
+//   //       font-weight: bold;
+//   //     }
+//   //   }
 
-    &-selected {
-      border-bottom: 3px solid rgb(var(--colorWhite));
-      cursor: default;
-    }
-  }
-}
+//   //   &-selected {
+//   //     border-bottom: 3px solid rgb(var(--colorWhite));
+//   //     cursor: default;
+//   //   }
+//   // }
+// }
 
-@media (max-width: 1080px) {
-  .navmenu {
-    margin-top: 0px;
+// @media (max-width: 1080px) {
+//   .navmenu {
+//     // margin-top: 0px;
 
-    &__logo {
-      margin: 0 40px;
-    }
+//     // &__logo {
+//     //   margin: 0 40px;
+//     // }
 
-    &__line-decoration {
-      display: none;
+//     // &__line-decoration {
+//     //   display: none;
 
-      & > ul {
-        margin-right: 0px;
-      }
-    }
+//     //   & > ul {
+//     //     margin-right: 0px;
+//     //   }
+//     // }
 
-    &__item {
-      margin: 38px 18px;
+//     // &__item {
+//     //   // margin: 38px 18px;
 
-      & a > span:first-child {
-        display: none;
-      }
-    }
-  }
-}
+//     //   & a > span:first-child {
+//     //     display: none;
+//     //   }
+//     // }
+//   }
+// }
 
 @media (max-width: 740px) {
   .navmenu {
@@ -97,98 +97,98 @@
     --animation-overlay-opacity: 0.6;
     --animation-menu-pos-right: -100%;
 
-    &__logo {
-      margin: 24px 0 0 24px;
-    }
+    // &__logo {
+    //   margin: 24px 0 0 24px;
+    // }
 
-    &__hamburger {
-      display: none;
-      cursor: pointer;
+    // &__hamburger {
+    //   display: none;
+    //   cursor: pointer;
 
-      &:not(.active) {
-        display: block;
-        margin-right: 24px;
-        margin-top: 18px;
-      }
-    }
+    //   &:not(.active) {
+    //     display: block;
+    //     margin-right: 24px;
+    //     margin-top: 18px;
+    //   }
+    // }
 
-    &__close {
-      z-index: 12;
-      display: block;
-      align-self: flex-end;
-      width: 24px;
-      height: 24px;
-      margin-top: 34px;
-      margin-bottom: 50px;
+    // &__close {
+    //   z-index: 12;
+    //   display: block;
+    //   align-self: flex-end;
+    //   width: 24px;
+    //   height: 24px;
+    //   margin-top: 34px;
+    //   margin-bottom: 50px;
 
-      animation: slideMenuOut 0.3s;
+    //   animation: slideMenuOut 0.3s;
 
-      cursor: pointer;
-    }
+    //   cursor: pointer;
+    // }
 
-    &__routes {
-      z-index: 10;
-      position: fixed;
-      top: 0;
-      right: -100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      height: 100vh;
-      margin-right: 0;
-      padding: 0px 24px;
-      background: rgb(var(--colorDark));
+    // &__routes {
+    //   z-index: 10;
+    //   position: fixed;
+    //   top: 0;
+    //   right: -100%;
+    //   display: flex;
+    //   flex-direction: column;
+    //   justify-content: flex-start;
+    //   height: 100vh;
+    //   margin-right: 0;
+    //   padding: 0px 24px;
+    //   background: rgb(var(--colorDark));
 
-      &.open {
-        right: 0;
-        animation: fadeInMenu var(--animation-duration);
-      }
+    //   &.open {
+    //     right: 0;
+    //     animation: fadeInMenu var(--animation-duration);
+    //   }
 
-      &.close {
-        right: var(--animation-menu-pos-right);
-        animation: fadeOutMenu var(--animation-duration);
-      }
+    //   &.close {
+    //     right: var(--animation-menu-pos-right);
+    //     animation: fadeOutMenu var(--animation-duration);
+    //   }
 
-      & > ul {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        width: 160px;
-      }
-    }
+    //   // & > ul {
+    //   //   display: flex;
+    //   //   flex-direction: column;
+    //   //   margin: 0;
+    //   //   width: 160px;
+    //   // }
+    // }
 
-    &__overlay {
-      z-index: 2;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
+    // &__overlay {
+    //   z-index: 2;
+    //   position: fixed;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   background: black;
 
-      &.open {
-        opacity: var(--animation-overlay-opacity);
-        animation: fadeInOverlay var(--animation-duration);
-      }
+    //   &.open {
+    //     opacity: var(--animation-overlay-opacity);
+    //     animation: fadeInOverlay var(--animation-duration);
+    //   }
 
-      &.close {
-        opacity: 0;
-        animation: fadeOutOverlay var(--animation-duration);
-      }
-    }
+    //   &.close {
+    //     opacity: 0;
+    //     animation: fadeOutOverlay var(--animation-duration);
+    //   }
+    // }
 
     &__item {
-      margin: 16px 0 16px 0px;
+      // margin: 16px 0 16px 0px;
 
       & a {
         display: flex;
         padding: 0;
         border-bottom: 3px solid var(--color-invisible);
 
-        & > span:first-child {
-          display: inline;
-          margin-right: 12px;
-        }
+        // & > span:first-child {
+        //   display: inline;
+        //   margin-right: 12px;
+        // }
       }
 
       &-selected {
@@ -208,55 +208,55 @@
   }
 }
 
-@media (max-width: 340px) {
-  .navmenu {
-    &__close {
-      margin-right: 0;
-    }
+// @media (max-width: 340px) {
+//   // .navmenu {
+//     // &__close {
+//     //   margin-right: 0;
+//     // }
 
-    &__routes {
-      padding-left: 20px;
-      padding-right: 10px;
-    }
-  }
-}
+//     // &__routes {
+//     //   padding-left: 20px;
+//     //   padding-right: 10px;
+//     // }
+//   }
+// }
 
-@keyframes fadeInOverlay {
-  from {
-    opacity: 0;
-  }
+// @keyframes fadeInOverlay {
+//   from {
+//     opacity: 0;
+//   }
 
-  to {
-    opacity: var(--animation-overlay-opacity);
-  }
-}
+//   to {
+//     opacity: var(--animation-overlay-opacity);
+//   }
+// }
 
-@keyframes fadeOutOverlay {
-  from {
-    opacity: var(--animation-overlay-opacity);
-  }
+// @keyframes fadeOutOverlay {
+//   from {
+//     opacity: var(--animation-overlay-opacity);
+//   }
 
-  to {
-    opacity: 0;
-  }
-}
+//   to {
+//     opacity: 0;
+//   }
+// }
 
-@keyframes fadeInMenu {
-  from {
-    right: var(--animation-menu-pos-right);
-  }
+// @keyframes fadeInMenu {
+//   from {
+//     right: var(--animation-menu-pos-right);
+//   }
 
-  to {
-    right: 0;
-  }
-}
+//   to {
+//     right: 0;
+//   }
+// }
 
-@keyframes fadeOutMenu {
-  from {
-    right: 0;
-  }
+// @keyframes fadeOutMenu {
+//   from {
+//     right: 0;
+//   }
 
-  to {
-    right: var(--animation-menu-pos-right);
-  }
-}
+//   to {
+//     right: var(--animation-menu-pos-right);
+//   }
+// }

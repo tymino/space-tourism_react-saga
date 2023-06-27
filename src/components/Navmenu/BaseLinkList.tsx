@@ -16,11 +16,6 @@ const Container = styled.ul`
     margin: 0;
     width: 160px;
   }
-
-  @media ${device.mobileM} {
-    padding-left: 20px;
-    padding-right: 10px;  
-  }
 `;
 
 export const BaseLinkList = () => {
