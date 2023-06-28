@@ -74,21 +74,25 @@ const RoutesStyled = styled.div`
   padding-right: 60px;
 
   @media ${device.tablet} {
-    z-index: 2;
+    z-index: 10;
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
+    right: -100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+    margin-right: 0;
+    padding: 0px 24px;
+    background: rgb(var(--colorDark));
 
     &.open {
-      opacity: ${({ theme }) => `${theme.animationOverlayOpacity}`};
+      right: 0;
       animation: ${fadeInMenu} ${({ theme }) => `${theme.animationDuration}`};
     }
 
     &.close {
-      opacity: 0;
+      right: ${({ theme }) => `${theme.animationMenuPosRight}`};
       animation: ${fadeOutMenu} ${({ theme }) => `${theme.animationDuration}`};
     }
   }
