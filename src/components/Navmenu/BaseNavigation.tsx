@@ -27,8 +27,16 @@ const fadeOutOverlay = keyframes`
 `;
 
 const fadeInMenu = keyframes`
-  from {
+  /* from {
     right: ${({ theme }) => `${theme.animationMenuPosRight}`};
+  }
+
+  to {
+    right: 0;
+  } */
+
+  from {
+    right: var(--animation-menu-pos-right);
   }
 
   to {
@@ -37,12 +45,19 @@ const fadeInMenu = keyframes`
 `;
 
 const fadeOutMenu = keyframes`
-  from {
+  /* from {
     right: 0;
   }
 
   to {
     right: ${({ theme }) => `${theme.animationMenuPosRight}`};
+  } */
+  from {
+    right: 0;
+  }
+
+  to {
+    right: var(--animation-menu-pos-right);
   }
 `;
 
@@ -74,6 +89,10 @@ const RoutesStyled = styled.div`
   padding-right: 60px;
 
   @media ${device.tablet} {
+    --animation-duration: 5s;
+    --animation-overlay-opacity: 0.6;
+    --animation-menu-pos-right: -100%;
+
     z-index: 10;
     position: fixed;
     top: 0;
@@ -86,7 +105,7 @@ const RoutesStyled = styled.div`
     padding: 0px 24px;
     background: rgb(var(--colorDark));
 
-    &.open {
+    /* &.open {
       right: 0;
       animation: ${fadeInMenu} ${({ theme }) => `${theme.animationDuration}`};
     }
@@ -94,6 +113,16 @@ const RoutesStyled = styled.div`
     &.close {
       right: ${({ theme }) => `${theme.animationMenuPosRight}`};
       animation: ${fadeOutMenu} ${({ theme }) => `${theme.animationDuration}`};
+    } */
+
+    &.open {
+      right: 0;
+      animation: ${fadeInMenu} var(--animation-duration);
+    }
+
+    &.close {
+      right: var(--animation-menu-pos-right);
+      animation: ${fadeOutMenu} var(--animation-duration);
     }
   }
 
