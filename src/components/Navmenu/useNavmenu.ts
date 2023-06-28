@@ -6,9 +6,7 @@ enum EAnimation {
 }
 
 export const useNavmenu = (isOpen = false) => {
-  const [animation, setAnimation] = useState(
-    isOpen ? EAnimation.open : EAnimation.close
-  );
+  const [animation, setAnimation] = useState(isOpen ? EAnimation.open : '');
   const [isOpenMenu, setIsOpenMenu] = useState(isOpen);
 
   const delayAnim = async (ms: number, animName: EAnimation) => {

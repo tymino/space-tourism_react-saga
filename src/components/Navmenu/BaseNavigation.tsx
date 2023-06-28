@@ -12,13 +12,13 @@ const fadeInOverlay = keyframes`
   }
 
   to {
-    opacity: ${({ theme }) => `${theme.animationOverlayOpacity}`};
+    opacity: ${({ theme }) => theme.animationOverlayOpacity};
   }
 `;
 
 const fadeOutOverlay = keyframes`
   from {
-    opacity: ${({ theme }) => `${theme.animationOverlayOpacity}`};
+    opacity: ${({ theme }) => theme.animationOverlayOpacity};
   }
 
   to {
@@ -27,16 +27,8 @@ const fadeOutOverlay = keyframes`
 `;
 
 const fadeInMenu = keyframes`
-  /* from {
-    right: ${({ theme }) => `${theme.animationMenuPosRight}`};
-  }
-
-  to {
-    right: 0;
-  } */
-
   from {
-    right: var(--animation-menu-pos-right);
+    right: -100%;
   }
 
   to {
@@ -45,19 +37,12 @@ const fadeInMenu = keyframes`
 `;
 
 const fadeOutMenu = keyframes`
-  /* from {
-    right: 0;
-  }
-
-  to {
-    right: ${({ theme }) => `${theme.animationMenuPosRight}`};
-  } */
   from {
     right: 0;
   }
 
   to {
-    right: var(--animation-menu-pos-right);
+    right: ${({ theme }) => theme.animationMenuPosRight};
   }
 `;
 
@@ -72,13 +57,13 @@ const OverlayStyled = styled.div`
     background: black;
 
     &.open {
-      opacity: ${({ theme }) => `${theme.animationOverlayOpacity}`};
-      animation: ${fadeInOverlay} ${({ theme }) => `${theme.animationDuration}`};
+      opacity: ${({ theme }) => theme.animationOverlayOpacity};
+      animation: ${fadeInOverlay} ${({ theme }) => theme.animationDuration};
     }
 
     &.close {
       opacity: 0;
-      animation: ${fadeOutOverlay} ${({ theme }) => `${theme.animationDuration}`};
+      animation: ${fadeOutOverlay} ${({ theme }) => theme.animationDuration};
     }
   }
 `;
@@ -89,14 +74,10 @@ const RoutesStyled = styled.div`
   padding-right: 60px;
 
   @media ${device.tablet} {
-    --animation-duration: 5s;
-    --animation-overlay-opacity: 0.6;
-    --animation-menu-pos-right: -100%;
-
     z-index: 10;
     position: fixed;
     top: 0;
-    right: -100%;
+    right: ${({ theme }) => theme.animationMenuPosRight};
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -105,24 +86,14 @@ const RoutesStyled = styled.div`
     padding: 0px 24px;
     background: rgb(var(--colorDark));
 
-    /* &.open {
-      right: 0;
-      animation: ${fadeInMenu} ${({ theme }) => `${theme.animationDuration}`};
-    }
-
-    &.close {
-      right: ${({ theme }) => `${theme.animationMenuPosRight}`};
-      animation: ${fadeOutMenu} ${({ theme }) => `${theme.animationDuration}`};
-    } */
-
     &.open {
       right: 0;
-      animation: ${fadeInMenu} var(--animation-duration);
+      animation: ${fadeInMenu} ${({ theme }) => theme.animationDuration};
     }
 
     &.close {
-      right: var(--animation-menu-pos-right);
-      animation: ${fadeOutMenu} var(--animation-duration);
+      right: ${({ theme }) => theme.animationMenuPosRight};
+      animation: ${fadeOutMenu} ${({ theme }) => theme.animationDuration};
     }
   }
 
@@ -143,7 +114,6 @@ const CloseButtonStyled = styled(BaseImage)`
     height: 24px;
     margin-top: 34px;
     margin-bottom: 50px;
-    /* animation: slideMenuOut 0.3s; */
     cursor: pointer;
   }
 
@@ -156,14 +126,10 @@ const HamburgerButtonStyled = styled(BaseImage)`
   display: none;
 
   @media ${device.tablet} {
-    display: none;
+    display: block;
+    margin-right: 24px;
+    margin-top: 18px;
     cursor: pointer;
-
-    &:not(.active) {
-      display: block;
-      margin-right: 24px;
-      margin-top: 18px;
-    }
   }
 `;
 

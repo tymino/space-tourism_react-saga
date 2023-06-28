@@ -9,7 +9,7 @@ export const theme = {
   colorInvisible: '#00000000',
   transitionTime: '0.3s',
 
-  animationDuration: '0.9s',
+  animationDuration: '0.3s',
   animationOverlayOpacity: '0.6',
   animationMenuPosRight: '-100%',
 };

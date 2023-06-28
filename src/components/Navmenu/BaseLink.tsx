@@ -30,9 +30,22 @@ const NavLinkStyled = styled(NavLink)`
     border-bottom: 3px solid rgba(var(--colorWhite), 0.5);
   }
 
+  // fix border bottom
+
   &.active {
+    position: relative;
     border-bottom: 3px solid rgb(var(--colorWhite));
     cursor: default;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 4px;
+      height: 100%;
+      background: rgb(var(--colorWhite));
+    }
   }
 
   @media ${device.tablet} {

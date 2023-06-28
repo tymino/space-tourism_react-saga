@@ -24,11 +24,6 @@ const NavmenuLineDecor = styled.div`
 
   @media ${device.laptop} {
     display: none;
-
-    // ??
-    /* & > ul { 
-      margin-right: 0px;
-    } */
   }
 `;
 
