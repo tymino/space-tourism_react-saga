@@ -28,30 +28,34 @@ const NavLinkStyled = styled(NavLink)`
 
   &:hover {
     border-bottom: 3px solid rgba(var(--colorWhite), 0.5);
+    transition: border-bottom ease ${({ theme }) => theme.transitionTime};
   }
 
-  // fix border bottom
-
   &.active {
-    position: relative;
     border-bottom: 3px solid rgb(var(--colorWhite));
     cursor: default;
-
-    &::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      width: 4px;
-      height: 100%;
-      background: rgb(var(--colorWhite));
-    }
   }
 
   @media ${device.tablet} {
     display: flex;
     padding: 0;
     border-bottom: 3px solid var(--color-invisible);
+
+    &.active {
+      position: relative;
+      padding-bottom: 3px;
+      border-bottom: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 4px;
+        height: 100%;
+        background: rgb(var(--colorWhite));
+      }
+    }
   }
 `;
 
