@@ -4,7 +4,7 @@ import { BaseLinkList } from './BaseLinkList';
 import { styled, keyframes } from 'styled-components';
 import { device } from '../../styles/mediaSize';
 
-import { useNavmenu } from './useNavmenu';
+import { useNavmenu } from '../../hooks/useNavmenu';
 
 const fadeInOverlay = keyframes`
   from {
