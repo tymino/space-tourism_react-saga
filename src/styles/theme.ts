@@ -1,3 +1,5 @@
+const ANIMATION_DURATION = '0.4s';
+
 export const theme = {
   fontBellefair: 'Bellefair, sans-serif',
   fontBarlow: 'Barlow, sans-serif',
@@ -7,9 +9,9 @@ export const theme = {
   colorText: '#ffffff',
   colorDescribeText: '#d0d6f9',
   colorInvisible: '#00000000',
-  transitionTime: '0.3s',
+  transitionTime: ANIMATION_DURATION,
 
-  animationDuration: '0.3s',
+  animationDuration: ANIMATION_DURATION,
   animationOverlayOpacity: '0.6',
   animationMenuPosRight: '-100%',
 };

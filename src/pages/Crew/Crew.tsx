@@ -7,6 +7,7 @@ import { selectActivePage } from '../../redux/store';
 import { IDataCrew } from '../../types/redux/pages';
 import { Background } from '../../components';
 import { useSwitcher } from '../../hooks/useSwitcher';
+import { useBackgroundImage } from '../../hooks/useBackgroundImage';
 
 const CrewInfo = ({ children }: { children: JSX.Element[] }) => {
   return <div className="crew__container">{children}</div>;
@@ -35,9 +36,7 @@ interface IDescribeProps {
 const Describe = ({ children, data, activeSlider }: IDescribeProps) => {
   return (
     <div className="crew__pilot-info-wrapper">
-      <div className="crew__pilot-info-subheader">
-        {data[activeSlider].role}
-      </div>
+      <div className="crew__pilot-info-subheader">{data[activeSlider].role}</div>
       <div className="crew__pilot-info-header">{data[activeSlider].name}</div>
       <div className="crew__pilot-info-bio">{data[activeSlider].bio}</div>
       <ul className="crew__pilot-info-slider">{children}</ul>
@@ -53,11 +52,7 @@ interface ITabListProps {
   handleSwitchSlider: (sliderIndex: number) => void;
 }
 
-Describe.TabList = ({
-  data,
-  activeSlider,
-  handleSwitchSlider,
-}: ITabListProps) => {
+Describe.TabList = ({ data, activeSlider, handleSwitchSlider }: ITabListProps) => {
   const handleClickSlider = ({ target }: MouseEvent<HTMLElement>) => {
     const index = (target as HTMLElement).dataset.index;
     handleSwitchSlider(Number(index));
@@ -68,9 +63,7 @@ Describe.TabList = ({
       {data.map(({ name }, index) => (
         <li
           key={name}
-          className={`crew__pilot-info-tabs-button ${
-            activeSlider === index ? 'active' : ''
-          }`}
+          className={`crew__pilot-info-tabs-button ${activeSlider === index ? 'active' : ''}`}
           onClick={handleClickSlider}
           data-index={index}
         ></li>
@@ -93,30 +86,13 @@ Pilot.Image = ({ data, activeSlider }: any) => {
 
 export const Crew = () => {
   const { activeIndex, updateActiveIndex } = useSwitcher();
-  const data = useSelector(selectActivePage) as IDataCrew[];
+  const { image } = useBackgroundImage('crew');
 
-  const imageData = {
-    sourceImages: [
-      {
-        id: 0,
-        maxWidth: 468,
-        srcSet: './assets/crew/background-crew-mobile.jpg',
-      },
-      {
-        id: 1,
-        maxWidth: 1024,
-        srcSet: './assets/crew/background-crew-tablet.jpg',
-      },
-    ],
-    image: {
-      src: './assets/crew/background-crew-desktop.jpg',
-      alt: 'background-destination-desktop',
-    },
-  };
+  const data = useSelector(selectActivePage) as IDataCrew[];
 
   return (
     <div className="crew" role="main">
-      <Background data={imageData} />
+      <Background data={image} />
 
       <CrewInfo>
         <CrewInfo.Subtitle />

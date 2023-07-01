@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styled from 'styled-components';
 
 interface ISourceImages {
@@ -29,9 +30,7 @@ const Image = styled.img`
   z-index: -10;
 `;
 
-export const Background = ({
-  data: { sourceImages, image },
-}: IBackgroundProps) => {
+export const Background = memo(({ data: { sourceImages, image } }: IBackgroundProps) => {
   return (
     <picture>
       {sourceImages.map(({ id, maxWidth, srcSet }) => (
@@ -40,4 +39,4 @@ export const Background = ({
       <Image src={image.src} alt={image.alt} />
     </picture>
   );
-};
+});

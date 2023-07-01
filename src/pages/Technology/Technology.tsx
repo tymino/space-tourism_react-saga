@@ -8,6 +8,7 @@ import { IDataTechnology } from '../../types/redux/pages';
 import { Background } from '../../components';
 import { BasePicture } from '../../components/UI/BasePicture';
 import { useSwitcher } from '../../hooks/useSwitcher';
+import { useBackgroundImage } from '../../hooks/useBackgroundImage';
 
 interface IChildrenProps {
   children: JSX.Element[] | JSX.Element;
@@ -37,11 +38,7 @@ interface IButtonListProps {
   handleSwitchActiveButton: (buttonIndex: number) => void;
 }
 
-Launch.ButtonList = ({
-  data,
-  activeButton,
-  handleSwitchActiveButton,
-}: IButtonListProps) => {
+Launch.ButtonList = ({ data, activeButton, handleSwitchActiveButton }: IButtonListProps) => {
   const handleClickButton = ({ target }: MouseEvent<HTMLButtonElement>) => {
     const index = Number((target as HTMLElement).dataset.index);
     handleSwitchActiveButton(index);
@@ -80,15 +77,9 @@ interface IDescribeProps {
 Launch.Describe = ({ data, activeButton }: IDescribeProps) => {
   return (
     <div className="technology__launch-info">
-      <div className="technology__launch-info-subheader">
-        the terminology...
-      </div>
-      <div className="technology__launch-info-header">
-        {data[activeButton].name}
-      </div>
-      <div className="technology__launch-info-text">
-        {data[activeButton].description}
-      </div>
+      <div className="technology__launch-info-subheader">the terminology...</div>
+      <div className="technology__launch-info-header">{data[activeButton].name}</div>
+      <div className="technology__launch-info-text">{data[activeButton].description}</div>
     </div>
   );
 };
@@ -119,31 +110,13 @@ Launch.Picture = ({ data, activeButton }: IPictureProps) => {
 
 export const Technology = () => {
   const { activeIndex, updateActiveIndex } = useSwitcher();
+  const { image } = useBackgroundImage('technology');
 
   const data = useSelector(selectActivePage) as IDataTechnology[];
 
-  const imageData = {
-    sourceImages: [
-      {
-        id: 0,
-        maxWidth: 468,
-        srcSet: './assets/technology/background-technology-mobile.jpg',
-      },
-      {
-        id: 1,
-        maxWidth: 1024,
-        srcSet: './assets/technology/background-technology-tablet.jpg',
-      },
-    ],
-    image: {
-      src: './assets/technology/background-technology-desktop.jpg',
-      alt: 'background-technology',
-    },
-  };
-
   return (
     <div className="technology" role="main">
-      <Background data={imageData} />
+      <Background data={image} />
 
       <TechnologyInfo>
         <TechnologyInfo.Subtitle />

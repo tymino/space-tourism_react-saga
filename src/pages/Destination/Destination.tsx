@@ -1,5 +1,5 @@
 import './Destination.scss';
-import { MouseEvent } from 'react';
+import { MouseEvent, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectActivePage } from '../../redux/store';
@@ -7,6 +7,8 @@ import { IDataDestination } from '../../types/redux/pages';
 import { Background } from '../../components';
 import { BaseImage } from '../../components/UI';
 import { useSwitcher } from '../../hooks/useSwitcher';
+import { BackgroundImageData } from '../../localDB/BackgroundImageData';
+import { useBackgroundImage } from '../../hooks/useBackgroundImage';
 
 const PlanetInfo = ({ children }: { children: JSX.Element[] }) => {
   return <div className="destination__planet-info-wrapper">{children}</div>;
@@ -56,28 +58,16 @@ interface IDescribeProps {
 PlanetInfo.Describe = ({ data, activeTab }: IDescribeProps) => {
   return (
     <>
-      <div className="destination__planet-info-header">
-        {data[activeTab].name}
-      </div>
-      <div className="destination__planet-info-text">
-        {data[activeTab].description}
-      </div>
+      <div className="destination__planet-info-header">{data[activeTab].name}</div>
+      <div className="destination__planet-info-text">{data[activeTab].description}</div>
       <div className="destination__planet-info-footer">
         <div className="destination__planet-info-distance">
-          <div className="destination__planet-info-distance-name">
-            avg. distance
-          </div>
-          <div className="destination__planet-info-distance-value">
-            {data[activeTab].distance}
-          </div>
+          <div className="destination__planet-info-distance-name">avg. distance</div>
+          <div className="destination__planet-info-distance-value">{data[activeTab].distance}</div>
         </div>
         <div className="destination__planet-info-travel">
-          <div className="destination__planet-info-travel-name">
-            est. travel time
-          </div>
-          <div className="destination__planet-info-travel-value">
-            {data[activeTab].travel}
-          </div>
+          <div className="destination__planet-info-travel-name">est. travel time</div>
+          <div className="destination__planet-info-travel-value">{data[activeTab].travel}</div>
         </div>
       </div>
     </>
@@ -86,31 +76,13 @@ PlanetInfo.Describe = ({ data, activeTab }: IDescribeProps) => {
 
 export const Destination = () => {
   const { activeIndex, updateActiveIndex } = useSwitcher();
+  const { image } = useBackgroundImage('destination');
 
   const data = useSelector(selectActivePage) as IDataDestination[];
 
-  const imageData = {
-    sourceImages: [
-      {
-        id: 0,
-        maxWidth: 468,
-        srcSet: './assets/destination/background-destination-mobile.jpg',
-      },
-      {
-        id: 1,
-        maxWidth: 1024,
-        srcSet: './assets/destination/background-destination-tablet.jpg',
-      },
-    ],
-    image: {
-      src: './assets/destination/background-destination-desktop.jpg',
-      alt: 'background-destination',
-    },
-  };
-
   return (
     <div className="destination" role="main">
-      <Background data={imageData} />
+      <Background data={image} />
 
       <div className="destination__container">
         <div className="destination__subtitle">

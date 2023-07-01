@@ -1,29 +1,13 @@
 import './Home.scss';
 import { Background } from '../../components';
+import { useBackgroundImage } from '../../hooks/useBackgroundImage';
 
 export const Home = () => {
-  const imageData = {
-    sourceImages: [
-      {
-        id: 0,
-        maxWidth: 468,
-        srcSet: './assets/home/background-home-mobile.jpg',
-      },
-      {
-        id: 1,
-        maxWidth: 1024,
-        srcSet: './assets/home/background-home-tablet.jpg',
-      },
-    ],
-    image: {
-      src: './assets/home/background-home-desktop.jpg',
-      alt: 'background-home',
-    },
-  };
+  const { image } = useBackgroundImage('home');
 
   return (
     <div className="home" role="main">
-      <Background data={imageData} />
+      <Background data={image} />
 
       <div className="home__container">
         <div className="home__describe">
