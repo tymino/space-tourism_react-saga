@@ -24,6 +24,7 @@ const LinkContainer = styled.li`
 
 const NavLinkStyled = styled(NavLink)`
   padding: 36px 0;
+  border-bottom: 3px solid var(--color-invisible);
   ${textNavigation};
 
   &:hover {
@@ -39,7 +40,6 @@ const NavLinkStyled = styled(NavLink)`
   @media ${device.tablet} {
     display: flex;
     padding: 0;
-    border-bottom: 3px solid var(--color-invisible);
 
     &.active {
       position: relative;
