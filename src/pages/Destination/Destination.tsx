@@ -1,14 +1,12 @@
 import './Destination.scss';
-import { MouseEvent, useMemo } from 'react';
+import { MouseEvent } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectActivePage } from '../../redux/store';
 import { IDataDestination } from '../../types/redux/pages';
 import { Background } from '../../components';
 import { BaseImage } from '../../components/UI';
-import { useSwitcher } from '../../hooks/useSwitcher';
-import { BackgroundImageData } from '../../localDB/BackgroundImageData';
-import { useBackgroundImage } from '../../hooks/useBackgroundImage';
+import { useBackgroundImage, useSwitcher } from '../../hooks/';
 
 const PlanetInfo = ({ children }: { children: JSX.Element[] }) => {
   return <div className="destination__planet-info-wrapper">{children}</div>;

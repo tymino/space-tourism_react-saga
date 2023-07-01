@@ -6,8 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectActivePage } from '../../redux/store';
 import { IDataCrew } from '../../types/redux/pages';
 import { Background } from '../../components';
-import { useSwitcher } from '../../hooks/useSwitcher';
-import { useBackgroundImage } from '../../hooks/useBackgroundImage';
+import { useBackgroundImage, useSwitcher } from '../../hooks';
 
 const CrewInfo = ({ children }: { children: JSX.Element[] }) => {
   return <div className="crew__container">{children}</div>;

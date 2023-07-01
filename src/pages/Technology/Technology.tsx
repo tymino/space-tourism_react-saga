@@ -7,8 +7,7 @@ import { selectActivePage } from '../../redux/store';
 import { IDataTechnology } from '../../types/redux/pages';
 import { Background } from '../../components';
 import { BasePicture } from '../../components/UI/BasePicture';
-import { useSwitcher } from '../../hooks/useSwitcher';
-import { useBackgroundImage } from '../../hooks/useBackgroundImage';
+import { useBackgroundImage, useSwitcher } from '../../hooks';
 
 interface IChildrenProps {
   children: JSX.Element[] | JSX.Element;

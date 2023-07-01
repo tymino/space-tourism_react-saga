@@ -1,6 +1,6 @@
 import './Home.scss';
 import { Background } from '../../components';
-import { useBackgroundImage } from '../../hooks/useBackgroundImage';
+import { useBackgroundImage } from '../../hooks';
 
 export const Home = () => {
   const { image } = useBackgroundImage('home');

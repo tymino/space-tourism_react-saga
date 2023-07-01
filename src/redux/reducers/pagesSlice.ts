@@ -27,10 +27,7 @@ const pagesSlice = createSlice({
       state.loading = false;
       state.activePage = state.cache[action.payload];
     },
-    loadingPageSuccess(
-      state,
-      action: PayloadAction<{ name: string; data: TActivePage }>
-    ) {
+    loadingPageSuccess(state, action: PayloadAction<{ name: string; data: TActivePage }>) {
       state.loading = false;
       state.activePage = action.payload.data;
       state.cache = {
@@ -47,9 +44,5 @@ const pagesSlice = createSlice({
 
 export const pagesSliceReducer = pagesSlice.reducer;
 
-export const {
-  loadingPage,
-  loadingPageFromCache,
-  loadingPageSuccess,
-  loadingPageFailure,
-} = pagesSlice.actions;
+export const { loadingPage, loadingPageFromCache, loadingPageSuccess, loadingPageFailure } =
+  pagesSlice.actions;
