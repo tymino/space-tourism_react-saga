@@ -22,8 +22,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [github.com/...](https://github.com/tymino/frontendmentor_space-tourism)
-- Live Site URL: [surge.sh](https://tymino-space-tourism.surge.sh/)
+- Solution URL: [github](https://github.com/tymino/frontendmentor_space-tourism)
+- Live Site URL: [vercel](https://frontendmentor-space-tourism-theta.vercel.app/)
 
 ## My process
 
