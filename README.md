@@ -9,7 +9,6 @@ This is a solution to the [Space tourism website challenge on Frontend Mentor](h
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-- [Author](#author)
 
 ## Overview
 
@@ -39,8 +38,3 @@ Users should be able to:
 - [Redux](https://redux.js.org/)
 - [Redux-Saga](https://redux-saga.js.org/)
 - [Typescript](https://www.typescriptlang.org/)
-
-## Author
-
-- Website - [github](https://github.com/tymino)
-- Frontend Mentor - [@tymino](https://www.frontendmentor.io/profile/tymino)
