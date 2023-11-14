@@ -1,6 +1,13 @@
-export const fetchData = async (pageName: string) => {
-  const response = await fetch(`${import.meta.env.VITE_API_PATH}/${pageName}`)
-  const json = await response.json()
+import axios from 'axios'
 
-  return json
+export const fetchData = async (pageName: string) => {
+  const URL = `${import.meta.env.VITE_API_PATH}/${pageName}`
+
+  try {
+    const { data } = await axios.get(URL)
+
+    return data
+  } catch (error) {
+    console.log('error fetch data func')
+  }
 }
