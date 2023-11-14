@@ -1,4 +1,4 @@
-import { Crew, Destination, Home, NotFound, Technology } from '../pages';
+import { Crew, Destination, Home, NotFound, Technology } from '../pages'
 
 export enum ERoutes {
   home = 'HOME_ROUTE',
@@ -9,12 +9,12 @@ export enum ERoutes {
 }
 
 interface IRoutes {
-  id: string;
-  name: string;
-  indexName: string;
-  isNavigate: boolean;
-  path: string;
-  component: () => JSX.Element;
+  id: string
+  name: string
+  indexName: string
+  isNavigate: boolean
+  path: string
+  component: () => JSX.Element
 }
 
 export const routes: IRoutes[] = [
@@ -59,7 +59,7 @@ export const routes: IRoutes[] = [
     path: '*',
     component: NotFound,
   },
-];
+]
 
 // export const getRoutePath = (id: string) => {
 //   const route = routes.find((route) => route.id === id);

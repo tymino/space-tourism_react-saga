@@ -1,31 +1,31 @@
 export interface IDataDestination {
-  name: string;
+  name: string
   images: {
-    png: string;
-    webp: string;
-  };
-  description: string;
-  distance: string;
-  travel: string;
+    png: string
+    webp: string
+  }
+  description: string
+  distance: string
+  travel: string
 }
 
 export interface IDataCrew {
-  name: string;
+  name: string
   images: {
-    png: string;
-    webp: string;
-  };
-  role: string;
-  bio: string;
+    png: string
+    webp: string
+  }
+  role: string
+  bio: string
 }
 
 export interface IDataTechnology {
-  name: string;
+  name: string
   images: {
-    portrait: string;
-    landscape: string;
-  };
-  description: string;
+    portrait: string
+    landscape: string
+  }
+  description: string
 }
 
-export type TActivePage = IDataDestination[] | IDataCrew[] | IDataTechnology[];
+export type TActivePage = IDataDestination[] | IDataCrew[] | IDataTechnology[]

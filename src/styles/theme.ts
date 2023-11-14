@@ -1,4 +1,4 @@
-const ANIMATION_DURATION = '0.4s';
+const ANIMATION_DURATION = '0.4s'
 
 export const theme = {
   fontBellefair: 'Bellefair, sans-serif',
@@ -14,7 +14,7 @@ export const theme = {
   animationDuration: ANIMATION_DURATION,
   animationOverlayOpacity: '0.6',
   animationMenuPosRight: '-100%',
-};
+}
 
 /*
   colorDark -> colorBackground

@@ -1,9 +1,9 @@
-import './sass/index.scss';
+import './sass/index.scss'
 
-import { HistoryRouter as Router } from 'redux-first-history/rr6';
-import { history } from './redux/store';
+import { HistoryRouter as Router } from 'redux-first-history/rr6'
+import { history } from './redux/store'
 
-import { Loading, Navmenu, BaseRoutes } from './components';
+import { Loading, Navmenu, BaseRoutes } from './components'
 
 export const App = () => {
   return (
@@ -15,5 +15,5 @@ export const App = () => {
         </Loading>
       </Router>
     </>
-  );
-};
+  )
+}
