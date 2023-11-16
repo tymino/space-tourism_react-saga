@@ -1,111 +1,43 @@
-import './Crew.scss';
+// import './Crew.scss'
 
-import { MouseEvent } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
-import { selectActivePage } from '../../redux/store';
-import { IDataCrew } from '../../types/redux/pages';
-import { Background } from '../../components';
-import { useBackgroundImage, useSwitcher } from '../../hooks';
+import { selectActivePage } from '../../redux/store'
+import { IDataCrew } from '../../types/redux/pages'
+import { Background } from '../../components'
+import { useBackgroundImage, useSwitcher } from '../../hooks'
+import { Info } from './Info'
+import { Pilot } from './Pilot'
+import styled from 'styled-components'
+import { device } from '../../styles/mediaSize'
 
-const CrewInfo = ({ children }: { children: JSX.Element[] }) => {
-  return <div className="crew__container">{children}</div>;
-};
+const StyledCrew = styled.div`
+  padding: 0 11%;
 
-CrewInfo.Subtitle = () => {
-  return (
-    <div className="crew__subtitle">
-      <span>02</span> Meet your crew
-    </div>
-  );
-};
-
-const Pilot = ({ children }: { children: JSX.Element[] }) => {
-  return <div className="crew__pilot">{children}</div>;
-};
-
-CrewInfo.Pilot = Pilot;
-
-interface IDescribeProps {
-  children: JSX.Element;
-  data: IDataCrew[];
-  activeSlider: number;
-}
-
-const Describe = ({ children, data, activeSlider }: IDescribeProps) => {
-  return (
-    <div className="crew__pilot-info-wrapper">
-      <div className="crew__pilot-info-subheader">{data[activeSlider].role}</div>
-      <div className="crew__pilot-info-header">{data[activeSlider].name}</div>
-      <div className="crew__pilot-info-bio">{data[activeSlider].bio}</div>
-      <ul className="crew__pilot-info-slider">{children}</ul>
-    </div>
-  );
-};
-
-Pilot.Describe = Describe;
-
-interface ITabListProps {
-  data: IDataCrew[];
-  activeSlider: number;
-  handleSwitchSlider: (sliderIndex: number) => void;
-}
-
-Describe.TabList = ({ data, activeSlider, handleSwitchSlider }: ITabListProps) => {
-  const handleClickSlider = ({ target }: MouseEvent<HTMLElement>) => {
-    const index = (target as HTMLElement).dataset.index;
-    handleSwitchSlider(Number(index));
-  };
-
-  return (
-    <>
-      {data.map(({ name }, index) => (
-        <li
-          key={name}
-          className={`crew__pilot-info-tabs-button ${activeSlider === index ? 'active' : ''}`}
-          onClick={handleClickSlider}
-          data-index={index}
-        ></li>
-      ))}
-    </>
-  );
-};
-
-Pilot.Image = ({ data, activeSlider }: any) => {
-  return (
-    <div className="crew__pilot-image-mobile">
-      <img
-        className="crew__pilot-image"
-        src={data[activeSlider].images.png}
-        alt={data[activeSlider].name}
-      />
-    </div>
-  );
-};
+  @media ${device.laptop} {
+    padding: 0 38px;
+  }
+`
 
 export const Crew = () => {
-  const { activeIndex, updateActiveIndex } = useSwitcher();
-  const { image } = useBackgroundImage('crew');
-
-  const data = useSelector(selectActivePage) as IDataCrew[];
+  const { image } = useBackgroundImage('crew')
+  const { activeIndex, updateActiveIndex } = useSwitcher()
+  const data = useSelector(selectActivePage) as IDataCrew[]
 
   return (
-    <div className="crew" role="main">
+    <StyledCrew role="main">
       <Background data={image} />
 
-      <CrewInfo>
-        <CrewInfo.Subtitle />
-        <CrewInfo.Pilot>
-          <Pilot.Describe data={data} activeSlider={activeIndex}>
-            <Describe.TabList
-              data={data}
-              activeSlider={activeIndex}
-              handleSwitchSlider={updateActiveIndex}
-            />
-          </Pilot.Describe>
+      <Info>
+        <Pilot>
+          <Pilot.Describe
+            data={data}
+            activeSlider={activeIndex}
+            handleSwitchSlider={updateActiveIndex}
+          />
           <Pilot.Image data={data} activeSlider={activeIndex} />
-        </CrewInfo.Pilot>
-      </CrewInfo>
-    </div>
-  );
-};
+        </Pilot>
+      </Info>
+    </StyledCrew>
+  )
+}
