@@ -1,94 +1,93 @@
-import './Destination.scss';
-import { MouseEvent } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
-import { selectActivePage } from '../../redux/store';
-import { IDataDestination } from '../../types/redux/pages';
-import { Background } from '../../components';
-import { BaseImage } from '../../components/UI';
-import { useBackgroundImage, useSwitcher } from '../../hooks/';
+import { selectActivePage } from '../../redux/store'
+import { IDataDestination } from '../../types/redux/pages'
 
-const PlanetInfo = ({ children }: { children: JSX.Element[] }) => {
-  return <div className="destination__planet-info-wrapper">{children}</div>;
-};
+import { useBackgroundImage, useSwitcher } from '../../hooks/'
+import { Background } from '../../components'
+import { BaseImage } from '../../components/UI'
+import { PlanetInfo } from './PlanetInfo'
+import styled from 'styled-components'
+import { device } from '../../styles/mediaSize'
+import { heading5 } from '../../styles/mixins/heading'
 
-interface ITabListProps {
-  data: IDataDestination[];
-  activeTab: number;
-  handleSwitchTab: (tabIndex: number) => void;
-}
+const StyledDestination = styled.div`
+  padding: 0 11%;
 
-PlanetInfo.TabList = ({ data, activeTab, handleSwitchTab }: ITabListProps) => {
-  const handleClickTab = ({ target }: MouseEvent<HTMLElement>) => {
-    const tabIndex = Number((target as HTMLElement).dataset.index);
-    handleSwitchTab(tabIndex);
-  };
+  @media ${device.laptop} {
+    padding: 0 38px;
+  }
+`
+const StyledDestinationContainer = styled.div`
+  margin-top: 74px;
 
-  const setClassNameActiveTab = (index: number) => {
-    const activeClass = activeTab === index ? 'active' : '';
+  @media ${device.laptop} {
+    margin-top: 40px;
+  }
+`
+const StyledDestinationSubtitle = styled.div`
+  margin-bottom: 60px;
+  ${heading5};
+  text-transform: uppercase;
+  color: rgb(var(--colorWhite));
 
-    return `destination__planet-info-tabs-name ${activeClass}`;
-  };
+  & > span {
+    opacity: 0.25;
+  }
 
-  return (
-    <ul className="destination__planet-info-tabs">
-      {data.map(({ name }, index) => {
-        return (
-          <li
-            key={name}
-            className={setClassNameActiveTab(index)}
-            onClick={handleClickTab}
-            data-index={index}
-          >
-            {name}
-          </li>
-        );
-      })}
-    </ul>
-  );
-};
+  @media ${device.laptop} {
+    text-align: center;
+    font-size: 20px;
+  }
 
-interface IDescribeProps {
-  data: IDataDestination[];
-  activeTab: number;
-}
+  @media ${device.mobileL} {
+    text-align: center;
+    font-size: 16px;
+  }
+`
 
-PlanetInfo.Describe = ({ data, activeTab }: IDescribeProps) => {
-  return (
-    <>
-      <div className="destination__planet-info-header">{data[activeTab].name}</div>
-      <div className="destination__planet-info-text">{data[activeTab].description}</div>
-      <div className="destination__planet-info-footer">
-        <div className="destination__planet-info-distance">
-          <div className="destination__planet-info-distance-name">avg. distance</div>
-          <div className="destination__planet-info-distance-value">{data[activeTab].distance}</div>
-        </div>
-        <div className="destination__planet-info-travel">
-          <div className="destination__planet-info-travel-name">est. travel time</div>
-          <div className="destination__planet-info-travel-value">{data[activeTab].travel}</div>
-        </div>
-      </div>
-    </>
-  );
-};
+const StyledPlanet = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  @media ${device.laptop} {
+    flex-direction: column;
+    align-items: center;
+  }
+`
+const StyledPlanetImage = styled(BaseImage)`
+  width: 445px;
+  height: 445px;
+  margin-left: 50px;
+
+  @media ${device.laptop} {
+    width: 300px;
+    height: 300px;
+    margin-left: 0px;
+    margin-bottom: 50px;
+  }
+
+  @media ${device.mobileL} {
+    width: 170px;
+    height: 170px;
+  }
+`
 
 export const Destination = () => {
-  const { activeIndex, updateActiveIndex } = useSwitcher();
-  const { image } = useBackgroundImage('destination');
-
-  const data = useSelector(selectActivePage) as IDataDestination[];
+  const { image } = useBackgroundImage('destination')
+  const { activeIndex, updateActiveIndex } = useSwitcher()
+  const data = useSelector(selectActivePage) as IDataDestination[]
 
   return (
-    <div className="destination" role="main">
+    <StyledDestination role="main">
       <Background data={image} />
 
-      <div className="destination__container">
-        <div className="destination__subtitle">
+      <StyledDestinationContainer>
+        <StyledDestinationSubtitle>
           <span>01</span> Pick your destination
-        </div>
-        <div className="destination__planet-wrapper">
-          <BaseImage
-            className={'destination__planet-image'}
+        </StyledDestinationSubtitle>
+        <StyledPlanet>
+          <StyledPlanetImage
             hasSrc={true}
             name={data[activeIndex].images.png}
             nameAlt={data[activeIndex].name}
@@ -101,8 +100,8 @@ export const Destination = () => {
             />
             <PlanetInfo.Describe data={data} activeTab={activeIndex} />
           </PlanetInfo>
-        </div>
-      </div>
-    </div>
-  );
-};
+        </StyledPlanet>
+      </StyledDestinationContainer>
+    </StyledDestination>
+  )
+}
