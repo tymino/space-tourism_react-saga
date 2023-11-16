@@ -1,13 +1,13 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
-import { styled } from 'styled-components';
-import { device } from '../../styles/mediaSize';
-import { textNavigation } from '../../styles/mixins/text';
+import { styled } from 'styled-components'
+import { device } from '../../styles/mediaSize'
+import { textNavigation } from '../../styles/mixins/text'
 
 interface IBaseLinkProps {
-  path: string;
-  indexName: string;
-  name: string;
+  path: string
+  indexName: string
+  name: string
 }
 
 const LinkContainer = styled.li`
@@ -20,7 +20,7 @@ const LinkContainer = styled.li`
   @media ${device.tablet} {
     margin: 16px 0 16px 0px;
   }
-`;
+`
 
 const NavLinkStyled = styled(NavLink)`
   padding: 36px 0;
@@ -57,7 +57,7 @@ const NavLinkStyled = styled(NavLink)`
       }
     }
   }
-`;
+`
 
 const SpanBold = styled.span`
   font-weight: bold;
@@ -70,7 +70,7 @@ const SpanBold = styled.span`
     display: inline;
     margin-right: 12px;
   }
-`;
+`
 
 export const BaseLink = ({ path, indexName, name }: IBaseLinkProps) => {
   return (
@@ -80,5 +80,5 @@ export const BaseLink = ({ path, indexName, name }: IBaseLinkProps) => {
         <span>{name}</span>
       </NavLinkStyled>
     </LinkContainer>
-  );
-};
+  )
+}

@@ -4,17 +4,6 @@
   height: 80vh;
   padding: 0 11%;
 
-  &__picture-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100vh;
-
-    z-index: -10;
-  }
-
   &__container {
     transform: translateY(76%);
     display: flex;
