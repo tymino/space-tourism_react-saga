@@ -1,15 +1,12 @@
 // import './Crew.scss'
-
-import { useSelector } from 'react-redux'
-
-import { selectActivePage } from '../../redux/store'
-import { IDataCrew } from '../../types/redux/pages'
-import { Background } from '../../components'
-import { useBackgroundImage, useSwitcher } from '../../hooks'
-import { Info } from './Info'
-import { Pilot } from './Pilot'
 import styled from 'styled-components'
 import { device } from '../../styles/mediaSize'
+
+import { IDataCrew } from '../../types/redux/pages'
+import { Background } from '../../components'
+import { Info } from './Info'
+import { Pilot } from './Pilot'
+import { usePageData } from '../../hooks/usePageData'
 
 const StyledCrew = styled.div`
   padding: 0 11%;
@@ -20,9 +17,7 @@ const StyledCrew = styled.div`
 `
 
 export const Crew = () => {
-  const { image } = useBackgroundImage('crew')
-  const { activeIndex, updateActiveIndex } = useSwitcher()
-  const data = useSelector(selectActivePage) as IDataCrew[]
+  const { image, data, activeIndex, updateActiveIndex } = usePageData<IDataCrew[]>('crew')
 
   return (
     <StyledCrew role="main">

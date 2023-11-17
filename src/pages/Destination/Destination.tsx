@@ -1,15 +1,12 @@
-import { useSelector } from 'react-redux'
-
-import { selectActivePage } from '../../redux/store'
-import { IDataDestination } from '../../types/redux/pages'
-
-import { useBackgroundImage, useSwitcher } from '../../hooks/'
-import { Background } from '../../components'
-import { BaseImage } from '../../components/UI'
-import { PlanetInfo } from './PlanetInfo'
 import styled from 'styled-components'
 import { device } from '../../styles/mediaSize'
 import { heading5 } from '../../styles/mixins/heading'
+
+import { IDataDestination } from '../../types/redux/pages'
+import { Background } from '../../components'
+import { BaseImage } from '../../components/UI'
+import { PlanetInfo } from './PlanetInfo'
+import { usePageData } from '../../hooks/usePageData'
 
 const StyledDestination = styled.div`
   padding: 0 11%;
@@ -74,9 +71,8 @@ const StyledPlanetImage = styled(BaseImage)`
 `
 
 export const Destination = () => {
-  const { image } = useBackgroundImage('destination')
-  const { activeIndex, updateActiveIndex } = useSwitcher()
-  const data = useSelector(selectActivePage) as IDataDestination[]
+  const { image, data, activeIndex, updateActiveIndex } =
+    usePageData<IDataDestination[]>('destination')
 
   return (
     <StyledDestination role="main">

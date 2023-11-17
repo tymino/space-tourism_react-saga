@@ -1,10 +1,10 @@
-// import './Home.scss'
-import { Background } from '../../components'
-import { useBackgroundImage } from '../../hooks'
 import styled from 'styled-components'
 import { device } from '../../styles/mediaSize'
 import { heading1, heading4, heading5 } from '../../styles/mixins/heading'
 import { textBody } from '../../styles/mixins/text'
+
+import { Background } from '../../components'
+import { useBackgroundImage } from '../../hooks'
 
 const HomePage = styled.div`
   height: 80vh;
@@ -120,7 +120,7 @@ const HomeExplore = styled.div`
 `
 
 export const Home = () => {
-  const { image } = useBackgroundImage('home')
+  const image = useBackgroundImage('home')
 
   return (
     <HomePage role="main">

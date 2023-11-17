@@ -1,14 +1,13 @@
 // import './Technology.scss'
-import { useSelector } from 'react-redux'
-
-import { selectActivePage } from '../../redux/store'
-import { IDataTechnology } from '../../types/redux/pages'
-import { Background } from '../../components'
-import { useBackgroundImage, useSwitcher } from '../../hooks'
-import { Content } from './Content'
-import { Launch } from './Content/Launch'
 import styled from 'styled-components'
 import { device } from '../../styles/mediaSize'
+
+import { IDataTechnology } from '../../types/redux/pages'
+import { Background } from '../../components'
+import { Content } from './Content'
+import { Launch } from './Content/Launch'
+
+import { usePageData } from '../../hooks/usePageData'
 
 const StyledContainer = styled.div`
   padding: 0 11%;
@@ -19,9 +18,8 @@ const StyledContainer = styled.div`
 `
 
 export const Technology = () => {
-  const { image } = useBackgroundImage('technology')
-  const { activeIndex, updateActiveIndex } = useSwitcher()
-  const data = useSelector(selectActivePage) as IDataTechnology[]
+  const { image, data, activeIndex, updateActiveIndex } =
+    usePageData<IDataTechnology[]>('technology')
 
   return (
     <StyledContainer>
