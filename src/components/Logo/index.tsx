@@ -1,5 +1,5 @@
-import { styled } from 'styled-components';
-import { device } from '../../styles/mediaSize';
+import { styled } from 'styled-components'
+import { device } from '../../styles/mediaSize'
 
 const LogoContainer = styled.img`
   width: 48px;
@@ -13,8 +13,8 @@ const LogoContainer = styled.img`
   @media ${device.tablet} {
     margin: 24px 0 0 24px;
   }
-`;
+`
 
 export const Logo = () => {
-  return <LogoContainer src="./assets/shared/logo.svg" alt="logo" />;
-};
+  return <LogoContainer src="./assets/shared/logo.svg" alt="logo" />
+}

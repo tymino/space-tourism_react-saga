@@ -1,9 +1,9 @@
 interface IBaseImage {
-  className?: string;
-  hasSrc?: boolean;
-  name: string;
-  nameAlt: string;
-  handleClick?: () => void;
+  className?: string
+  hasSrc?: boolean
+  name: string
+  nameAlt: string
+  handleClick?: () => void
 }
 
 export const BaseImage = ({
@@ -14,15 +14,8 @@ export const BaseImage = ({
   handleClick,
 }: IBaseImage) => {
   const setSrc = () => {
-    return hasSrc ? name : `./assets/shared/${name}.svg`;
-  };
+    return hasSrc ? name : `./assets/shared/${name}.svg`
+  }
 
-  return (
-    <img
-      className={className}
-      src={setSrc()}
-      alt={nameAlt}
-      onClick={handleClick}
-    />
-  );
-};
+  return <img className={className} src={setSrc()} alt={nameAlt} onClick={handleClick} />
+}

@@ -1,4 +1,3 @@
-// import './Crew.scss'
 import styled from 'styled-components'
 import { device } from '../../styles/mediaSize'
 

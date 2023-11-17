@@ -23,18 +23,20 @@ interface IPictureProps {
 }
 
 export const Picture = ({ data, activeButton }: IPictureProps) => {
+  const { images, name } = data[activeButton]
+
   return (
     <StyledPicture
       sourceImages={[
         {
           id: 0,
           maxWidth: 1020,
-          srcSet: data[activeButton].images.landscape,
+          srcSet: images.landscape,
         },
       ]}
       image={{
-        src: data[activeButton].images.portrait,
-        alt: data[activeButton].name,
+        src: images.portrait,
+        alt: name,
       }}
     />
   )

@@ -1,8 +1,8 @@
-import { styled } from 'styled-components';
-import { device } from '../../styles/mediaSize';
+import { styled } from 'styled-components'
+import { device } from '../../styles/mediaSize'
 
-import { Logo } from '../';
-import { BaseNavigation } from './BaseNavigation';
+import { Logo } from '../'
+import { BaseNavigation } from './BaseNavigation'
 
 const NavmenuContainer = styled.div`
   position: relative;
@@ -14,7 +14,7 @@ const NavmenuContainer = styled.div`
   @media ${device.laptop} {
     margin-top: 0px;
   }
-`;
+`
 
 const NavmenuLineDecor = styled.div`
   width: 100%;
@@ -25,7 +25,7 @@ const NavmenuLineDecor = styled.div`
   @media ${device.laptop} {
     display: none;
   }
-`;
+`
 
 export const Navmenu = () => {
   return (
@@ -37,5 +37,5 @@ export const Navmenu = () => {
         <BaseNavigation.MyLinkList />
       </BaseNavigation>
     </NavmenuContainer>
-  );
-};
+  )
+}

@@ -64,12 +64,6 @@ export const ButtonList = ({ data, activeButton, handleSwitchActiveButton }: IBu
     handleSwitchActiveButton(index)
   }
 
-  // const setStyleButton = (index: number) => {
-  //   const active = activeButton === index ? 'active' : ''
-
-  //   return `technology__launch-button ${active}`
-  // }
-
   return (
     <StyledButtonList>
       {data.map((_, index) => {

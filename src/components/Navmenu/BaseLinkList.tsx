@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { device } from '../../styles/mediaSize';
-import { routes } from '../../routes';
-import { BaseLink } from './BaseLink';
+import styled from 'styled-components'
+import { device } from '../../styles/mediaSize'
+import { routes } from '../../routes'
+import { BaseLink } from './BaseLink'
 
 const Container = styled.ul`
   display: flex;
@@ -16,15 +16,15 @@ const Container = styled.ul`
     margin: 0;
     width: 160px;
   }
-`;
+`
 
 export const BaseLinkList = () => {
   return (
     <Container>
       {routes.map(({ id, path, name, indexName, isNavigate }) => {
-        const linkProps = { path, name, indexName };
-        return isNavigate && <BaseLink key={id} {...linkProps} />;
+        const linkProps = { path, name, indexName }
+        return isNavigate && <BaseLink key={id} {...linkProps} />
       })}
     </Container>
-  );
-};
+  )
+}

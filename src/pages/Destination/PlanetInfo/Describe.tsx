@@ -86,18 +86,20 @@ const TravelValue = styled.div`
 `
 
 export const Describe = ({ data, activeTab }: IDescribeProps) => {
+  const { name, description, distance, travel } = data[activeTab]
+
   return (
     <>
-      <Header>{data[activeTab].name}</Header>
-      <Text>{data[activeTab].description}</Text>
+      <Header>{name}</Header>
+      <Text>{description}</Text>
       <Footer>
         <Distance>
           <DistanceName>avg. distance</DistanceName>
-          <DistanceValue>{data[activeTab].distance}</DistanceValue>
+          <DistanceValue>{distance}</DistanceValue>
         </Distance>
         <Travel>
           <TravelName>est. travel time</TravelName>
-          <TravelValue>{data[activeTab].travel}</TravelValue>
+          <TravelValue>{travel}</TravelValue>
         </Travel>
       </Footer>
     </>

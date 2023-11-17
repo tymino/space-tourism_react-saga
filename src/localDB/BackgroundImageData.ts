@@ -1,22 +1,22 @@
-import { ERoutes } from '../routes';
+import { ERoutes } from '../routes'
 
 interface ISourceImage {
-  id: number;
-  maxWidth: number;
-  srcSet: string;
+  id: number
+  maxWidth: number
+  srcSet: string
 }
 
 interface IImage {
-  src: string;
-  alt: string;
+  src: string
+  alt: string
 }
 
 type TBackgroundImageData = {
   [key in ERoutes]: {
-    sourceImages: ISourceImage[];
-    image: IImage;
-  };
-};
+    sourceImages: ISourceImage[]
+    image: IImage
+  }
+}
 
 export const BackgroundImageData: TBackgroundImageData = {
   HOME_ROUTE: {
@@ -98,4 +98,4 @@ export const BackgroundImageData: TBackgroundImageData = {
       alt: '',
     },
   },
-};
+}

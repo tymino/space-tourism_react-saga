@@ -41,9 +41,11 @@ interface IImageProps {
 }
 
 export const Image = ({ data, activeSlider }: IImageProps) => {
+  const { images, name } = data[activeSlider]
+
   return (
     <StyledContainer>
-      <StyledImage src={data[activeSlider].images.png} alt={data[activeSlider].name} />
+      <StyledImage src={images.png} alt={name} />
     </StyledContainer>
   )
 }

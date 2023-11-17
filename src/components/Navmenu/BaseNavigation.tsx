@@ -1,10 +1,10 @@
-import { BaseImage } from '../UI';
-import { BaseLinkList } from './BaseLinkList';
+import { BaseImage } from '../UI'
+import { BaseLinkList } from './BaseLinkList'
 
-import { styled, keyframes } from 'styled-components';
-import { device } from '../../styles/mediaSize';
+import { styled, keyframes } from 'styled-components'
+import { device } from '../../styles/mediaSize'
 
-import { useNavmenu } from '../../hooks/useNavmenu';
+import { useNavmenu } from '../../hooks/useNavmenu'
 
 const fadeInOverlay = keyframes`
   from {
@@ -14,7 +14,7 @@ const fadeInOverlay = keyframes`
   to {
     opacity: ${({ theme }) => theme.animationOverlayOpacity};
   }
-`;
+`
 
 const fadeOutOverlay = keyframes`
   from {
@@ -24,7 +24,7 @@ const fadeOutOverlay = keyframes`
   to {
     opacity: 0;
   }
-`;
+`
 
 const fadeInMenu = keyframes`
   from {
@@ -34,7 +34,7 @@ const fadeInMenu = keyframes`
   to {
     right: 0;
   }
-`;
+`
 
 const fadeOutMenu = keyframes`
   from {
@@ -44,7 +44,7 @@ const fadeOutMenu = keyframes`
   to {
     right: ${({ theme }) => theme.animationMenuPosRight};
   }
-`;
+`
 
 const OverlayStyled = styled.div`
   @media ${device.tablet} {
@@ -66,7 +66,7 @@ const OverlayStyled = styled.div`
       animation: ${fadeOutOverlay} ${({ theme }) => theme.animationDuration};
     }
   }
-`;
+`
 
 const RoutesStyled = styled.div`
   background: rgba(var(--colorWhite), 0.04);
@@ -101,7 +101,7 @@ const RoutesStyled = styled.div`
     padding-left: 20px;
     padding-right: 10px;
   }
-`;
+`
 
 const CloseButtonStyled = styled(BaseImage)`
   display: none;
@@ -120,7 +120,7 @@ const CloseButtonStyled = styled(BaseImage)`
   @media ${device.mobileM} {
     margin-right: 0;
   }
-`;
+`
 
 const HamburgerButtonStyled = styled(BaseImage)`
   display: none;
@@ -131,10 +131,10 @@ const HamburgerButtonStyled = styled(BaseImage)`
     margin-top: 18px;
     cursor: pointer;
   }
-`;
+`
 
 export const BaseNavigation = ({ children }: { children: JSX.Element }) => {
-  const { isOpenMenu, animation, openMenu, closeMenu } = useNavmenu();
+  const { isOpenMenu, animation, openMenu, closeMenu } = useNavmenu()
 
   return (
     <nav>
@@ -151,7 +151,7 @@ export const BaseNavigation = ({ children }: { children: JSX.Element }) => {
         handleClick={openMenu}
       />
     </nav>
-  );
-};
+  )
+}
 
-BaseNavigation.MyLinkList = BaseLinkList;
+BaseNavigation.MyLinkList = BaseLinkList

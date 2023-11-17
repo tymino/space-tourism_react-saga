@@ -77,11 +77,13 @@ interface IDescribeProps {
 }
 
 export const Describe = ({ data, activeSlider, handleSwitchSlider }: IDescribeProps) => {
+  const { role, name, bio } = data[activeSlider]
+
   return (
     <StyledContainer>
-      <StyledSubheader>{data[activeSlider].role}</StyledSubheader>
-      <StyledHeader>{data[activeSlider].name}</StyledHeader>
-      <StyledBio>{data[activeSlider].bio}</StyledBio>
+      <StyledSubheader>{role}</StyledSubheader>
+      <StyledHeader>{name}</StyledHeader>
+      <StyledBio>{bio}</StyledBio>
 
       <TabList data={data} activeSlider={activeSlider} handleSwitchSlider={handleSwitchSlider} />
     </StyledContainer>
