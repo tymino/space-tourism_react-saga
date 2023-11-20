@@ -24,16 +24,16 @@ const LinkContainer = styled.li`
 
 const NavLinkStyled = styled(NavLink)`
   padding: 36px 0;
-  border-bottom: 3px solid var(--color-invisible);
+  border-bottom: 3px solid ${({ theme }) => theme.colorInvisible};
   ${textNavigation};
 
   &:hover {
-    border-bottom: 3px solid rgba(var(--colorWhite), 0.5);
+    border-bottom: 3px solid ${({ theme }) => theme.colorTextOpacity};
     transition: border-bottom ease ${({ theme }) => theme.transitionTime};
   }
 
   &.active {
-    border-bottom: 3px solid rgb(var(--colorWhite));
+    border-bottom: 3px solid ${({ theme }) => theme.colorText};
     cursor: default;
   }
 
@@ -53,7 +53,7 @@ const NavLinkStyled = styled(NavLink)`
         bottom: 0;
         width: 4px;
         height: 100%;
-        background: rgb(var(--colorWhite));
+        background: ${({ theme }) => theme.colorText};
       }
     }
   }

@@ -69,7 +69,7 @@ const OverlayStyled = styled.div`
 `
 
 const RoutesStyled = styled.div`
-  background: rgba(var(--colorWhite), 0.04);
+  background: ${({ theme }) => theme.colorBackNav};
   padding-left: 80px;
   padding-right: 60px;
 
@@ -84,7 +84,7 @@ const RoutesStyled = styled.div`
     height: 100vh;
     margin-right: 0;
     padding: 0px 24px;
-    background: rgb(var(--colorDark));
+    background: ${({ theme }) => theme.colorBackground};
 
     &.open {
       right: 0;
