@@ -19,7 +19,7 @@ const StyledTabListItem = styled.li`
   margin-right: 24px;
 
   border-radius: 50%;
-  background: rgb(var(--colorWhite));
+  background: ${({ theme }) => theme.colorText};
   opacity: 0.15;
 
   cursor: pointer;

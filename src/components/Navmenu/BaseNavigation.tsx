@@ -84,7 +84,8 @@ const RoutesStyled = styled.div`
     height: 100vh;
     margin-right: 0;
     padding: 0px 24px;
-    background: ${({ theme }) => theme.colorBackground};
+    background: ${({ theme }) => theme.colorDark};
+    /* background: #000; */
 
     &.open {
       right: 0;

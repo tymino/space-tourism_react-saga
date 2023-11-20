@@ -9,7 +9,7 @@ const StyledContainer = styled.ul`
   @media ${device.mobileL} {
     display: flex;
     justify-content: center;
-    border-bottom: 2px solid rgb(var(--colorGray));
+    border-bottom: 2px solid ${({ theme }) => theme.colorBorder};
   }
 `
 const StyledImage = styled.img`

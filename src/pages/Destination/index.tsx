@@ -26,7 +26,7 @@ const StyledDestinationSubtitle = styled.div`
   margin-bottom: 60px;
   ${heading5};
   text-transform: uppercase;
-  color: rgb(var(--colorWhite));
+  color: ${({ theme }) => theme.colorText};
 
   & > span {
     opacity: 0.25;

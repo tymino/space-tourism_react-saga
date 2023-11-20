@@ -24,14 +24,14 @@ const TabListItem = styled.li`
   padding-bottom: 12px;
 
   ${textNavigation}
-  color: rgb(var(--colorLight));
+  color: ${({ theme }) => theme.colorDescribeText};
   cursor: pointer;
 
   &:hover {
-    border-bottom: 3px solid rgba(var(--colorWhite), 0.5);
+    border-bottom: 3px solid ${({ theme }) => theme.colorTextOpacity};
   }
   &.active {
-    border-bottom: 3px solid rgb(var(--colorWhite));
+    border-bottom: 3px solid ${({ theme }) => theme.colorText};
   }
 
   @media ${device.laptop} {

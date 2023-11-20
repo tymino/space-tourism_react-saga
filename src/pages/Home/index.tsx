@@ -44,7 +44,7 @@ const HomeDescribe = styled.div`
 const HomeDescribeSubtitle = styled.h2`
   ${heading5};
   text-transform: uppercase;
-  color: rgb(var(--colorLight));
+  color: ${({ theme }) => theme.colorDescribeText};
   font-weight: normal;
 
   @media ${device.mobileL} {
@@ -56,7 +56,7 @@ const HomeDescribeHeader = styled.h1`
   margin: 24px 0;
   ${heading1};
   text-transform: uppercase;
-  color: rgb(var(--colorWhite));
+  color: ${({ theme }) => theme.colorText};
   font-weight: normal;
 
   @media ${device.mobileL} {
@@ -67,7 +67,7 @@ const HomeDescribeHeader = styled.h1`
 
 const HomeDescribeText = styled.div`
   ${textBody};
-  color: rgb(var(--colorLight));
+  color: ${({ theme }) => theme.colorDescribeText};
 
   @media ${device.mobileL} {
     font-size: 15px;
@@ -82,7 +82,7 @@ const HomeExplore = styled.div`
   width: 274px;
   height: 274px;
   border-radius: 50%;
-  background: rgb(var(--colorWhite));
+  background: ${({ theme }) => theme.colorText};
   ${heading4};
   text-transform: uppercase;
   cursor: pointer;
@@ -93,7 +93,7 @@ const HomeExplore = styled.div`
     width: 450px;
     height: 450px;
     border-radius: 50%;
-    background: rgb(var(--colorWhite));
+    background: ${({ theme }) => theme.colorText};
     opacity: 0.1;
   }
 

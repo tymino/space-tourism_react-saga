@@ -24,19 +24,19 @@ const StyledButtonItem = styled.button`
   height: 80px;
   margin-bottom: 32px;
   border-radius: 50%;
-  border: 1px solid rgba(var(--colorWhite), 0.25);
+  border: 1px solid ${({ theme }) => theme.colorTextOpacity};
   background: none;
   @include heading4;
-  color: rgb(var(--colorWhite));
+  color: ${({ theme }) => theme.colorText};
   cursor: pointer;
 
   &:hover {
-    border: 1px solid rgb(var(--colorWhite));
+    border: 1px solid ${({ theme }) => theme.colorText};
   }
 
   &.active {
-    background: rgb(var(--colorWhite));
-    color: rgb(var(--colorDark));
+    background: ${({ theme }) => theme.colorText};
+    color: ${({ theme }) => theme.colorBackground};
   }
 
   @media ${device.laptop} {

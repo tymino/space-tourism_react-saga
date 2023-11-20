@@ -17,10 +17,3 @@ export const theme = {
   animationOverlayOpacity: '0.6',
   animationMenuPosRight: '-100%',
 }
-
-/*
-  colorDark -> colorBackground
-  colorGray -> colorBorder
-  colorWhite -> colorText
-  colorLight -> colorDescribeText,
-*/

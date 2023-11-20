@@ -18,7 +18,7 @@ const StyledSubheader = styled.div`
   margin-top: 12%;
   margin-bottom: 15px;
   ${heading4}
-  color: rgb(var(--colorWhite));
+  color: ${({ theme }) => theme.colorText};
   text-transform: uppercase;
   opacity: 0.5;
 
@@ -37,7 +37,7 @@ const StyledSubheader = styled.div`
 const StyledHeader = styled.div`
   margin-bottom: 26px;
   ${heading3}
-  color: rgb(var(--colorWhite));
+  color: ${({ theme }) => theme.colorText};
   text-transform: uppercase;
 
   @media ${device.laptop} {
@@ -57,6 +57,7 @@ const StyledBio = styled.div`
   margin-bottom: 30px;
   ${textBody}
   color: rgb(var(--colorLight));
+  color: ${({ theme }) => theme.colorDescribeText};
 
   @media ${device.laptop} {
     height: 130px;

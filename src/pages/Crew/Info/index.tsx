@@ -20,7 +20,7 @@ const StyledSubtitle = styled.div`
 
   ${heading5}
   text-transform: uppercase;
-  color: rgb(var(--colorWhite));
+  color: ${({ theme }) => theme.colorText};
 
   @media ${device.laptop} {
     font-size: 20px;

@@ -21,7 +21,7 @@ const StyledContainer = styled.div`
 
 const StyledSubheader = styled.div`
   ${textNavigation}
-  color: rgb(var(--colorLight));
+  color: ${({ theme }) => theme.colorDescribeText};
 
   @media ${device.laptop} {
     font-size: 16px;
@@ -36,7 +36,7 @@ const StyledHeader = styled.div`
   margin-top: 10px;
   margin-bottom: 16px;
   ${heading3}
-  color: rgb(var(--colorWhite));
+  color: ${({ theme }) => theme.colorText};
   text-transform: uppercase;
 
   @media ${device.laptop} {
@@ -52,7 +52,7 @@ const StyledHeader = styled.div`
 
 const StyledText = styled.div`
   ${textBody}
-  color: rgb(var(--colorLight));
+  color: ${({ theme }) => theme.colorDescribeText};
   width: 444px;
 
   @media ${device.laptop} {

@@ -15,7 +15,7 @@ const Header = styled.div`
 
   ${heading2};
   text-transform: uppercase;
-  color: rgb(var(--colorWhite));
+  color: ${({ theme }) => theme.colorText};
 
   @media ${device.laptop} {
     margin-top: 32px;
@@ -32,8 +32,9 @@ const Header = styled.div`
 const Text = styled.div`
   padding-bottom: 50px;
   border-bottom: 1px solid rgb(var(--colorGray));
+  border-bottom: 1px solid ${({ theme }) => theme.colorBorder};
   ${textBody};
-  color: rgb(var(--colorLight));
+  color: ${({ theme }) => theme.colorDescribeText};
 
   @media ${device.mobileL} {
     padding-bottom: 32px;
@@ -63,11 +64,11 @@ const Distance = styled.div`
 const DistanceName = styled.div`
   margin-bottom: 12px;
   ${subHeading2};
-  color: rgb(var(--colorLight));
+  color: ${({ theme }) => theme.colorDescribeText};
 `
 const DistanceValue = styled.div`
   ${subHeading1};
-  color: rgb(var(--colorWhite));
+  color: ${({ theme }) => theme.colorText};
 `
 
 const Travel = styled.div`
@@ -78,11 +79,11 @@ const Travel = styled.div`
 const TravelName = styled.div`
   margin-bottom: 12px;
   ${subHeading2};
-  color: rgb(var(--colorLight));
+  color: ${({ theme }) => theme.colorDescribeText};
 `
 const TravelValue = styled.div`
   ${subHeading1};
-  color: rgb(var(--colorWhite));
+  color: ${({ theme }) => theme.colorText};
 `
 
 export const Describe = ({ data, activeTab }: IDescribeProps) => {
