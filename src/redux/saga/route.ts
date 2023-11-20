@@ -1,7 +1,21 @@
 import { call } from 'redux-saga/effects'
 import { workerPageSaga } from './page'
 
-export function* watcherRoute({ payload }: any) {
+interface IAction {
+  type: string
+  payload: {
+    action: string
+    location: {
+      hash: string
+      key: string
+      pathname: string
+      search: string
+      state: null
+    }
+  }
+}
+
+export function* watcherRoute({ payload }: IAction) {
   const { pathname } = payload.location
 
   if (pathname !== '/') {

@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { put, delay, select } from 'redux-saga/effects'
+import { put, select } from 'redux-saga/effects'
 import { fetchData } from '../../api/fetchData'
 import {
   loadingPage,
@@ -8,7 +7,7 @@ import {
   loadingPageFailure,
 } from '../reducers/pagesSlice'
 
-export function* workerPageSaga(pathname: string): any {
+export function* workerPageSaga(pathname: string): unknown {
   yield put(loadingPage(true))
 
   const isDataInCache = yield select((state) => !!state.pages.cache[pathname])
@@ -16,15 +15,16 @@ export function* workerPageSaga(pathname: string): any {
   if (isDataInCache) {
     yield put(loadingPageFromCache(pathname))
   } else {
-    yield delay(500)
-
     try {
       const { data } = yield fetchData(pathname)
       const response = { name: pathname, data }
 
       yield put(loadingPageSuccess(response))
-    } catch (error: any) {
-      yield put(loadingPageFailure(error.message))
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        const msg = `Things exploded (${error.message})`
+        yield put(loadingPageFailure(msg))
+      }
     }
   }
 }

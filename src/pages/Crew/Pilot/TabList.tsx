@@ -51,8 +51,6 @@ export const TabList = ({ data, activeSlider, handleSwitchSlider }: ITabListProp
     handleSwitchSlider(index)
   }
 
-  console.log(data)
-
   return (
     <StyledTabList>
       {data.map(({ name }, index) => (

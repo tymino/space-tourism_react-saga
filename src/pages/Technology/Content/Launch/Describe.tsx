@@ -39,10 +39,6 @@ const StyledHeader = styled.div`
   color: rgb(var(--colorWhite));
   text-transform: uppercase;
 
-  @media (max-width: 1280px) {
-    width: 258px;
-  }
-
   @media ${device.laptop} {
     margin-top: 16px;
     margin-bottom: 16px;
@@ -59,12 +55,9 @@ const StyledText = styled.div`
   color: rgb(var(--colorLight));
   width: 444px;
 
-  @media (max-width: 1280px) {
-    width: 258px;
-  }
-
   @media ${device.laptop} {
     width: 458px;
+    margin-bottom: 40px;
   }
 
   @media ${device.mobileL} {

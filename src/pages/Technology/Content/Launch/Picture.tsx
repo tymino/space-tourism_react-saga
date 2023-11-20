@@ -13,7 +13,14 @@ const StyledPicture = styled(BasePicture)`
     top: 0;
     left: 0;
     width: 100%;
+    height: auto;
     order: 1;
+  }
+  @media ${device.tablet} {
+    & > img {
+      width: 100%;
+      height: auto;
+    }
   }
 `
 
