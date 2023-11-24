@@ -36,7 +36,7 @@ const StyledButtonItem = styled.button`
 
   &.active {
     background: ${({ theme }) => theme.colorText};
-    color: ${({ theme }) => theme.colorBackground};
+    color: ${({ theme }) => theme.colorDark};
   }
 
   @media ${device.laptop} {
